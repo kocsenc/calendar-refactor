@@ -1,5 +1,7 @@
 package ZachsCrappyTogglDay;
 
+import com.std.model.appointment.RefAppointment;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
@@ -24,10 +26,10 @@ public class AppointmentLabel extends JPanel {
 		body.setOpaque(false);
 		body.setFont(body.getFont().deriveFont(12f));
 
-		String bodyText = "Location: " + r.getLoctation() + "\n" +
+		String bodyText = "Location: " + r.getLocation() + "\n" +
 							"Description: " + r.getDescription() + "\n" +
-							"Start Time: " + FORMAT.format(r.getStartTime()) + "\n"
-							+ "End Time: " + FORMAT.format(r.getEndTime());
+							"Start Time: " + FORMAT.format(r.getStartDate()) + "\n"
+							+ "End Time: " + FORMAT.format(r.getEndDate());
 		
 		body.setText(bodyText);
 		

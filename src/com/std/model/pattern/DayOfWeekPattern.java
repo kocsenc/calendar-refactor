@@ -73,7 +73,7 @@ public class DayOfWeekPattern extends RecurrencePattern {
 	 * @throws NullPointerException if days is null
 	 * @throws IllegalArgumentException if the length of days is not 7
 	 */
-	private void setDays(boolean[] days) {
+	public void setDays(boolean[] days) {
 		this.days = new boolean[7];
 		if(days == null)
 			throw new NullPointerException("days");

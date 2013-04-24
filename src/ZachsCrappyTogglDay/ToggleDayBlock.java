@@ -1,5 +1,8 @@
 package ZachsCrappyTogglDay;
 
+import com.std.model.appointment.RefAppointment;
+import com.std.model.CalendarModelUtility;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridBagLayout;
@@ -8,6 +11,8 @@ import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Set;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -69,10 +74,10 @@ public class ToggleDayBlock extends JToggleButton {
 				temp.setBackground(new Color(0x00FFFFFF, true));
 				temp.setOpaque(false);
 			}
-			for (RefAppointment added : addedAppointments) {
-				if (CalendarModelUtiltiy.conflictingAppointments(added, app)) {
+			for (RefAppointment added : addedAppointments.keySet()) {
+				if (CalendarModelUtility.conflictingAppointments(added, app)) {
 
-					addedAppointments.get(added).addApointment(temp);
+					//addedAppointments.get(added).addApointment(temp);
 					addedAppointments.put(app, addedAppointments.get(added));
 					hasAdded = true;
 				}
@@ -101,8 +106,8 @@ public class ToggleDayBlock extends JToggleButton {
 	
 	public static void main(String[] args) {
 		JFrame f = new JFrame();
-		ToggleDayBlock t = new ToggleDayBlock();
-		t.update(Calendar.getInstance().getTime());
+		ToggleDayBlock t = new ToggleDayBlock(new Date(System.currentTimeMillis()));
+		//t.update(Calendar.getInstance().getTime());
 		f.add(t);
 		f.setVisible(true);
 		f.setSize(600,600);
