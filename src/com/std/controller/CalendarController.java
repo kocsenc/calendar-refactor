@@ -42,7 +42,8 @@ import com.std.view.CalendarView;
 public class CalendarController implements Observer {
 
 	/**
-	 * The Calendar model is the mechanism to do all the logical operations of the calendar (add/remove/modify appointments)
+	 * The Calendar model is the mechanism to do all the logical operations of
+	 * the calendar (add/remove/modify appointments)
 	 */
 	public CalendarModel theModel;
 	
@@ -75,7 +76,7 @@ public class CalendarController implements Observer {
 	
 	/**
 	 * This method instantiates all the necessary listeners, giving them
-	 * reference to this CalendarController, and then adds them to the CalendarView
+	 * reference to this CalendarController, and then adds them to CalendarView
 	 */
 	private void instantiateListeners () {
 		
@@ -85,11 +86,13 @@ public class CalendarController implements Observer {
 		
 		
 		// listens for when an appointment is selected
-		AppointmentSelectionMouseListener apptSelL = new AppointmentSelectionMouseListener(this);
+		AppointmentSelectionMouseListener apptSelL =
+				new AppointmentSelectionMouseListener(this);
 		theView.addAppointmentSelectionListener(apptSelL);
 		
 		// listens for when a date is selected
-		DateSelectionActionListener dateSelL = new DateSelectionActionListener(this);
+		DateSelectionActionListener dateSelL =
+				new DateSelectionActionListener(this);
 		theView.addDateSelectionListener(dateSelL);
 		
 		
@@ -107,43 +110,53 @@ public class CalendarController implements Observer {
 		theView.addNewCalendarActionListener(newCalL);
 
 		// listens for when the menu item "Open Calendar" is selected
-		OpenCalendarActionListener openCalL = new OpenCalendarActionListener(this);
+		OpenCalendarActionListener openCalL =
+				new OpenCalendarActionListener(this);
 		theView.addOpenCalendarActionListener(openCalL);
 
 		// listens for when the menu item "Save Calendar" is selected
-		SaveCalendarActionListener saveCalL = new SaveCalendarActionListener(this);
+		SaveCalendarActionListener saveCalL =
+				new SaveCalendarActionListener(this);
 		theView.addSaveCalendarActionListener(saveCalL);
 
 		// listens for when the menu item "Save As Calendar" is selected
-		SaveAsCalendarActionListener saveAsCalL = new SaveAsCalendarActionListener(this);
+		SaveAsCalendarActionListener saveAsCalL =
+				new SaveAsCalendarActionListener(this);
 		theView.addSaveAsCalendarActionListener(saveAsCalL);
 
 		// listens for when the menu item "Exit" is selected
-		ExitApplicationActionListener exitAppL = new ExitApplicationActionListener(this);
+		ExitApplicationActionListener exitAppL =
+				new ExitApplicationActionListener(this);
 		theView.addExitApplicationActionListener(exitAppL);
 
 		// listens for when the menu item "New Appointment" is selected
-		NewAppointmentActionListener newApptL = new NewAppointmentActionListener(this);
+		NewAppointmentActionListener newApptL =
+				new NewAppointmentActionListener(this);
 		theView.addNewAppointmentActionListener(newApptL);
 
 		// listens for when the menu item "Edit Appointment" is selected
-		EditAppointmentActionListener editApptL = new EditAppointmentActionListener(this);
+		EditAppointmentActionListener editApptL =
+				new EditAppointmentActionListener(this);
 		theView.addEditAppointmentActionListener(editApptL);
 
-		// listens for when the menu item "Edit Recurring Appointment" is selected
-		EditRecurringAppointmentActionListener editRecApptL = new EditRecurringAppointmentActionListener(this);
+		// listens for when menu item "Edit Recurring Appointment" is selected
+		EditRecurringAppointmentActionListener editRecApptL =
+				new EditRecurringAppointmentActionListener(this);
 		theView.addEditAllAppointmentActionListener(editRecApptL);
 
 		// listens for when the menu item "Remove Appointment" is selected
-		RemoveAppointmentActionListener remApptL = new RemoveAppointmentActionListener(this);
+		RemoveAppointmentActionListener remApptL =
+				new RemoveAppointmentActionListener(this);
 		theView.addRemoveAppointmentActionListener(remApptL);
 
-		// listens for when the menu item "Remove All Occurances" is selected
-		RemoveAllAppointmentActionListener remAllApptL = new RemoveAllAppointmentActionListener(this);
+		// listens for when the menu item "Remove All Occurrences" is selected
+		RemoveAllAppointmentActionListener remAllApptL =
+				new RemoveAllAppointmentActionListener(this);
 		theView.addRemoveAllAppointmentActionListener(remAllApptL);
 
 		// listens for when the menu item "Preferences" is selected
-		PreferencesActionListener prefL = new PreferencesActionListener(this);
+		PreferencesActionListener prefL =
+				new PreferencesActionListener(this);
 		theView.addPreferencesActionListener(prefL);
 
 		// listens for when the menu item "About" is selected
@@ -163,7 +176,7 @@ public class CalendarController implements Observer {
 	/**
 	 * Returns the mechanism to do all the logical operations of the calendar
 	 *
-	 * @return returns the mechanism to do all the logical operations of the calendar
+	 * @return returns mechanism to do all logical operations of the calendar
 	 */ 
 	public CalendarModel getModel() {
 		return theModel;
@@ -186,7 +199,9 @@ public class CalendarController implements Observer {
 				// prompt with the save option
 				int result = JOptionPane.showConfirmDialog(
 					theView, 
-					"do you want to save the changes to " + (theModel.getFile() == null ? "Untitled Calendar" : theModel.getFile().getName()), 
+					"do you want to save the changes to " +
+						(theModel.getFile() == null ? "Untitled Calendar" :
+								theModel.getFile().getName()),
 					"", 
 					JOptionPane.YES_NO_CANCEL_OPTION, 
 					JOptionPane.PLAIN_MESSAGE);
@@ -280,7 +295,8 @@ public class CalendarController implements Observer {
 	}
 	
 	public void handleException(Exception ex) {
-		JOptionPane.showMessageDialog(theView, ex.getMessage(), "", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(
+				theView, ex.getMessage(), "", JOptionPane.ERROR_MESSAGE);
 		ex.printStackTrace();
 	}
 	
@@ -289,7 +305,7 @@ public class CalendarController implements Observer {
 	 * adds various listeners to the view and then adds itself as an
 	 * observer of the model 
 	 * 
-	 * @param model the mechanism to do all the logical operations of the calendar
+	 * @param model mechanism to do all the logical operations of the calendar
 	 * @param view the highest level of representation for the UI
 	 */
 	public CalendarController(CalendarModel model, CalendarView view) {

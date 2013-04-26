@@ -33,9 +33,11 @@ public class DurationUpdateListener implements ActionListener {
 	 * @param start start date of the range
 	 * @param end end date of the range
 	 */
-	public static void updateDuration(JLabel field, DatePanel start, DatePanel end) {
+	public static void updateDuration(
+			JLabel field, DatePanel start, DatePanel end) {
 		// set the text
-		field.setText(AppointmentUtility.getDurationDescription(new DateRange(start.getDate(), end.getDate()).getDurationInMS()));
+		field.setText(AppointmentUtility.getDurationDescription(
+			new DateRange(start.getDate(), end.getDate()).getDurationInMS()));
 	}
 	
 	/**
@@ -54,7 +56,7 @@ public class DurationUpdateListener implements ActionListener {
 	private DatePanel end;
 	
 	/**
-	 * called whenever the start or end dates are changed, and updates the duration
+	 * called whenever the start or end dates are changed, and updates duration
 	 * 
 	 * @param e not used
 	 */

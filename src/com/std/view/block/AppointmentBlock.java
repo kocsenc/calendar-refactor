@@ -23,9 +23,11 @@ public class AppointmentBlock extends JTextArea {
 	
 	private boolean limitDisplay;
 	
-	private static final SimpleDateFormat FORMAT = new SimpleDateFormat("h:mm aa");
+	private static final SimpleDateFormat FORMAT =
+			new SimpleDateFormat("h:mm aa");
 
-	private RefAppointment thisAppointment;// the appointment that will be written to the text area.
+	// the appointment that will be written to the text area.
+	private RefAppointment thisAppointment;
 	
 	/**
 	 * Take an appointment and 
@@ -48,10 +50,11 @@ public class AppointmentBlock extends JTextArea {
 		if(!limitDisplay){
 			setText("Title: " + thisAppointment.getTitle() + "\n" +
 				"Description: " + thisAppointment.getDescription() + "\n" + 
-				"Time: " + FORMAT.format(thisAppointment.getStartDate()) + " to " + 
-				FORMAT.format(thisAppointment.getEndDate()));
+				"Time: " + FORMAT.format(thisAppointment.getStartDate()) +
+					" to " + FORMAT.format(thisAppointment.getEndDate()));
 		}else{//limit the display (used for the monthlyDayBlocks)
-			setText(FORMAT.format(thisAppointment.getStartDate()) + " - " + thisAppointment.getTitle());
+			setText(FORMAT.format(thisAppointment.getStartDate())
+					+ " - " + thisAppointment.getTitle());
 		}
 		setEditable(false);
 		this.setOpaque(false);
@@ -72,9 +75,11 @@ public class AppointmentBlock extends JTextArea {
 	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		AppointmentTemplate template = new AppointmentTemplate("My Temp", "This is an appointment", "Here", 1000*60*60*2);
+		AppointmentTemplate template = new AppointmentTemplate(
+				"My Temp", "This is an appointment", "Here", 1000*60*60*2);
 		
-		RefAppointment ref = new RefAppointment(Calendar.getInstance().getTime(), template);
+		RefAppointment ref = new RefAppointment(
+				Calendar.getInstance().getTime(), template);
 		
 		AppointmentBlock b = new AppointmentBlock(ref, false);
 		frame.add(b, BorderLayout.CENTER);

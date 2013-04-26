@@ -25,7 +25,8 @@ public class ToggleDayBlock extends JToggleButton {
 
 	private JLabel date;
 	private JPanel center;
-	private static final SimpleDateFormat FORMAT = new SimpleDateFormat("MMM dd" );
+	private static final SimpleDateFormat FORMAT =
+			new SimpleDateFormat("MMM dd" );
 	private Date today;
 	private MouseListener apptListener;
 	
@@ -59,11 +60,13 @@ public class ToggleDayBlock extends JToggleButton {
 		today = d;
 	}
 	
-	public void update(Set<RefAppointment> refSet, Date newDate, RefAppointment selected) {
+	public void update(
+			Set<RefAppointment> refSet, Date newDate, RefAppointment selected) {
 		
 		center.removeAll();
 		
-		HashMap<RefAppointment, AppointmentBlock> addedAppointments = new HashMap<RefAppointment, AppointmentBlock>();
+		HashMap<RefAppointment, AppointmentBlock> addedAppointments =
+				new HashMap<RefAppointment, AppointmentBlock>();
 
 		
 		for (RefAppointment app : refSet) {
@@ -106,8 +109,9 @@ public class ToggleDayBlock extends JToggleButton {
 	
 	public static void main(String[] args) {
 		JFrame f = new JFrame();
-		ToggleDayBlock t = new ToggleDayBlock(new Date(System.currentTimeMillis()));
-		//t.update(Calendar.getInstance().getTime());
+		ToggleDayBlock t =
+				new ToggleDayBlock(new Date(System.currentTimeMillis()));
+
 		f.add(t);
 		f.setVisible(true);
 		f.setSize(600,600);

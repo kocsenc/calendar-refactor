@@ -359,9 +359,7 @@ public class DateDialog extends JDialog {
 	private JToggleButton[] buttons;
 	
 	/**
-	 * Returns the date selected by the user, null if the form was canceled out of
-	 * 
-	 * @return the date selected by the user, null if the form was canceled out of
+	 * @return the date selected by user, null if the form was canceled out of
 	 */
 	public Date getReturnDate() {
 		return returnDate;
@@ -384,9 +382,9 @@ public class DateDialog extends JDialog {
 		
 		// set the date display
 		label.setText(
-			cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + 
-			", " + 
-			cal.get(Calendar.YEAR));
+			cal.getDisplayName(
+					Calendar.MONTH, Calendar.LONG, Locale.getDefault()) +
+			", " + cal.get(Calendar.YEAR));
 		
 		// update the grid blocks
 		GridMonthRange range = new GridMonthRange(date);
@@ -394,8 +392,10 @@ public class DateDialog extends JDialog {
 		rangeCal.setTime(range.getStartDate());
 		for(int i = 0; i < buttons.length; i++) {
 			buttons[i].setText("" + rangeCal.get(Calendar.DATE));
-			buttons[i].setEnabled(rangeCal.get(Calendar.MONTH) == cal.get(Calendar.MONTH));
-			if(rangeCal.get(Calendar.DAY_OF_MONTH) == cal.get(Calendar.DAY_OF_MONTH))
+			buttons[i].setEnabled(rangeCal.get(
+					Calendar.MONTH) == cal.get(Calendar.MONTH));
+			if(rangeCal.get(
+					Calendar.DAY_OF_MONTH) == cal.get(Calendar.DAY_OF_MONTH))
 				buttons[i].doClick();
 			rangeCal.add(Calendar.DATE, 1);
 		}
@@ -451,7 +451,8 @@ public class DateDialog extends JDialog {
 		
 		// add the names of the days of the week
 		do {
-			JLabel label = new JLabel(cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault()));
+			JLabel label = new JLabel(cal.getDisplayName(
+					Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault()));
 			label.setHorizontalAlignment(SwingConstants.CENTER);
 			ret.add(label);
 			cal.add(Calendar.DATE, 1);
@@ -610,7 +611,8 @@ public class DateDialog extends JDialog {
 				"PM"
 			}
 		);
-		((BasicComboBoxRenderer)amPm.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+		((BasicComboBoxRenderer)amPm.getRenderer()).
+				setHorizontalAlignment(SwingConstants.CENTER);
 		amPm.setSelectedIndex(cal.get(Calendar.AM_PM) == Calendar.AM ? 0 : 1);
 		amPm.addActionListener(new AmPmListener());
 		

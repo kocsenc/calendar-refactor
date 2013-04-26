@@ -22,7 +22,8 @@ import com.std.util.range.DateRange;
  */
 public class AppointmentUtility {
 	
-	private static final SimpleDateFormat FORMAT = new SimpleDateFormat("EEE, d MMM yyyy 'at' h:mm aa");
+	private static final SimpleDateFormat FORMAT =
+			new SimpleDateFormat("EEE, d MMM yyyy 'at' h:mm aa");
 	
 	public static final String NO_RECUR = "does not recur";
 	
@@ -35,21 +36,26 @@ public class AppointmentUtility {
 	 * @return a sorted set of the appointments in set that 
 	 * are at least partially contained by range
 	 */
-	public static SortedSet<RefAppointment> getRange(Set<RefAppointment> set, DateRange range) {
+	public static SortedSet<RefAppointment> getRange(
+			Set<RefAppointment> set, DateRange range) {
 		if(set == null)
 			throw new NullPointerException("set");
 		if(range == null)
 			throw new NullPointerException("range");
 		
-		TreeSet<RefAppointment> startSet = new TreeSet<RefAppointment>(RefAppointment.COMPARATOR_APPOINTMENT_START);
+		TreeSet<RefAppointment> startSet = new TreeSet<RefAppointment>(
+				RefAppointment.COMPARATOR_APPOINTMENT_START);
 		startSet.addAll(set);
 		
-		TreeSet<RefAppointment> endSet = new TreeSet<RefAppointment>(RefAppointment.COMPARATOR_APPOINTMENT_END);
+		TreeSet<RefAppointment> endSet = new TreeSet<RefAppointment>(
+				RefAppointment.COMPARATOR_APPOINTMENT_END);
 		endSet.addAll(set);
 		
 		AppointmentTemplate apptTmpl = new AppointmentTemplate("", "", "", 0);
-		RefAppointment startAppt = new RefAppointment(range.getStartDate(), apptTmpl);
-		RefAppointment endAppt = new RefAppointment(range.getEndDate(), apptTmpl);
+		RefAppointment startAppt =
+				new RefAppointment(range.getStartDate(), apptTmpl);
+		RefAppointment endAppt =
+				new RefAppointment(range.getEndDate(), apptTmpl);
 		
 		SortedSet<RefAppointment> ret = startSet.headSet(endAppt);
 		ret.removeAll(endSet.headSet(startAppt));
@@ -65,7 +71,8 @@ public class AppointmentUtility {
 	 * @return a set of all the associated RefAppointments of a 
 	 * AppointmentTemplate according to its RecurrencePattern
 	 */
-	public static Set<RefAppointment> generatePatternAppointments(AppointmentTemplate apptTmpl) {
+	public static Set<RefAppointment> generatePatternAppointments(
+			AppointmentTemplate apptTmpl) {
 		if(apptTmpl == null)
 			throw new NullPointerException("set");
 		
@@ -116,7 +123,8 @@ public class AppointmentUtility {
 			
 			// append the RecurrencePattern dateRange data
 			if(text.length() > 0)
-				text += " from " + FORMAT.format(pattern.getRange().getStartDate())
+				text += " from "
+						+ FORMAT.format(pattern.getRange().getStartDate())
 					+ " to " + FORMAT.format(pattern.getRange().getEndDate());
 		}
 		
@@ -148,11 +156,14 @@ public class AppointmentUtility {
 		if(weeks != 0)
 			s += weeks + " week" + (weeks == 1 ? "" : "s");
 		if(days != 0)
-			s += (s.length() == 0 ? "" : ", ") + days + " day" + (days == 1 ? "" : "s");
+			s += (s.length() == 0 ? "" : ", ") + days + " day" +
+					(days == 1 ? "" : "s");
 		if(hours != 0)
-			s += (s.length() == 0 ? "" : ", ") + hours + " hour" + (hours == 1 ? "" : "s");
+			s += (s.length() == 0 ? "" : ", ") + hours + " hour" +
+					(hours == 1 ? "" : "s");
 		if(min != 0)
-			s += (s.length() == 0 ? "" : ", ") + min + " minute" + (min == 1 ? "" : "s");
+			s += (s.length() == 0 ? "" : ", ") + min + " minute" +
+					(min == 1 ? "" : "s");
 		if(s.length() == 0)
 			s = "instantaneous";
 		

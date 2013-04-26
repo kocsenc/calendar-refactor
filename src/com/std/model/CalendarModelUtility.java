@@ -79,7 +79,8 @@ public class CalendarModelUtility {
 	 */
 	
 	public static void nextAppointment(CalendarModel model) {
-		TreeSet<RefAppointment> set = new TreeSet<RefAppointment>(RefAppointment.COMPARATOR_APPOINTMENT_START);
+		TreeSet<RefAppointment> set =
+				new TreeSet<RefAppointment>(RefAppointment.COMPARATOR_APPOINTMENT_START);
 		set.addAll(model.getAppointmentSet());
 		model.setCurrentAppointment(set.higher(model.getCurrentAppointment()));
 	}
@@ -130,7 +131,8 @@ public class CalendarModelUtility {
 	 */
 	
 	public static void previousAppointment(CalendarModel model) {
-		TreeSet<RefAppointment> set = new TreeSet<RefAppointment>(RefAppointment.COMPARATOR_APPOINTMENT_START);
+		TreeSet<RefAppointment> set =
+				new TreeSet<RefAppointment>(RefAppointment.COMPARATOR_APPOINTMENT_START);
 		set.addAll(model.getAppointmentSet());
 		model.setCurrentAppointment(set.lower(model.getCurrentAppointment()));
 	}
@@ -141,7 +143,8 @@ public class CalendarModelUtility {
 	 * @return returns a default appointmnet template
 	 */
 	
-	public static AppointmentTemplate getNewAppointmentTemplate(CalendarModel model) {
+	public static AppointmentTemplate getNewAppointmentTemplate(
+			CalendarModel model) {
 		AppointmentTemplate ret = new AppointmentTemplate("", "", "", 0);
 		ret.setFields(model.getCurrentDefaults());
 		return ret;
@@ -153,7 +156,8 @@ public class CalendarModelUtility {
 	 * @return returns a default RefAppointment
 	 */
 	
-	public static RefAppointment getNewAppointment(CalendarModel model, AppointmentTemplate apptTmpl) {
+	public static RefAppointment getNewAppointment(
+			CalendarModel model, AppointmentTemplate apptTmpl) {
 		return new RefAppointment(model.getCurrentDate(), apptTmpl);
 	}
 	
@@ -186,12 +190,14 @@ public class CalendarModelUtility {
 	 * @param appt is the appointmnet to add
 	 */
 	
-	public static void addUsingPattern(CalendarModel model, RefAppointment appt) {
+	public static void addUsingPattern(
+			CalendarModel model, RefAppointment appt) {
 		model.getAppointmentTemplateSet().add(appt.getTemplate());
 		
 		model.removeReferences(appt.getTemplate());
 		if(appt.getPattern() != null)
-			model.getAppointmentSet().addAll(AppointmentUtility.generatePatternAppointments(appt.getTemplate()));
+			model.getAppointmentSet().addAll(AppointmentUtility.
+					generatePatternAppointments(appt.getTemplate()));
 		else {
 			model.getAppointmentSet().add(appt);
 		}
@@ -199,7 +205,8 @@ public class CalendarModelUtility {
 		
 	}
 	
-	public static boolean conflictingAppointments(RefAppointment one, RefAppointment two) {
+	public static boolean conflictingAppointments(
+			RefAppointment one, RefAppointment two) {
 		if (one.getStartDate().getTime() > two.getStartDate().getTime()) {
 			if (one.getStartDate().getTime() < two.getEndDate().getTime()) {
 				return true;
