@@ -31,9 +31,8 @@ public class Driver {
 
         CalendarModel model = new CalendarModel();
 		CalendarView view = new CalendarView();
-
-        CalendarController x = new CalendarController(model, view);
-		view.setVisible(true);
-
+		
+		new CalendarController(model, view);
+		view.setVisible(true);	
 	}
 }
