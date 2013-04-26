@@ -36,7 +36,8 @@ public class DatePanel extends JPanel {
 	/**
 	 * format to use when displaying date information
 	 */
-	private static final SimpleDateFormat FORMAT = new SimpleDateFormat("EEE, d MMM yyyy 'at' h:mm aa");
+	private static final SimpleDateFormat FORMAT =
+			new SimpleDateFormat("EEE, d MMM yyyy 'at' h:mm aa");
 
 	/**
 	 * ActionListener intended to be used with 

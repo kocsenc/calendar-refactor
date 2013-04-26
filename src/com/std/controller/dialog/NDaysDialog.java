@@ -55,7 +55,8 @@ public class NDaysDialog extends JDialog {
 	 * @param pattern pattern to start with
 	 * @return the created NDaysPattern
 	 */
-	public static NDaysPattern getPattern(Frame frame, RecurrencePattern pattern) {
+	public static NDaysPattern getPattern(
+			Frame frame, RecurrencePattern pattern) {
 		NDaysDialog dialog = new NDaysDialog(frame, pattern);
 		dialog.setVisible(true);
 		return dialog.getReturnPattern();
@@ -68,7 +69,8 @@ public class NDaysDialog extends JDialog {
 	 * @param pattern pattern to start with
 	 * @return the created NDaysPattern
 	 */
-	public static NDaysPattern getPattern(Dialog frame, RecurrencePattern pattern) {
+	public static NDaysPattern getPattern(
+			Dialog frame, RecurrencePattern pattern) {
 		NDaysDialog dialog = new NDaysDialog(frame, pattern);
 		dialog.setVisible(true);
 		return dialog.getReturnPattern();
@@ -138,12 +140,15 @@ public class NDaysDialog extends JDialog {
 	private void returnSuccessful() {
 		try {
 			int instanceEvery = Integer.parseInt(number.getText());
-			pattern = new NDaysPattern(new DateRange(startDate.getDate(), endDate.getDate()), instanceEvery);
+			pattern = new NDaysPattern(new DateRange(
+					startDate.getDate(), endDate.getDate()), instanceEvery);
 			dispose();
 		} catch(NumberFormatException e) {
-			JOptionPane.showMessageDialog(this, "number of days is not a number", "", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this,
+				"number of days is not a number", "", JOptionPane.ERROR_MESSAGE);
 		} catch(Exception e) {
-			JOptionPane.showMessageDialog(this, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(
+					this, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
@@ -152,7 +157,7 @@ public class NDaysDialog extends JDialog {
 	 * a common constructor / initializer for the actual
 	 * constructors that would otherwise perform redundant code
 	 * 
-	 * @param base the RecurrencePattern that will be used to initialize the fields
+	 * @param base the RecurrencePattern that will be used to initialize fields
 	 */
 	private void init(RecurrencePattern base) {
 		// because base could be any type of pattern, we need
@@ -176,8 +181,10 @@ public class NDaysDialog extends JDialog {
 		JLabel duration = new JLabel();
 
 		// dateRange listeners
-		startDate.addActionListener(new DurationUpdateListener(duration, startDate, endDate));
-		endDate.addActionListener(new DurationUpdateListener(duration, startDate, endDate));
+		startDate.addActionListener(
+				new DurationUpdateListener(duration, startDate, endDate));
+		endDate.addActionListener(
+				new DurationUpdateListener(duration, startDate, endDate));
 		DurationUpdateListener.updateDuration(duration, startDate, endDate);
 
 		// the recurrence option field
