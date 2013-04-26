@@ -22,7 +22,8 @@ import java.util.Set;
  *
  * @param <U> the type of elements maintained by this set
  */
-public class ObservableSet<U extends Observable> extends Observable implements Set<U> {
+public class ObservableSet
+		<U extends Observable> extends Observable implements Set<U> {
 	
 	/**
 	 * InternalSet is a modified HashSet that communicates 
@@ -61,17 +62,18 @@ public class ObservableSet<U extends Observable> extends Observable implements S
 	     * restrictions on the elements that they may contain.
 	     *
 	     * @param e element to be added to this set
-	     * @return <tt>true</tt> if this set did not already contain the specified
-	     *         element
+	     * @return <tt>true</tt> if this set did not already contain the
+	     *         specified element
 	     * @throws UnsupportedOperationException if the <tt>add</tt> operation
 	     *         is not supported by this set
 	     * @throws ClassCastException if the class of the specified element
 	     *         prevents it from being added to this set
-	     * @throws NullPointerException if the specified element is null and this
-	     *         set does not permit null elements
-	     * @throws IllegalArgumentException if some property of the specified element
-	     *         prevents it from being added to this set
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#add(E)">Set<E>.add(E)</a>
+	     * @throws NullPointerException if the specified element is null and
+	     *         this set does not permit null elements
+	     * @throws IllegalArgumentException if some property of the specified
+	     *         element prevents it from being added to this set
+	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+		 * Set.html#add(E)">Set<E>.add(E)</a>
 	     */
 		public boolean add(U e) {
 			boolean ret; // return value
@@ -92,16 +94,17 @@ public class ObservableSet<U extends Observable> extends Observable implements S
 	     * @param  c collection containing elements to be added to this set
 	     * @return <tt>true</tt> if this set changed as a result of the call
 	     *
-	     * @throws UnsupportedOperationException if the <tt>addAll</tt> operation
-	     *         is not supported by this set
+	     * @throws UnsupportedOperationException if the <tt>addAll</tt>
+	     *         operation is not supported by this set
 	     * @throws ClassCastException if the class of an element of the
 	     *         specified collection prevents it from being added to this set
 	     * @throws NullPointerException if the specified collection contains one
 	     *         or more null elements and this set does not permit null
 	     *         elements, or if the specified collection is null
-	     * @throws IllegalArgumentException if some property of an element of the
+	     * @throws IllegalArgumentException if some property of an element of
 	     *         specified collection prevents it from being added to this set
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#addAll(E)">Set<E>.addAll(Collection<? extends U>)</a>
+	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+		 * Set.html#addAll(E)">Set<E>.addAll(Collection<? extends U>)</a>
 	     */
 		public boolean addAll(Collection<? extends U> c) {
 			if(c == null)
@@ -114,11 +117,12 @@ public class ObservableSet<U extends Observable> extends Observable implements S
 
 	    /**
 	     * Returns an iterator over the elements in this set.  The elements are
-	     * returned in no particular order (unless this set is an instance of some
-	     * class that provides a guarantee).
+	     * returned in no particular order (unless this set is an instance of
+	     * some class that provides a guarantee).
 	     *
 	     * @return an iterator over the elements in this set
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#iterator()">Set<E>.iterator()</a>
+	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+		 * Set.html#iterator()">Set<E>.iterator()</a>
 	     */
 		public Iterator<U> iterator() {
 			return new InternalIterator(super.iterator());
@@ -138,11 +142,12 @@ public class ObservableSet<U extends Observable> extends Observable implements S
 	     * @return <tt>true</tt> if this set contained the specified element
 	     * @throws ClassCastException if the type of the specified element
 	     *         is incompatible with this set (optional)
-	     * @throws NullPointerException if the specified element is null and this
-	     *         set does not permit null elements (optional)
-	     * @throws UnsupportedOperationException if the <tt>remove</tt> operation
-	     *         is not supported by this set
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#remove(java.lang.Object)">Set<E>.remove(Object)</a>
+	     * @throws NullPointerException if the specified element is null and
+	     *         this set does not permit null elements (optional)
+	     * @throws UnsupportedOperationException if the <tt>remove</tt>
+	     *         operation is not supported by this set
+	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+		 * Set.html#remove(java.lang.Object)">Set<E>.remove(Object)</a>
 	     */
 		public boolean remove(Object o) {
 			boolean ret; // return value
@@ -179,7 +184,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
 	     * rather than throwing an exception.)
 	     *
 	     * @return <tt>true</tt> if the iterator has more elements.
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Iterator.html#hasNext()">Iterator<E>.hasNext()</a>
+	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+		 * Iterator.html#hasNext()">Iterator<E>.hasNext()</a>
 	     */
 		public boolean hasNext() {
 			return iter.hasNext();
@@ -190,7 +196,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
 	     *
 	     * @return the next element in the iteration.
 	     * @exception NoSuchElementException iteration has no more elements.
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Iterator.html#next()">Iterator<E>.next()</a>
+	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+		 * Iterator.html#next()">Iterator<E>.next()</a>
 	     */
 		public U next() {
 			last = iter.next();
@@ -198,11 +205,11 @@ public class ObservableSet<U extends Observable> extends Observable implements S
 		}
 
 	    /**
-	     * Removes from the underlying collection the last element returned by the
-	     * iterator (optional operation).  This method can be called only once per
+	     * Removes from the underlying collection the last element returned by
+	     * the iterator (optional operation).  This method can be called only
 	     * call to <tt>next</tt>.  The behavior of an iterator is unspecified if
-	     * the underlying collection is modified while the iteration is in
-	     * progress in any way other than by calling this method.
+	     * once per the underlying collection is modified while the iteration is
+	     * in progress in any way other than by calling this method.
 	     *
 	     * @exception UnsupportedOperationException if the <tt>remove</tt>
 	     *		  operation is not supported by this Iterator.
@@ -211,7 +218,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
 	     *		  yet been called, or the <tt>remove</tt> method has already
 	     *		  been called after the last call to the <tt>next</tt>
 	     *		  method.
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Iterator.html#remove()">Iterator<E>.remove()</a>
+	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+		 * Iterator.html#remove()">Iterator<E>.remove()</a>
 	     */
 		public void remove() {
 			synchronized(iter) {
@@ -221,7 +229,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
 		}
 		
 		/**
-		 * creates a new InternalIterator encapsulated around the passed Iterator
+		 * creates a new InternalIterator encapsulated around the passed
+		 * Iterator
 		 * 
 		 * @param iter Iterator to encapsulate and forward to
 		 */
@@ -251,7 +260,9 @@ public class ObservableSet<U extends Observable> extends Observable implements S
 	     * @param   o     the observable object.
 	     * @param   arg   an argument passed to the <code>notifyObservers</code>
 	     *                 method.
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Observer.html#update(java.util.Observable,%20java.lang.Object)">Observer.update(Observable, Object)</a>
+	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+		 * Observer.html#update(java.util.Observable,%20java.lang.Object)">
+		 * Observer.update(Observable, Object)</a>
 	     */
 		public void update(Observable o, Object arg) {
 			that.setChanged();
@@ -260,7 +271,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
 	}
 	
 	/**
-	 * a pointer to this object, so that inner classes can reference the encapsulating ObservableSet
+	 * a pointer to this object, so that inner classes can reference the
+	 * encapsulating ObservableSet
 	 */
 	private final ObservableSet<U> that;
 	
@@ -339,7 +351,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
      *         set does not permit null elements
      * @throws IllegalArgumentException if some property of the specified element
      *         prevents it from being added to this set
-     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#add(E)">Set<U>.add(U)</a>
+     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+	 * Set.html#add(E)">Set<U>.add(U)</a>
      */
 	public boolean add(U e) {
 		return set.add(e);
@@ -366,7 +379,9 @@ public class ObservableSet<U extends Observable> extends Observable implements S
      * @throws IllegalArgumentException if some property of an element of the
      *         specified collection prevents it from being added to this set
      * @see #add(Object)
-     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#addAll(java.util.Collection)">Set<U>.addAll(Collection<? extends U>)</a>
+     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+	 * Set.html#addAll(java.util.Collection)">Set<U>.addAll
+	 * (Collection<? extends U>)</a>
      */
 	public boolean addAll(Collection<? extends U> c) {
 		return set.addAll(c);
@@ -378,7 +393,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
      * class that provides a guarantee).
      *
      * @return an iterator over the elements in this set
-     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#iterator()">Set<U>.iterator()</a>
+     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+	 * Set.html#iterator()">Set<U>.iterator()</a>
      */
 	public Iterator<U> iterator() {
 		return set.iterator();
@@ -402,7 +418,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
      *         set does not permit null elements (optional)
      * @throws UnsupportedOperationException if the <tt>remove</tt> operation
      *         is not supported by this set
-     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#remove(java.lang.Object)">Set<U>.remove(Object)</a>
+     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+	 * Set.html#remove(java.lang.Object)">Set<U>.remove(Object)</a>
      */
 	public boolean remove(Object o) {
 		return set.remove(o);
@@ -414,7 +431,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
      *
      * @throws UnsupportedOperationException if the <tt>clear</tt> method
      *         is not supported by this set
-     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#clear()">Set<U>.clear()</a>
+     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+	 * Set.html#clear()">Set<U>.clear()</a>
      */
 	public void clear() {
 		set.clear();
@@ -432,7 +450,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
      *         is incompatible with this set (optional)
      * @throws NullPointerException if the specified element is null and this
      *         set does not permit null elements (optional)
-     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#contains(java.lang.Object)">Set<U>.contains(Object)</a>
+     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+	 * Set.html#contains(java.lang.Object)">Set<U>.contains(Object)</a>
      */
 	public boolean contains(Object o) {
 		return set.contains(o);
@@ -453,7 +472,9 @@ public class ObservableSet<U extends Observable> extends Observable implements S
      *         or more null elements and this set does not permit null
      *         elements (optional), or if the specified collection is null
      * @see    #contains(Object)
-     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#containsAll(java.util.Collection)">Set<U>.containsAll(Collection<?>)</a>
+     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+	 * Set.html#containsAll(java.util.Collection)">Set<U>.containsAll
+	 * (Collection<?>)</a>
      */
 	public boolean containsAll(Collection<?> c) {
 		return set.containsAll(c);
@@ -463,7 +484,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
      * Returns <tt>true</tt> if this set contains no elements.
      *
      * @return <tt>true</tt> if this set contains no elements
-     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#isEmpty()">Set<U>.isEmpty()</a>
+     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+	 * Set.html#isEmpty()">Set<U>.isEmpty()</a>
      */
 	public boolean isEmpty() {
 		return set.isEmpty();
@@ -478,8 +500,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
      *
      * @param  c collection containing elements to be removed from this set
      * @return <tt>true</tt> if this set changed as a result of the call
-     * @throws UnsupportedOperationException if the <tt>removeAll</tt> operation
-     *         is not supported by this set
+     * @throws UnsupportedOperationException if the <tt>removeAll</tt>
+     *         operation is not supported by this set
      * @throws ClassCastException if the class of an element of this set
      *         is incompatible with the specified collection (optional)
      * @throws NullPointerException if this set contains a null element and the
@@ -487,7 +509,9 @@ public class ObservableSet<U extends Observable> extends Observable implements S
      *         or if the specified collection is null
      * @see #remove(Object)
      * @see #contains(Object)
-     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#removeAll(java.util.Collection)">Set<U>.removeAll(Collection<?>)</a>
+     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+	 * Set.html#removeAll(java.util.Collection)">Set<U>.removeAll
+	 * (Collection<?>)</a>
      */
 	public boolean removeAll(Collection<?> c) {
 		return set.removeAll(c);
@@ -511,7 +535,9 @@ public class ObservableSet<U extends Observable> extends Observable implements S
      *         specified collection does not permit null elements (optional),
      *         or if the specified collection is null
      * @see #remove(Object)
-     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#retainAll(java.util.Collection)">Set<U>.retainAll(Collection<?>)</a>
+     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+	 * Set.html#retainAll(java.util.Collection)">Set<U>.retainAll
+	 * (Collection<?>)</a>
      */
 	public boolean retainAll(Collection<?> c) {
 		return set.retainAll(c);
@@ -523,7 +549,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
      * <tt>Integer.MAX_VALUE</tt>.
      *
      * @return the number of elements in this set (its cardinality)
-     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#size()">Set<U>.size()</a>
+     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+	 * Set.html#size()">Set<U>.size()</a>
      */
 	public int size() {
 		return set.size();
@@ -544,7 +571,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
      * APIs.
      *
      * @return an array containing all the elements in this set
-     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#toArray()">Set<U>.toArray()</a>
+     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+	 * Set.html#toArray()">Set<U>.toArray()</a>
      */
 	public Object[] toArray() {
 		return set.toArray();
@@ -591,7 +619,8 @@ public class ObservableSet<U extends Observable> extends Observable implements S
      *         is not a supertype of the runtime type of every element in this
      *         set
      * @throws NullPointerException if the specified array is null
-     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#toArray(T[])">Set<U>.toArray(T[])</a>
+     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+	 * Set.html#toArray(T[])">Set<U>.toArray(T[])</a>
      */
 	public <T> T[] toArray(T[] a) {
 		return set.toArray(a);

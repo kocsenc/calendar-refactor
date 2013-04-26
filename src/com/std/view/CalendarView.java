@@ -32,15 +32,16 @@ import com.std.view.panel.MonthlyPanel;
 import com.std.view.panel.WeeklyPanel;
 
 /**
- * This is the main entry point for the view, it updates the views when it is called
- * by the controller
+ * This is the main entry point for the view, it updates the views when
+ * it is called by the controller
  * 
  * @author xxx
  *
  */
 
 public class CalendarView extends JFrame {	
-	private final static SimpleDateFormat FORMAT = new SimpleDateFormat("MMMM, yyyy");
+	private final static SimpleDateFormat FORMAT =
+			new SimpleDateFormat("MMMM, yyyy");
 	
 	/**
 	 *  This is the enumeration that represents the different
@@ -71,7 +72,7 @@ public class CalendarView extends JFrame {
 	private AppointmentPanel appointmentView;
 	
 	/**
-	 * This allows elements of the view and contorller 
+	 * This allows elements of the view and controller
 	 * figure out what view is currently selected
 	 * 
 	 * @return returns a Tabbed state of the currently selected view
@@ -265,9 +266,10 @@ public class CalendarView extends JFrame {
 	}
 	
 	/**
-	 * This method updates the different views when an event is called from the model
-	 * it passes the subset of the total set of appointments by calling get range, it
-	 * also passes the selected appointment and the selected date to the views
+	 * This method updates the different views when an event is called from the
+	 * model it passes the subset of the total set of appointments by calling
+	 * get range, it also passes the selected appointment and the selected date
+	 * to the views
 	 * 
 	 * @param refSet the total set of refrence appointments
 	 * @param selectedDate the currently selected Date
@@ -275,19 +277,23 @@ public class CalendarView extends JFrame {
 	 * @param currentFile the current file
 	 */
 	
-	public void update(Set<RefAppointment> refSet, Date selectedDate, RefAppointment selectedAppointment, File currentFile) {
+	public void update(Set<RefAppointment> refSet, Date selectedDate,
+					   RefAppointment selectedAppointment, File currentFile) {
 		displayDate.setText(FORMAT.format(selectedDate));
 		
 		if(refSet != null) {
 			Set<RefAppointment> subSet;
 			
-			subSet = AppointmentUtility.getRange(refSet, new MonthRange(selectedDate));
+			subSet = AppointmentUtility.getRange(
+					refSet, new MonthRange(selectedDate));
 			monthlyView.update(subSet, selectedDate, selectedAppointment);
 			
-			subSet = AppointmentUtility.getRange(refSet, new WeekRange(selectedDate));
+			subSet = AppointmentUtility.getRange(
+					refSet, new WeekRange(selectedDate));
 			weeklyView.update(subSet, selectedDate, selectedAppointment);
 			
-			subSet= AppointmentUtility.getRange(refSet, new DayRange(selectedDate));
+			subSet= AppointmentUtility.getRange(
+					refSet, new DayRange(selectedDate));
 			dailyView.update(subSet, selectedDate, selectedAppointment);
 		} else {
 			monthlyView.update(null, selectedDate, selectedAppointment);
@@ -296,7 +302,8 @@ public class CalendarView extends JFrame {
 		}
 		appointmentView.setAppointment(selectedAppointment);
 		
-		setTitle((currentFile == null ? "Untitled Calendar" : currentFile.getName()) + " - DCal");
+		setTitle((currentFile == null ? "Untitled Calendar" :
+				currentFile.getName()) + " - DCal");
 		
 		this.validate();
 	}
@@ -342,7 +349,8 @@ public class CalendarView extends JFrame {
 		tabs.add(dailyView, "Day View");
 		
 		
-		JLabel logo = new JLabel(new ImageIcon(ImageIO.read(new File("img/logo.png"))));
+		JLabel logo = new JLabel(new ImageIcon(ImageIO.read(
+				new File("img/logo.png"))));
 		logo.setBorder(new EmptyBorder(4, 4, 4, 4));
 		logo.setHorizontalAlignment(SwingConstants.RIGHT);
 		

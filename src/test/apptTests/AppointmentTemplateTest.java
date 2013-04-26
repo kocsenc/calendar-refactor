@@ -95,7 +95,8 @@ public class AppointmentTemplateTest {
 			new AppointmentTemplate("1", "2","3", 0);
 		appt.setDescription("description");
 		assertNotNull(appt.getTitle());
-		assertEquals("title should be description", "description", appt.getDescription());
+		assertEquals("title should be description",
+				"description", appt.getDescription());
 	}
 
 	@Test
@@ -104,7 +105,8 @@ public class AppointmentTemplateTest {
 			new AppointmentTemplate("1", "2","3", 0);
 		appt.setDescription("location");
 		assertNotNull(appt.getLocation());
-		assertEquals("title should be Location", "location", appt.getDescription());
+		assertEquals("title should be Location",
+				"location", appt.getDescription());
 	}
 
 	@Test
