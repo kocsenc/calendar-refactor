@@ -26,7 +26,8 @@ public class AppointmentBlock extends JPanel {
 		setFont(getFont().deriveFont(14f));
 		setOpaque(false);
 		
-		constraints.gridheight = (int)(r.getAppointment().getDuration()*1000)/(60*15);
+		constraints.gridheight =
+				(int)(r.getAppointment().getDuration()*1000)/(60*15);
 		
 		if (constraints.gridheight > 1) {
 			constraints.weighty = 1;

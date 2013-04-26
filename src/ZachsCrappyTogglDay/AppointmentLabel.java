@@ -13,7 +13,8 @@ import javax.swing.border.EtchedBorder;
 public class AppointmentLabel extends JPanel {
 	
 	private RefAppointment ref;
-	private static final SimpleDateFormat FORMAT = new SimpleDateFormat("h:mm a");
+	private static final SimpleDateFormat FORMAT =
+			new SimpleDateFormat("h:mm a");
 	
 	public AppointmentLabel(RefAppointment r) {
 		super();
@@ -28,8 +29,8 @@ public class AppointmentLabel extends JPanel {
 
 		String bodyText = "Location: " + r.getLocation() + "\n" +
 							"Description: " + r.getDescription() + "\n" +
-							"Start Time: " + FORMAT.format(r.getStartDate()) + "\n"
-							+ "End Time: " + FORMAT.format(r.getEndDate());
+							"Start Time: " + FORMAT.format(r.getStartDate()) +
+							"\n" + "End Time: " + FORMAT.format(r.getEndDate());
 		
 		body.setText(bodyText);
 		
