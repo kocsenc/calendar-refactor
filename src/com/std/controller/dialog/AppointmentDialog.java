@@ -72,7 +72,8 @@ public class AppointmentDialog extends JDialog {
 	/**
 	 * format to use when displaying date information
 	 */
-	private static final SimpleDateFormat FORMAT = new SimpleDateFormat("EEE, d MMM yyyy 'at' h:mm aa");
+	private static final SimpleDateFormat FORMAT = new SimpleDateFormat(
+			"EEE, d MMM yyyy 'at' h:mm aa");
 	
 	/**
 	 * Prompts the user to change an Appointment.
@@ -107,8 +108,10 @@ public class AppointmentDialog extends JDialog {
 	 * @param appt appointment to prompt changes for
 	 * @return false iff the user has canceled out of the dialog
 	 */
-	public static boolean changeAppointmentDefaults(Dialog frame, CalendarModel model) {
-		AppointmentDialog dialog = new AppointmentDialog(frame, model.getCurrentDefaults());
+	public static boolean changeAppointmentDefaults(
+			Dialog frame, CalendarModel model) {
+		AppointmentDialog dialog =
+				new AppointmentDialog(frame, model.getCurrentDefaults());
 		dialog.setTitle("Edit Appointment Defaults");
 		dialog.setVisible(true);
 		return dialog.getReturnState();
@@ -121,8 +124,10 @@ public class AppointmentDialog extends JDialog {
 	 * @param appt appointment to prompt changes for
 	 * @return false iff the user has canceled out of the dialog
 	 */
-	public static boolean changeAppointmentDefaults(JFrame frame, CalendarModel model) {
-		AppointmentDialog dialog = new AppointmentDialog(frame, model.getCurrentDefaults());
+	public static boolean changeAppointmentDefaults(
+			JFrame frame, CalendarModel model) {
+		AppointmentDialog dialog =
+				new AppointmentDialog(frame, model.getCurrentDefaults());
 		dialog.setTitle("Edit Appointment Defaults");
 		dialog.setVisible(true);
 		return dialog.getReturnState();
@@ -211,9 +216,11 @@ public class AppointmentDialog extends JDialog {
 	     */
 		public void actionPerformed(ActionEvent e) {
 			if(pattern == null)
-				pattern = new NDaysPattern(new DateRange(startDatePanel.getDate(), endDatePanel.getDate()), 0);
+				pattern = new NDaysPattern(new DateRange(
+						startDatePanel.getDate(), endDatePanel.getDate()), 0);
 			
-			RecurrencePattern tempPattern = NDaysDialog.getPattern(getThis(), pattern);
+			RecurrencePattern tempPattern =
+					NDaysDialog.getPattern(getThis(), pattern);
 			if(tempPattern != null)
 				pattern = tempPattern;
 			updatePatternDesc();
@@ -248,9 +255,12 @@ public class AppointmentDialog extends JDialog {
 	     */
 		public void actionPerformed(ActionEvent e) {
 			if(pattern == null)
-				pattern = new DayOfWeekPattern(new DateRange(startDatePanel.getDate(), endDatePanel.getDate()), new boolean[7]);
+				pattern = new DayOfWeekPattern(new DateRange(
+					startDatePanel.getDate(),
+						endDatePanel.getDate()), new boolean[7]);
 			
-			RecurrencePattern tempPattern = DayOfWeekDialog.getPattern(getThis(), pattern);
+			RecurrencePattern tempPattern =
+					DayOfWeekDialog.getPattern(getThis(), pattern);
 			if(tempPattern != null)
 				pattern = tempPattern;
 			updatePatternDesc();
@@ -351,7 +361,8 @@ public class AppointmentDialog extends JDialog {
 			// create a dummy appointment so we
 			// can recieve any errors before we
 			// commit to the actual appointment
-			RefAppointment tempAppointment = new RefAppointment(new Date(0), new AppointmentTemplate("", "", "", 0));
+			RefAppointment tempAppointment = new RefAppointment(
+					new Date(0), new AppointmentTemplate("", "", "", 0));
 
 			// populate the dummy appointment
 			// with our field data
@@ -375,7 +386,8 @@ public class AppointmentDialog extends JDialog {
 			
 		// if we catch any errors, alert the user and don't dispose the form
 		} catch(Exception e) {
-			JOptionPane.showMessageDialog(this, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(
+					this, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
@@ -444,7 +456,8 @@ public class AppointmentDialog extends JDialog {
 		// panel to return
 		JPanel ret = new JPanel();
 		ret.setLayout(new BorderLayout());
-		ret.setBorder(new TitledBorder(new EmptyBorder(new Insets(6, 6, 6, 6)), "recurrence pattern"));
+		ret.setBorder(new TitledBorder(
+				new EmptyBorder(new Insets(6, 6, 6, 6)), "recurrence pattern"));
 		ret.add(patternDesc, BorderLayout.NORTH);
 		ret.add(buttonPanel, BorderLayout.CENTER);
 		ret.add(none, BorderLayout.SOUTH);
@@ -472,7 +485,8 @@ public class AppointmentDialog extends JDialog {
 		JScrollPane scroll = new JScrollPane(description);
 		scroll.setBorder(
 			new CompoundBorder(
-				new TitledBorder(new EmptyBorder(new Insets(6, 6, 6, 6)), "description"),
+				new TitledBorder(
+						new EmptyBorder(new Insets(6, 6, 6, 6)), "description"),
 				new BevelBorder(BevelBorder.LOWERED)));
 
 
@@ -508,9 +522,12 @@ public class AppointmentDialog extends JDialog {
 		duration = new JLabel();
 		
 		// listeners
-		startDatePanel.addActionListener(new DurationUpdateListener(duration, startDatePanel, endDatePanel));
-		endDatePanel.addActionListener(new DurationUpdateListener(duration, startDatePanel, endDatePanel));
-		DurationUpdateListener.updateDuration(duration, startDatePanel, endDatePanel);
+		startDatePanel.addActionListener(new DurationUpdateListener(
+				duration, startDatePanel, endDatePanel));
+		endDatePanel.addActionListener(new DurationUpdateListener(
+				duration, startDatePanel, endDatePanel));
+		DurationUpdateListener.updateDuration(
+				duration, startDatePanel, endDatePanel);
 		
 		
 		// panel to return
@@ -537,8 +554,9 @@ public class AppointmentDialog extends JDialog {
 	 * a common constructor / initializer for the actual
 	 * constructors that would otherwise perform redundant code
 	 * 
-	 * @param appt the appointment that will be changed as a result of user input
-	 * @param enableAppt true iff RefAppointment specific fields should be enabled
+	 * @param appt appointment that will be changed as a result of user input
+	 * @param enableAppt true, if and only if, RefAppointment specific fields
+	 *                      should be enabled
 	 */
 	private void init(RefAppointment appt, boolean enableAppt) {
 		this.appt = appt;
@@ -587,10 +605,11 @@ public class AppointmentDialog extends JDialog {
 	}
 	
 	/**
-	 * creates a new AppointmentDialog based on a template, with disabled RefAppointment fields
+	 * Creates a new AppointmentDialog based on a template,
+	 * with disabled RefAppointment fields
 	 * 
 	 * @param frame from which the dialog is displayed
-	 * @param appt appointment to prompt changes for
+	 * @param apptTmpl appointment to prompt changes for
 	 */
 	private AppointmentDialog(Frame frame, AppointmentTemplate apptTmpl) {
 		super(frame, true);
@@ -598,10 +617,11 @@ public class AppointmentDialog extends JDialog {
 	}
 	
 	/**
-	 * creates a new AppointmentDialog based on a template, with disabled RefAppointment fields
+	 * Creates a new AppointmentDialog based on a template,
+	 * with disabled RefAppointment fields
 	 * 
 	 * @param frame from which the dialog is displayed
-	 * @param appt appointment to prompt changes for
+	 * @param apptTmpl appointment to prompt changes for
 	 */
 	private AppointmentDialog(Dialog frame, AppointmentTemplate apptTmpl) {
 		super(frame, true);

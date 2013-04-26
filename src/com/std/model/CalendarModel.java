@@ -110,21 +110,23 @@ public class CalendarModel extends Observable {
 	     * restrictions on the elements that they may contain.
 	     *
 	     * @param e element to be added to this set
-	     * @return <tt>true</tt> if this set did not already contain the specified
+	     * @return <tt>true</tt> if this set did not already contain specified
 	     *         element
 	     * @throws UnsupportedOperationException if the <tt>add</tt> operation
 	     *         is not supported by this set
 	     * @throws ClassCastException if the class of the specified element
 	     *         prevents it from being added to this set
-	     * @throws NullPointerException if the specified element is null and this
-	     *         set does not permit null elements
-	     * @throws IllegalArgumentException if some property of the specified element
-	     *         prevents it from being added to this set
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#add(E)">Set<U>.add(U)</a>
+	     * @throws NullPointerException if the specified element is null and
+	     *         this set does not permit null elements
+	     * @throws IllegalArgumentException if some property of the specified
+	     *         element prevents it from being added to this set
+	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+		 * Set.html#add(E)">Set<U>.add(U)</a>
 	     */
 		public boolean add(RefAppointment appt) {
 			if(!apptTmplSet.contains(appt.getTemplate()))
-				throw new IllegalArgumentException("template does not exist or has not been added");
+				throw new IllegalArgumentException(
+						"template does not exist or has not been added");
 			return super.add(appt);
 		}
 
@@ -139,8 +141,8 @@ public class CalendarModel extends Observable {
 	     * @param  c collection containing elements to be added to this set
 	     * @return <tt>true</tt> if this set changed as a result of the call
 	     *
-	     * @throws UnsupportedOperationException if the <tt>addAll</tt> operation
-	     *         is not supported by this set
+	     * @throws UnsupportedOperationException if the <tt>addAll</tt>
+	     *         operation is not supported by this set
 	     * @throws ClassCastException if the class of an element of the
 	     *         specified collection prevents it from being added to this set
 	     * @throws NullPointerException if the specified collection contains one
@@ -149,14 +151,17 @@ public class CalendarModel extends Observable {
 	     * @throws IllegalArgumentException if some property of an element of the
 	     *         specified collection prevents it from being added to this set
 	     * @see #add(Object)
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#addAll(java.util.Collection)">Set<U>.addAll(Collection<? extends U>)</a>
+	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+		 * Set.html#addAll(java.util.Collection)">Set<U>.addAll
+		 * (Collection<? extends U>)</a>
 	     */
 		public boolean addAll(Collection<? extends RefAppointment> c) {
 			if(c == null)
 				throw new NullPointerException("c");
 			for(RefAppointment appt : c)
 				if(!apptTmplSet.contains(appt.getTemplate()))
-					throw new IllegalArgumentException("template does not exist or has not been added");
+					throw new IllegalArgumentException(
+							"template does not exist or has not been added");
 			return super.addAll(c);
 		}
 
@@ -178,7 +183,8 @@ public class CalendarModel extends Observable {
 	     *         set does not permit null elements (optional)
 	     * @throws UnsupportedOperationException if the <tt>remove</tt> operation
 	     *         is not supported by this set
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Set.html#remove(java.lang.Object)">Set<E>.remove(Object)</a>
+	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+		 * Set.html#remove(java.lang.Object)">Set<E>.remove(Object)</a>
 	     */
 		public boolean remove(Object o) {
 			if(o == curAppt)
@@ -206,7 +212,9 @@ public class CalendarModel extends Observable {
 	     * @param   o     the observable object.
 	     * @param   arg   an argument passed to the <code>notifyObservers</code>
 	     *                 method.
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Observer.html#update(java.util.Observable,%20java.lang.Object)">Observer.update(Observable, Object)</a>
+	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+		 * Observer.html#update(java.util.Observable,%20java.lang.Object)">
+		 * Observer.update(Observable, Object)</a>
 	     */
 		public void update(Observable o, Object arg) {
 			ObservableSet<?> set = (ObservableSet<?>)o;
@@ -235,7 +243,9 @@ public class CalendarModel extends Observable {
 	     * @param   o     the observable object.
 	     * @param   arg   an argument passed to the <code>notifyObservers</code>
 	     *                 method.
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Observer.html#update(java.util.Observable,%20java.lang.Object)">Observer.update(Observable, Object)</a>
+	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+		 * Observer.html#update(java.util.Observable,%20java.lang.Object)">
+		 * Observer.update(Observable, Object)</a>
 	     */
 		public void update(Observable o, Object arg) {
 			diffFile = true;
@@ -263,7 +273,9 @@ public class CalendarModel extends Observable {
 	     * @param   o     the observable object.
 	     * @param   arg   an argument passed to the <code>notifyObservers</code>
 	     *                 method.
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/Observer.html#update(java.util.Observable,%20java.lang.Object)">Observer.update(Observable, Object)</a>
+	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
+		 * Observer.html#update(java.util.Observable,%20java.lang.Object)">
+		 * Observer.update(Observable, Object)</a>
 	     */
 		public void update(Observable o, Object arg) {
 			diffFile = true;
@@ -273,7 +285,8 @@ public class CalendarModel extends Observable {
 	}
 
 	/**
-	 * a pointer to this object, so that inner classes can reference the encapsulating CalendarModel
+	 * a pointer to this object, so that inner classes can reference the
+	 * encapsulating CalendarModel
 	 */
 	private final CalendarModel that;
 	
@@ -283,12 +296,14 @@ public class CalendarModel extends Observable {
 	private Date curDate;
 	
 	/**
-	 * the currently select RefAppointment.  can possibly be null, denoting no selection
+	 * the currently select RefAppointment.  can possibly be null,
+	 * denoting no selection
 	 */
 	private RefAppointment curAppt;
 	
 	/**
-	 * the currently viewed file URI.  can possibly be null, denoting an unsaved file
+	 * the currently viewed file URI.  can possibly be null,
+	 * denoting an unsaved file
 	 */
 	private File curFile;
 	
@@ -298,7 +313,8 @@ public class CalendarModel extends Observable {
 	private final ObservableSet<AppointmentTemplate> apptTmplSet;
 	
 	/**
-	 * Set of RefAppointments.  should contain no RefAppointment whose template is not in apptTmplSet
+	 * Set of RefAppointments.  should contain no RefAppointment
+	 * whose template is not in apptTmplSet
 	 */
 	private final ObservableSet<RefAppointment> apptSet;
 	
@@ -377,11 +393,13 @@ public class CalendarModel extends Observable {
 	 * this CalendarModel as changed if a change has been made
 	 * 
 	 * @param appt new current appointment
-	 * @throws IllegalArgumentException the passed appointment is not in the RefAppointment set
+	 * @throws IllegalArgumentException the passed appointment is not in
+	 * the RefAppointment set
 	 */
 	private void internalSetCurrentAppointment(RefAppointment appt) {
 		if(appt != null && !apptSet.contains(appt))
-			throw new IllegalArgumentException("appt does not exist or has not bee added");
+			throw new IllegalArgumentException(
+					"appt does not exist or has not bee added");
 		if(appt == null ? curAppt != null : !appt.equals(curAppt))
 			this.setChanged();
 		curAppt = appt;
@@ -411,7 +429,7 @@ public class CalendarModel extends Observable {
 	}
 	
 	/**
-	 * Returns true iff the file denoted by curURI is different than the data on record
+	 * Returns true iff file denoted by curURI is different than data on record
 	 * 
 	 * @return
 	 */
@@ -448,7 +466,8 @@ public class CalendarModel extends Observable {
 	public void save(File file) throws IOException {
 		if(file == null)
 			throw new NullPointerException("file");
-		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+		ObjectOutputStream out =
+				new ObjectOutputStream(new FileOutputStream(file));
 		out.writeObject(defaultApptTmpl);
 		out.writeInt(apptTmplSet.size());
 		for(AppointmentTemplate apptTmpl : apptTmplSet)
@@ -466,7 +485,7 @@ public class CalendarModel extends Observable {
 	 * loads the data model from a file specified by the passed URI 
 	 * parameter, and notifies any CalendarModel observers
 	 * 
-	 * @param uri the path to load the file from, null if a new file should be loaded
+	 * @param file name of file, null if a new file should be loaded
 	 * @throws IOException if an I/O error occurs while writing stream header
 	 */
 	public void load(File file) throws IOException, ClassNotFoundException {
@@ -474,7 +493,8 @@ public class CalendarModel extends Observable {
 		Set<RefAppointment> apptSet = new HashSet<RefAppointment>();
 		AppointmentTemplate defaultApptTmpl = getNewDefaults();
 		if(file != null) {
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+			ObjectInputStream in =
+					new ObjectInputStream(new FileInputStream(file));
 			defaultApptTmpl = (AppointmentTemplate)in.readObject();
 			int count = in.readInt();
 			while(count-- > 0)

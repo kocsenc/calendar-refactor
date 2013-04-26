@@ -29,7 +29,8 @@ import com.std.util.range.DayRange;
 
 public class WeeklyDayBlock extends JToggleButton implements DayBlock {
 	
-	private static final SimpleDateFormat FORMAT = new SimpleDateFormat("MMM d");
+	private static final SimpleDateFormat FORMAT =
+			new SimpleDateFormat("MMM d");
 
 	/**
 	 *  The currently selected day
@@ -54,10 +55,10 @@ public class WeeklyDayBlock extends JToggleButton implements DayBlock {
 	
 	/**
 	 * This is the constructor, it sets up the center panel and the scollPane
-	 * that the center panel goes into, it also sets up the date from the parameter d
+	 * that the center panel goes into, it also sets up the date from the
+	 * parameter d
 	 *
 	 * @param d is the date that this panel represents
-	 * @param listener is the listener for to the AppointmentReadViews
 	 */
 	
 	public WeeklyDayBlock(Date d) {
@@ -76,7 +77,8 @@ public class WeeklyDayBlock extends JToggleButton implements DayBlock {
 		centerScroll.setOpaque(false);
 		centerScroll.getViewport().setOpaque(false);
 		centerScroll.setBorder(new EtchedBorder());
-		centerScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		centerScroll.setHorizontalScrollBarPolicy(
+				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		setLayout(new BorderLayout());
 		setMargin(new Insets(1, 1, 1, 1));
@@ -107,7 +109,8 @@ public class WeeklyDayBlock extends JToggleButton implements DayBlock {
 		day = d;
 		displayDate.setText(FORMAT.format(day));
 		
-		Set<RefAppointment> subSet = AppointmentUtility.getRange(appts, new DayRange(day));
+		Set<RefAppointment> subSet =
+				AppointmentUtility.getRange(appts, new DayRange(day));
 		center.removeAll();
 		for (RefAppointment ref : subSet) {
 			AppointmentBlock apptView = new AppointmentBlock(ref, false);

@@ -60,7 +60,8 @@ public class DayOfWeekDialog extends JDialog {
 	 * @param pattern pattern to start with
 	 * @return the created DayOfWeekPattern
 	 */
-	public static DayOfWeekPattern getPattern(Frame frame, RecurrencePattern pattern) {
+	public static DayOfWeekPattern getPattern(
+			Frame frame, RecurrencePattern pattern) {
 		DayOfWeekDialog dialog = new DayOfWeekDialog(frame, pattern);
 		dialog.setVisible(true);
 		return dialog.getReturnPattern();
@@ -73,7 +74,8 @@ public class DayOfWeekDialog extends JDialog {
 	 * @param pattern pattern to start with
 	 * @return the created DayOfWeekPattern
 	 */
-	public static DayOfWeekPattern getPattern(Dialog frame, RecurrencePattern pattern) {
+	public static DayOfWeekPattern getPattern(
+			Dialog frame, RecurrencePattern pattern) {
 		DayOfWeekDialog dialog = new DayOfWeekDialog(frame, pattern);
 		dialog.setVisible(true);
 		return dialog.getReturnPattern();
@@ -149,14 +151,16 @@ public class DayOfWeekDialog extends JDialog {
 				b[i] = days[i].isSelected();
 			
 			// construct the new pattern
-			pattern = new DayOfWeekPattern(new DateRange(startDate.getDate(), endDate.getDate()), b);
+			pattern = new DayOfWeekPattern(
+					new DateRange(startDate.getDate(), endDate.getDate()), b);
 			
 			// dispose of this form
 			dispose();
 			
 		// if we catch any errors, alert the user and don't dispose the form
 		} catch(Exception e) {
-			JOptionPane.showMessageDialog(this, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(
+					this, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
@@ -165,7 +169,7 @@ public class DayOfWeekDialog extends JDialog {
 	 * a common constructor / initializer for the actual
 	 * constructors that would otherwise perform redundant code
 	 * 
-	 * @param base the RecurrencePattern that will be used to initialize the fields
+	 * @param base RecurrencePattern that will be used to initialize the fields
 	 */
 	private void init(RecurrencePattern base) {
 		// because base could be any type of pattern, we need
@@ -189,20 +193,24 @@ public class DayOfWeekDialog extends JDialog {
 		JLabel duration = new JLabel();
 		
 		// dateRange listeners
-		startDate.addActionListener(new DurationUpdateListener(duration, startDate, endDate));
-		endDate.addActionListener(new DurationUpdateListener(duration, startDate, endDate));
+		startDate.addActionListener(
+				new DurationUpdateListener(duration, startDate, endDate));
+		endDate.addActionListener(
+				new DurationUpdateListener(duration, startDate, endDate));
 		DurationUpdateListener.updateDuration(duration, startDate, endDate);
 		
 		// panel that holds the day options
 		JPanel daysPanel = new JPanel();
 		daysPanel.setLayout(new GridLayout(0, 1));
-		daysPanel.setBorder(new TitledBorder(new EmptyBorder(new Insets(6, 6, 6, 6)), "select the days to recur on"));
+		daysPanel.setBorder(new TitledBorder(new EmptyBorder(
+				new Insets(6, 6, 6, 6)), "select the days to recur on"));
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new WeekRange().getStartDate());
 		days = new JToggleButton[7];
 		boolean[] curDays = pattern.getDays();
 		for(int i = 0; i < 7; i++) {
-			days[i] = new JToggleButton(cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()));
+			days[i] = new JToggleButton(cal.getDisplayName(
+					Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()));
 			days[i].setSelected(curDays[i]);
 			daysPanel.add(days[i]);
 			cal.add(Calendar.DATE, 1);

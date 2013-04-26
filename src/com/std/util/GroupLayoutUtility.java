@@ -19,7 +19,8 @@ public class GroupLayoutUtility {
 	 * @param length the length of the array to make
 	 * @return a new array of parallel groups
 	 */
-	private static GroupLayout.ParallelGroup[] createNewParallelGroups(GroupLayout layout, int length) {
+	private static GroupLayout.ParallelGroup[]
+	createNewParallelGroups(GroupLayout layout, int length) {
 		GroupLayout.ParallelGroup[] ret = new GroupLayout.ParallelGroup[length];
 		for(int i = 0; i < length; i++)
 			ret[i] = layout.createParallelGroup();
@@ -30,10 +31,11 @@ public class GroupLayoutUtility {
 	 * creates a new array of sequential groups
 	 * 
 	 * @param layout the group layout to use
-	 * @param length the length of the array to make
+	 * @param parallel the length of the array to make
 	 * @return a new array of sequential groups
 	 */
-	private static GroupLayout.SequentialGroup createNewSeqGroup(GroupLayout layout, GroupLayout.ParallelGroup[] parallel) {
+	private static GroupLayout.SequentialGroup createNewSeqGroup(
+			GroupLayout layout, GroupLayout.ParallelGroup[] parallel) {
 		GroupLayout.SequentialGroup ret = layout.createSequentialGroup();
 		for(GroupLayout.ParallelGroup group : parallel)
 			ret.addGroup(group);
@@ -48,8 +50,10 @@ public class GroupLayoutUtility {
 	 * @param aac components to add
 	 */
 	public static void addToGroups(GroupLayout layout, Component[][] aac) {
-		GroupLayout.ParallelGroup[] h = createNewParallelGroups(layout, aac.length);
-		GroupLayout.ParallelGroup[] v = createNewParallelGroups(layout, aac[0].length);
+		GroupLayout.ParallelGroup[] h =
+				createNewParallelGroups(layout, aac.length);
+		GroupLayout.ParallelGroup[] v =
+				createNewParallelGroups(layout, aac[0].length);
 		
 		for(int i = 0; i < aac.length; i++) {
 			for(int j = 0; j < aac[0].length; j++) {

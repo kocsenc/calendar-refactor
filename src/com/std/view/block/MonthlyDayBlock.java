@@ -54,11 +54,11 @@ public class MonthlyDayBlock extends JToggleButton implements DayBlock {
 	private MouseListener appointmentListener;
 	
 	/**
-	 * This is the constructor, it sets up the center panel and the scollPane
-	 * that the center panel goes into, it also sets up the date from the parameter d
+	 * This is the constructor, it sets up the center panel and the scrollPane
+	 * that the center panel goes into, it also sets up the date from
+	 * the parameter d
 	 *
 	 * @param d is the date that this panel represents
-	 * @param listener is the listener for to the AppointmentReadViews
 	 */
 	
 	public MonthlyDayBlock(Date d) throws IOException {
@@ -116,7 +116,8 @@ public class MonthlyDayBlock extends JToggleButton implements DayBlock {
 		displayDate.setText(FORMAT.format(day));
 		
 		if(appts != null) {
-			Set<RefAppointment> subSet = AppointmentUtility.getRange(appts, new DayRange(day));
+			Set<RefAppointment> subSet = AppointmentUtility.getRange(
+					appts, new DayRange(day));
 			center.removeAll();
 		
 			for (RefAppointment ref : subSet) {

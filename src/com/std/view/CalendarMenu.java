@@ -128,7 +128,8 @@ public class CalendarMenu extends JMenuBar {
 		removeAppointment = new JMenuItem("Remove Single Appointment");
 		editMenu.add(removeAppointment);
 		
-		removeAllAppointment = new JMenuItem("Remove All Recurring Appointments");
+		removeAllAppointment =
+				new JMenuItem("Remove All Recurring Appointments");
 		editMenu.add(removeAllAppointment);
 		
 		editMenu.addSeparator();

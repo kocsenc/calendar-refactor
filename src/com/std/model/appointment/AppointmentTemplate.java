@@ -36,7 +36,8 @@ import com.std.model.pattern.RecurrencePattern;
  * @author xxx
  *
  */
-public class AppointmentTemplate extends java.util.Observable implements Serializable {
+public class AppointmentTemplate
+		extends java.util.Observable implements Serializable {
 
 	/**
 	 * UID Used for Serializable
@@ -176,7 +177,7 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 	 * the input, and marks the Observable as changed
 	 * if a change has taken place.
 	 * 
-	 * @param location the new location for the appointment
+	 * @param loc the new location for the appointment
 	 * @throws NullPointerException if loc is null
 	 */
 	private void internalSetLocation(String loc) {
@@ -259,7 +260,7 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 	 * notifies observers if a change has taken
 	 * place.
 	 * 
-	 * @param apptTmple the new appointment fields
+	 * @param apptTmpl the new appointment fields
 	 */
 	public void setFields(AppointmentTemplate apptTmpl) {
 		internalSetTitle(apptTmpl.getTitle());
@@ -277,7 +278,8 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 	 * @throws ClassNotFoundException if there is a casting error
 	 * @throws IOException an I/O exception of some sort has occurred
 	 */
-	private void readObject(ObjectInputStream istream) throws ClassNotFoundException, IOException {
+	private void readObject(ObjectInputStream istream)
+			throws ClassNotFoundException, IOException {
 		internalSetTitle((String)istream.readObject());
 		internalSetDescription((String)istream.readObject());
 		internalSetLocation((String)istream.readObject());
@@ -313,7 +315,8 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 	 * @param location Location of the appointment.
 	 * @param duration Duration of the appointment in milliseconds.
 	 */
-	public AppointmentTemplate(String title, String description, String location, long duration) {
+	public AppointmentTemplate(
+			String title, String description, String location, long duration) {
 		super();
 		internalSetTitle(title);
 		internalSetDescription(description);
