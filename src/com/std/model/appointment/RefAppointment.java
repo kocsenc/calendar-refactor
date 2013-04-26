@@ -319,7 +319,7 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	 * notifies observers if a change has taken
 	 * place.
 	 * 
-	 * @param apptTmple the new appointment fields
+	 * @param appt the new appointment fields
 	 */
 	public void setFields(RefAppointment appt) {
 		getTemplate().setFields(appt.getTemplate());
@@ -335,7 +335,8 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	 * @throws ClassNotFoundException if there is a casting error
 	 * @throws IOException an I/O exception of some sort has occurred
 	 */
-	private void readObject(ObjectInputStream istream) throws ClassNotFoundException, IOException {
+	private void readObject(ObjectInputStream istream)
+			throws ClassNotFoundException, IOException {
 		setTemplate((AppointmentTemplate)istream.readObject());
 		internalSetStartDate((Date)istream.readObject());
 	}
