@@ -79,9 +79,7 @@ public class DayOfWeekPattern extends RecurrencePattern {
 			throw new NullPointerException("days");
 		if(days.length != 7)
 			throw new IllegalArgumentException("length of days is not 7");
-		for(int i = 0; i < this.days.length; i++){
-			this.days[i] = days[i];
-		}
+		System.arraycopy(days, 0, this.days, 0, this.days.length);
 	}
 	
 	/**
@@ -158,7 +156,7 @@ public class DayOfWeekPattern extends RecurrencePattern {
 		cal.setTime(getRange().getStartDate());
 		int currentDay;
 		while(cal.getTime().before(getRange().getEndDate())) {
-			currentDay = cal.get(Calendar.DAY_OF_WEEK) - Calendar.SUNDAY + SUNDAY;
+			currentDay = cal.get(Calendar.DAY_OF_WEEK) - Calendar.SUNDAY;
 			if(days[currentDay])
 				dates.add((Date)cal.getTime().clone());
 			cal.add(Calendar.DATE, 1);

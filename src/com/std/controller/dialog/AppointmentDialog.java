@@ -404,7 +404,7 @@ public class AppointmentDialog extends JDialog {
 			else if(pattern instanceof DayOfWeekPattern)
 				daysOfWeek.setSelected(true);
 		}
-		if(text == AppointmentUtility.NO_RECUR) {
+		if(text.equals(AppointmentUtility.NO_RECUR)) {
 			pattern = null;
 			none.setSelected(true);
 		}

@@ -62,11 +62,7 @@ public class CalendarController implements Observer {
 	 *  @param param is the parameter sent by the notifyObservers methods 
 	 */
 	public void update(Observable o, Object param) {
-		boolean setChanged = 
-			param != null && 
-			(	param instanceof AppointmentTemplate ||
-				param instanceof RefAppointment);
-		
+
 		theView.update(
 			theModel.getAppointmentSet(), 
 			theModel.getCurrentDate(), 
