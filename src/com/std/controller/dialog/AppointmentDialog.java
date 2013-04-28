@@ -42,25 +42,21 @@ import com.std.util.range.DateRange;
 /**
  * AppointmentDialog is a utility class of the controller that 
  * provides an easy way to get user input in the form of an
- * Appointment. <br/>
- * <br/>
- * Usage:</br>
- * <tt>
- * JFrame frame;</br>
- * RefAppointment appt;</br>
- * CalendarModel model;</br>
- * </br>
- * // to present the user with an opportunity to change an appointment</br>
- * AppointmentDialog.changeAppointment(frame, appt);</br>
- * </br>
- * // to present the user with an opportunity to change the model defaults</br>
- * AppointmentDialog.changeAppointmentDefaults(frame, model);</br></tt>
- * </br>
+ * Appointment.
+ *
+ * Usage:
+ * JFrame frame;
+ * RefAppointment appt;
+ * CalendarModel model;
+ *
+ * // to present the user with an opportunity to change an appointment
+ * AppointmentDialog.changeAppointment(frame, appt);
+ *
+ * // to present the user with an opportunity to change the model defaults
+ * AppointmentDialog.changeAppointmentDefaults(frame, model);
+ *
  * The class methods block until the user finishes editing, and
  * applies any changes directly to the passed appointment.
- * 
- * @author xxx
- *
  */
 public class AppointmentDialog extends JDialog {
 
@@ -78,7 +74,7 @@ public class AppointmentDialog extends JDialog {
 	/**
 	 * Prompts the user to change an Appointment.
 	 * 
-	 * @param frame the <code>Frame</code> from which the dialog is displayed
+	 * @param frame the Frame from which the dialog is displayed
 	 * @param appt appointment to prompt changes for
 	 * @return false iff the user has canceled out of the dialog
 	 */
@@ -91,7 +87,7 @@ public class AppointmentDialog extends JDialog {
 	/**
 	 * Prompts the user to change an Appointment.
 	 * 
-	 * @param frame the <code>Frame</code> from which the dialog is displayed
+	 * @param frame the Frame from which the dialog is displayed
 	 * @param appt appointment to prompt changes for
 	 * @return false iff the user has canceled out of the dialog
 	 */
@@ -105,7 +101,7 @@ public class AppointmentDialog extends JDialog {
 	 * Prompts the user to change an Appointment.
 	 * 
 	 * @param frame the <code>Frame</code> from which the dialog is displayed
-	 * @param appt appointment to prompt changes for
+	 * @param model a Calendar model used to get the default settings
 	 * @return false iff the user has canceled out of the dialog
 	 */
 	public static boolean changeAppointmentDefaults(
@@ -121,7 +117,7 @@ public class AppointmentDialog extends JDialog {
 	 * Prompts the user to change an Appointment.
 	 * 
 	 * @param frame the <code>Frame</code> from which the dialog is displayed
-	 * @param appt appointment to prompt changes for
+	 * @param model a Calendar model used to get the default settings
 	 * @return false iff the user has canceled out of the dialog
 	 */
 	public static boolean changeAppointmentDefaults(
@@ -359,7 +355,7 @@ public class AppointmentDialog extends JDialog {
 	private void returnSuccessful() {
 		try {
 			// create a dummy appointment so we
-			// can recieve any errors before we
+			// can receive any errors before we
 			// commit to the actual appointment
 			RefAppointment tempAppointment = new RefAppointment(
 					new Date(0), new AppointmentTemplate("", "", "", 0));

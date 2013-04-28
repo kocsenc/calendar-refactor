@@ -16,8 +16,6 @@ import com.std.model.appointment.RefAppointment;
 /**
  * Class that is used to write 
  * an appointment to a text area.
- * 
- * @author xxx
  */
 public class AppointmentBlock extends JTextArea {
 	

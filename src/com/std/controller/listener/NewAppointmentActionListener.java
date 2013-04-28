@@ -26,7 +26,7 @@ public class NewAppointmentActionListener implements ActionListener {
 	}
 		
 	/**
-	 * This whent the user clicks the new appointent button, it creats
+	 * This when the user clicks the new appointment button, it creates
 	 * a dialogue box that allows the user to enter new information
 	 */
 	

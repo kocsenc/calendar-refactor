@@ -23,60 +23,38 @@ import com.std.util.ObservableSet;
  * provides all the necessary functions to manipulate the model, but offers very
  * little in the way of convenience functions.  Additional utility classes could
  * be made to interact with this through a simpler or more sanitized interface, or
- * to provide services on this data not implemented here because of non-necessity.<br/>
- * <br/>
- * To add an RefAppointment template to the model:</br>
- * <tt>
- *  CalendarModel calMdl;<br/>
- *  AppointmentTemplate apptTmpl;<br/>
+ * to provide services on this data not implemented here because of non-necessity.
+ *
+ *  CalendarModel calMdl;
+ *  AppointmentTemplate apptTmpl;
+ *
+ * To add a RefAppointment template to the model:
  *  calMdl.getAppointmentTemplateSet().add(apptTmpl);
- * </tt></br>
- * <br/>
- * To remove an RefAppointment template from the model (this will also remove all the
- * associated RefAppointment instantiations):</br>
- * <tt>
- *  CalendarModel calMdl;<br/>
- *  AppointmentTemplate apptTmpl;<br/>
+ *
+ * To remove a RefAppointment template from the model (this will also remove all the
+ * associated RefAppointment instantiations):
  *  calMdl.getAppointmentTemplateSet().remove(apptTmpl);
- * </tt></br>
- * <br/>
+ *
  * To add an RefAppointment instantiation to the model (this will throw an exception
- * if the associated RefAppointment template is not already in the model):</br>
- * <tt>
- *  CalendarModel calMdl;<br/>
- *  RefAppointment appt;<br/>
+ * if the associated RefAppointment template is not already in the model):
  *  if(calMdl.getAppointmentTemplateSet().contains(appt.getTemplate()))
  *  	calMdl.getAppointmentSet().add(appt);
- * </tt></br>
- * <br/>
- * To remove an RefAppointment instantiation from the model:</br>
- * <tt>
- *  CalendarModel calMdl;<br/>
- *  RefAppointment appt;<br/>
+ *
+ * To remove an RefAppointment instantiation from the model:
  *  calMdl.getAppointment().remove(appt);
- * </tt></br>
- * <br/>
+ *
  * This class extends Observable and will pass the following argument to its updates:
- * <ul>
- *  <li><b>AppointmentTemplate</b>
- *   : when an RefAppointment template has been added or removed from the set, or has been otherwise changed<br/>
- *  </li>
- *  <li><b>RefAppointment</b>
- *   : when an RefAppointment instantiation has been added or removed from the set, or has been otherwise changed<br/>
- *  </li>
- *  <li><b>Object</b>
- *   : when the calendar model has been altered<br/>
- *   The Object argument will always be null, but may indicated these changes:
- *   <ul>
- *    <li>current date has changed</li>
- *    <li>current RefAppointment has changed</li>
- *    <li>model has been saved - URI possibly changed</li>
- *    <li>model has been loaded - URI possibly changed</li>
- *   </ul>
- *  </li>
- * </ul>
- * 
- * @author xxx
+ *  AppointmentTemplate: when an RefAppointment template has been added or removed from the set,
+ *                       or has been otherwise changed
+ *  RefAppointment: when an RefAppointment instantiation has been added or removed from the set,
+ *                  or has been otherwise changed
+ *  Object: when the calendar model has been altered.  The Object argument will always be null,
+ *          but may indicated these changes:
+ *
+ *    current date has changed
+ *    current RefAppointment has changed
+ *    model has been saved - URI possibly changed
+ *    model has been loaded - URI possibly changed
  *
  */
 public class CalendarModel extends Observable {
@@ -85,34 +63,31 @@ public class CalendarModel extends Observable {
 	 * ApptObservableSet is an extension of ObservableSet<RefAppointment>
 	 * that overrides add and addAll to make sure that any RefAppointments
 	 * added have a template that is in the template set.
-	 * 
-	 * @author xxx
-	 *
 	 */
 	private class ApptObservableSet extends ObservableSet<RefAppointment> {
 		
 	    /**
 	     * Adds the specified element to this set if it is not already present
 	     * (optional operation).  More formally, adds the specified element
-	     * <tt>e</tt> to this set if the set contains no element <tt>e2</tt>
+	     * e to this set if the set contains no element e2
 	     * such that
-	     * <tt>(e==null&nbsp;?&nbsp;e2==null&nbsp;:&nbsp;e.equals(e2))</tt>.
+	     *    (e==null; e2==null; e.equals(e2))
 	     * If this set already contains the element, the call leaves the set
-	     * unchanged and returns <tt>false</tt>.  In combination with the
+	     * unchanged and returns false.  In combination with the
 	     * restriction on constructors, this ensures that sets never contain
 	     * duplicate elements.
 	     *
-	     * <p>The stipulation above does not imply that sets must accept all
+	     * The stipulation above does not imply that sets must accept all
 	     * elements; sets may refuse to add any particular element, including
-	     * <tt>null</tt>, and throw an exception, as described in the
+	     * null, and throw an exception, as described in the
 	     * specification for {@link Collection#add Collection.add}.
 	     * Individual set implementations should clearly document any
 	     * restrictions on the elements that they may contain.
 	     *
 	     * @param e element to be added to this set
-	     * @return <tt>true</tt> if this set did not already contain specified
+	     * @return true if this set did not already contain specified
 	     *         element
-	     * @throws UnsupportedOperationException if the <tt>add</tt> operation
+	     * @throws UnsupportedOperationException if the add operation
 	     *         is not supported by this set
 	     * @throws ClassCastException if the class of the specified element
 	     *         prevents it from being added to this set
@@ -120,8 +95,6 @@ public class CalendarModel extends Observable {
 	     *         this set does not permit null elements
 	     * @throws IllegalArgumentException if some property of the specified
 	     *         element prevents it from being added to this set
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
-		 * Set.html#add(E)">Set<U>.add(U)</a>
 	     */
 		public boolean add(RefAppointment appt) {
 			if(!apptTmplSet.contains(appt.getTemplate()))
@@ -133,15 +106,15 @@ public class CalendarModel extends Observable {
 	    /**
 	     * Adds all of the elements in the specified collection to this set if
 	     * they're not already present (optional operation).  If the specified
-	     * collection is also a set, the <tt>addAll</tt> operation effectively
-	     * modifies this set so that its value is the <i>union</i> of the two
+	     * collection is also a set, the addAll operation effectively
+	     * modifies this set so that its value is the union of the two
 	     * sets.  The behavior of this operation is undefined if the specified
 	     * collection is modified while the operation is in progress.
 	     *
 	     * @param  c collection containing elements to be added to this set
-	     * @return <tt>true</tt> if this set changed as a result of the call
+	     * @return true if this set changed as a result of the call
 	     *
-	     * @throws UnsupportedOperationException if the <tt>addAll</tt>
+	     * @throws UnsupportedOperationException if the addAll
 	     *         operation is not supported by this set
 	     * @throws ClassCastException if the class of an element of the
 	     *         specified collection prevents it from being added to this set
@@ -150,10 +123,6 @@ public class CalendarModel extends Observable {
 	     *         elements, or if the specified collection is null
 	     * @throws IllegalArgumentException if some property of an element of the
 	     *         specified collection prevents it from being added to this set
-	     * @see #add(Object)
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
-		 * Set.html#addAll(java.util.Collection)">Set<U>.addAll
-		 * (Collection<? extends U>)</a>
 	     */
 		public boolean addAll(Collection<? extends RefAppointment> c) {
 			if(c == null)
@@ -167,24 +136,22 @@ public class CalendarModel extends Observable {
 
 	    /**
 	     * Removes the specified element from this set if it is present
-	     * (optional operation).  More formally, removes an element <tt>e</tt>
+	     * (optional operation).  More formally, removes an element e
 	     * such that
-	     * <tt>(o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e))</tt>, if
-	     * this set contains such an element.  Returns <tt>true</tt> if this set
+	     * (o==null; e==null; o.equals(e))
+         * if this set contains such an element.  Returns <tt>true</tt> if this set
 	     * contained the element (or equivalently, if this set changed as a
 	     * result of the call).  (This set will not contain the element once the
 	     * call returns.)
 	     *
 	     * @param o object to be removed from this set, if present
-	     * @return <tt>true</tt> if this set contained the specified element
+	     * @return true if this set contained the specified element
 	     * @throws ClassCastException if the type of the specified element
 	     *         is incompatible with this set (optional)
 	     * @throws NullPointerException if the specified element is null and this
 	     *         set does not permit null elements (optional)
-	     * @throws UnsupportedOperationException if the <tt>remove</tt> operation
+	     * @throws UnsupportedOperationException if the remove operation
 	     *         is not supported by this set
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
-		 * Set.html#remove(java.lang.Object)">Set<E>.remove(Object)</a>
 	     */
 		public boolean remove(Object o) {
 			if(o == curAppt)
@@ -197,24 +164,18 @@ public class CalendarModel extends Observable {
 	 * ApptTmplSetObserver is an Observer that observes apptTmplSet
 	 * for any removal updates, and removes any reference appointments
 	 * to that template from apptSet.
-	 * 
-	 * @author xxx
-	 *
 	 */
 	private class ApptTmplSetObserver implements Observer {
 
 	    /**
 	     * This method is called whenever the observed object is changed. An
-	     * application calls an <tt>Observable</tt> object's
-	     * <code>notifyObservers</code> method to have all the object's
+	     * application calls an Observable object's
+	     * notifyObservers method to have all the object's
 	     * observers notified of the change.
 	     *
 	     * @param   o     the observable object.
 	     * @param   arg   an argument passed to the <code>notifyObservers</code>
 	     *                 method.
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
-		 * Observer.html#update(java.util.Observable,%20java.lang.Object)">
-		 * Observer.update(Observable, Object)</a>
 	     */
 		public void update(Observable o, Object arg) {
 			ObservableSet<?> set = (ObservableSet<?>)o;
@@ -228,24 +189,18 @@ public class CalendarModel extends Observable {
 	 * SetObserver is an Observer that observes apptTmplSet and apptSet
 	 * for any updates, marks the model as changed, and forwards those 
 	 * updates to the model's listeners.
-	 * 
-	 * @author xxx
-	 *
 	 */
 	private class SetObserver implements Observer {
 
 	    /**
 	     * This method is called whenever the observed object is changed. An
-	     * application calls an <tt>Observable</tt> object's
-	     * <code>notifyObservers</code> method to have all the object's
+	     * application calls an Observable> object's
+	     * notifyObservers method to have all the object's
 	     * observers notified of the change.
 	     *
 	     * @param   o     the observable object.
 	     * @param   arg   an argument passed to the <code>notifyObservers</code>
 	     *                 method.
-	     * @see <a href="http://java.sun.com/javase/6/docs/api/java/util/
-		 * Observer.html#update(java.util.Observable,%20java.lang.Object)">
-		 * Observer.update(Observable, Object)</a>
 	     */
 		public void update(Observable o, Object arg) {
 			diffFile = true;
@@ -289,44 +244,24 @@ public class CalendarModel extends Observable {
 	 * encapsulating CalendarModel
 	 */
 	private final CalendarModel that;
-	
-	/**
-	 * the currently selected date.  should not ever be null
-	 */
-	private Date curDate;
-	
-	/**
-	 * the currently select RefAppointment.  can possibly be null,
-	 * denoting no selection
-	 */
-	private RefAppointment curAppt;
-	
-	/**
-	 * the currently viewed file URI.  can possibly be null,
-	 * denoting an unsaved file
-	 */
-	private File curFile;
-	
-	/**
-	 * Set of AppointmentTemplates
-	 */
-	private final ObservableSet<AppointmentTemplate> apptTmplSet;
+
+	private Date curDate;    //the currently selected date.  should not ever be null
+
+	private RefAppointment curAppt;   //the currently select RefAppointment. can possibly be null,denoting no selection
+
+	private File curFile;  //the currently viewed file URI.  can possibly be null, denoting an unsaved file
+
+	private final ObservableSet<AppointmentTemplate> apptTmplSet;  //Set of AppointmentTemplates
 	
 	/**
 	 * Set of RefAppointments.  should contain no RefAppointment
 	 * whose template is not in apptTmplSet
 	 */
 	private final ObservableSet<RefAppointment> apptSet;
-	
-	/**
-	 * true iff the file denoted by curURI is different than the data on record
-	 */
-	private boolean diffFile;
-	
-	/**
-	 * the default parameters for new appointment templates
-	 */
-	private final AppointmentTemplate defaultApptTmpl;
+
+	private boolean diffFile; //true iff the file denoted by curURI is different than the data on record
+
+	private final AppointmentTemplate defaultApptTmpl;   //the default parameters for new appointment templates
 
 	/**
 	 * removes all RefAppointments from the set of all RefAppointments whose
@@ -344,8 +279,6 @@ public class CalendarModel extends Observable {
 	}
 
 	/**
-	 * Returns the currently selected date
-	 * 
 	 * @return the currently selected date
 	 */
 	public Date getCurrentDate() {
@@ -380,8 +313,6 @@ public class CalendarModel extends Observable {
 	}
 
 	/**
-	 * Returns the currently selected appointment
-	 * 
 	 * @return the currently selected appointment
 	 */
 	public RefAppointment getCurrentAppointment() {
@@ -399,7 +330,7 @@ public class CalendarModel extends Observable {
 	private void internalSetCurrentAppointment(RefAppointment appt) {
 		if(appt != null && !apptSet.contains(appt))
 			throw new IllegalArgumentException(
-					"appt does not exist or has not bee added");
+					"appointment does not exist or has not been added");
 		if(appt == null ? curAppt != null : !appt.equals(curAppt))
 			this.setChanged();
 		curAppt = appt;
@@ -420,8 +351,6 @@ public class CalendarModel extends Observable {
 	}
 
 	/**
-	 * Returns the currently viewed file URI
-	 * 
 	 * @return the currently viewed file URI
 	 */
 	public File getFile() {
@@ -429,17 +358,13 @@ public class CalendarModel extends Observable {
 	}
 	
 	/**
-	 * Returns true iff file denoted by curURI is different than data on record
-	 * 
-	 * @return
+	 * @return true iff file denoted by curURI is different than data on record
 	 */
 	public boolean isDifferentFromFile() {
 		return diffFile;
 	}
 	
 	/**
-	 * Returns a new AppointmentTemplate containing the default defaults
-	 * 
 	 * @return a new AppointmentTemplate containing the default defaults
 	 */
 	private AppointmentTemplate getNewDefaults() {
@@ -447,8 +372,6 @@ public class CalendarModel extends Observable {
 	}
 
 	/**
-	 * Returns a AppointmentTemplate containing the current defaults
-	 * 
 	 * @return a AppointmentTemplate containing the current defaults
 	 */
 	public AppointmentTemplate getCurrentDefaults() {
@@ -515,8 +438,6 @@ public class CalendarModel extends Observable {
 	}
 
 	/**
-	 * Returns the set of Appointment templates
-	 * 
 	 * @return the set of Appointment templates
 	 */
 	public Set<AppointmentTemplate> getAppointmentTemplateSet() {
@@ -524,8 +445,6 @@ public class CalendarModel extends Observable {
 	}
 
 	/**
-	 * Returns the set of Appointment references
-	 * 
 	 * @return the set of Appointment references
 	 */
 	public Set<RefAppointment> getAppointmentSet() {
@@ -534,11 +453,11 @@ public class CalendarModel extends Observable {
 
 	/**
 	 * creates a new Calendar model:
-	 * <ul><li>current date: moment of object creation</li>
-	 * <li>current appointment: null</li>
-	 * <li>current URI: null</li>
-	 * <li>appointment template set: empty</li>
-	 * <li>appointment reference set: empty</li></ul>
+	 *   current date: moment of object creation
+	 *   current appointment: null
+	 *   current URI: null
+	 *   appointment template set: empty
+	 *   appointment reference set: empty
 	 */
 	public CalendarModel() {
 		super();

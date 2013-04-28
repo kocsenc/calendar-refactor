@@ -20,7 +20,7 @@ public class CalendarMenu extends JMenuBar {
 	private static final long serialVersionUID = 2649421712299673376L;
 	
 	/**
-	 * These will be the items displayed in the menue
+	 * These will be the items displayed in the menu
 	 */
 	
 	private final JMenuItem newCalendar;
