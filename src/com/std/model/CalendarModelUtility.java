@@ -1,12 +1,9 @@
 package com.std.model;
 
 /**
- * 
  * this class allows for users to easily manipulate the model, it has
  * utility static methods that the user passes the model and then needed
  * information and then the utility takes care of the rest
- * 
- * @author xxx
  */
 import java.util.Calendar;
 import java.util.Date;
@@ -22,9 +19,9 @@ public class CalendarModelUtility {
 	 * This method adds a certain amount to a date object and
 	 * returns a date representing that date
 	 * @param date is the start date
-	 * @param field is the field that the user was to incremnet
-	 * @param amount by how much they would llike to increment
-	 * @return
+	 * @param field is the field that the user was to increment
+	 * @param amount by how much they would like to increment
+	 * @return date is the new date
 	 */
 	
 	private static Date add(Date date, int field, int amount) {
@@ -35,40 +32,29 @@ public class CalendarModelUtility {
 	}
 	
 	/**
-	 * rolls the claendar model one year
-	 * 
-	 * @param model is the model to roll
+	 * @param model - rolls the calendar model one year
 	 */
-
 	public static void nextYear(CalendarModel model) {
 		model.setCurrentDate(add(model.getCurrentDate(), Calendar.YEAR, 1));
 	}
+
 	/**
-	 * rolls the claendar model one month
-	 * 
-	 * @param model is the model to roll
+	 * @param model - rolls the calendar model one month
 	 */
-	
 	public static void nextMonth(CalendarModel model) {
 		model.setCurrentDate(add(model.getCurrentDate(), Calendar.MONTH, 1));
 	}
 	
 	/**
-	 * rolls the claendar model one week
-	 * 
-	 * @param model is the model to roll
+	 * @param model - rolls the calendar model one week
 	 */
-	
 	public static void nextWeek(CalendarModel model) {
 		model.setCurrentDate(add(model.getCurrentDate(), Calendar.DATE, 7));
 	}
 	
 	/**
-	 * rolls the claendar model one day
-	 * 
-	 * @param model is the model to roll
+	 * @param model - rolls the calendar model one day
 	 */
-	
 	public static void nextDay(CalendarModel model) {
 		model.setCurrentDate(add(model.getCurrentDate(), Calendar.DATE, 1));
 	}
@@ -77,7 +63,6 @@ public class CalendarModelUtility {
 	 * this method allows the user to get the next appointment
 	 * @param model is the model to get the appointment from
 	 */
-	
 	public static void nextAppointment(CalendarModel model) {
 		TreeSet<RefAppointment> set =
 				new TreeSet<RefAppointment>(RefAppointment.COMPARATOR_APPOINTMENT_START);
@@ -86,31 +71,22 @@ public class CalendarModelUtility {
 	}
 	
 	/**
-	 * rolls the model back a year
-	 * 
-	 * @param model the model to change
+	 * @param model - rolls the model back a year
 	 */
-	
 	public static void previousYear(CalendarModel model) {
 		model.setCurrentDate(add(model.getCurrentDate(), Calendar.YEAR, -1));
 	}
 	
 	/**
-	 * rolls the model back a month
-	 * 
-	 * @param model the model to change
+	 * @param model - rolls the model back a month
 	 */
-	
 	public static void previousMonth(CalendarModel model) {
 		model.setCurrentDate(add(model.getCurrentDate(), Calendar.MONTH, -1));
 	}
 	
 	/**
-	 * rolls the model back a week
-	 * 
-	 * @param model the model to change
+	 * @param model - rolls the model back a week
 	 */
-	
 	public static void previousWeek(CalendarModel model) {
 		model.setCurrentDate(add(model.getCurrentDate(), Calendar.DATE, -7));
 	}
@@ -208,18 +184,10 @@ public class CalendarModelUtility {
 	public static boolean conflictingAppointments(
 			RefAppointment one, RefAppointment two) {
 		if (one.getStartDate().getTime() > two.getStartDate().getTime()) {
-			if (one.getStartDate().getTime() < two.getEndDate().getTime()) {
-				return true;
-			}
-			else {
-				return false;
-			}
+            return one.getStartDate().getTime() < two.getEndDate().getTime();
 		}
 		else if(one.getStartDate().getTime() < two.getStartDate().getTime() ) {
-			if (two.getStartDate().getTime() <  one.getEndDate().getTime()) {
-				return true;
-			}
-			else return false;
+            return two.getStartDate().getTime() < one.getEndDate().getTime();
 		}
 		else {
 			return true;

@@ -8,9 +8,6 @@ import javax.swing.JMenuItem;
 
 /**
  * The is the menu
- * 
- * @author xxx
- *
  */
 
 public class CalendarMenu extends JMenuBar {

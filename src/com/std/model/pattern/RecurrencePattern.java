@@ -16,8 +16,6 @@ import com.std.util.range.DateRange;
  * an appointment happen every Tuesday and Thursday, one
  * could extend this class into a class that returns the dates
  * in which that appointment should exist
- * 
- * @author xxx
  *
  */
 public abstract class RecurrencePattern implements Serializable {
@@ -52,8 +50,6 @@ public abstract class RecurrencePattern implements Serializable {
 	public abstract Set<Date> getDates();
 	
 	/**
-	 * Returns the occurrence range of this pattern
-	 *  
 	 * @return the occurrence range of this pattern
 	 */
 	public DateRange getRange() {
@@ -81,7 +77,6 @@ public abstract class RecurrencePattern implements Serializable {
 	 * @param o is the object stream to be reading from to
 	 * @throws ClassNotFoundException if there is a casting error
 	 * @throws IOException an I/O exception of some sort has occurred
-	 * @see <a href="http://java.sun.com/javase/6/docs/api/java/io/Serializable.html">Serializable</a>
 	 */
 	protected abstract void readObject(ObjectInputStream o) throws ClassNotFoundException, IOException;
 	
@@ -90,7 +85,6 @@ public abstract class RecurrencePattern implements Serializable {
 	 * 
 	 * @param i is object stream to be reading from
 	 * @throws IOException an I/O exception of some sort has occurred
-	 * @see <a href="http://java.sun.com/javase/6/docs/api/java/io/Serializable.html">Serializable</a>
 	 */
 	protected abstract void writeObject(ObjectOutputStream i)throws IOException;
 	

@@ -30,21 +30,18 @@ import com.std.util.range.WeekRange;
 /**
  * DayOfWeekDialog is a utility class of the controller that 
  * provides an easy way to get user input in the form of a
- * DayOfWeekPattern. <br/>
- * <br/>
- * Usage:</br>
- * <tt>
- * JFrame frame;</br>
- * RecurrencePattern pattern;</br>
- * </br>
+ * DayOfWeekPattern.
+ *
+ * Usage:
+ *
+ * JFrame frame;
+ * RecurrencePattern pattern;
+ *
  * // to present the user with an opportunity to create a DayOfWeekPattern</br>
- * DayOfWeekDialog.getPattern(frame, pattern);</br></tt>
- * </br>
+ * DayOfWeekDialog.getPattern(frame, pattern);
+ *
  * The class methods block until the user finishes editing, and
  * returns the constructed DayOfWeekPattern.
- * 
- * @author xxx
- *
  */
 public class DayOfWeekDialog extends JDialog {
 	
