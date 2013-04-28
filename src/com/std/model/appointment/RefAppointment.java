@@ -18,35 +18,29 @@ import com.std.util.range.DateRange;
  * This was done so that recurring appointments could be implemented.
  * To make a full appointment, one can create a template, and instantiate
  * it by making a RefAppointment that references the template and contains
- * a start date for binding it to the calendar.<br/>
- * <br/>
- * Usage:<br/>
- * <tt>
- *  CalendarModel model = new CalendarModel();<br/>
- *  <br/>
- *  // creates a new template<br/>
- *  AppointmentTemplate template = new AppointmentTemplate("title", "", "n/a", 0);<br/>
- *  <br/>
- *  // adds it to the calendar model<br/>
- *  model.getAppointmentTemplateSet().add(template);<br/>
- *  <br/>
- *  // creates a new reference to the template<br/>
- *  RefAppointment reference = new RefAppointment(template, new Date());<br/>
- *  <br/>
- *  // adds the reference to the calendar model<br/>
+ * a start date for binding it to the calendar.
+ *
+ * Usage:
+ *  CalendarModel model = new CalendarModel();
+ *
+ *  // creates a new template
+ *  AppointmentTemplate template = new AppointmentTemplate("title", "", "n/a", 0);
+ *
+ *  // adds it to the calendar model
+ *  model.getAppointmentTemplateSet().add(template);
+ *
+ *  // creates a new reference to the template
+ *  RefAppointment reference = new RefAppointment(template, new Date());
+ *
+ *  // adds the reference to the calendar model
  *  model.getAppointmentSet().add(reference);
- * </tt>
- * 
- * @author xxx
- * 
  */
 public class RefAppointment extends java.util.Observable implements Serializable {
 
-	/**
-	 * UID Used for Serializable
-	 */
-	private static final long serialVersionUID = -4331942306839501945L;
-	/**
+
+	private static final long serialVersionUID = -4331942306839501945L;   //UID Used for Serializable
+
+    /**
 	 * compares two Appointments by their start dates
 	 */
 	public static final Comparator<RefAppointment> COMPARATOR_APPOINTMENT_START;
@@ -78,19 +72,14 @@ public class RefAppointment extends java.util.Observable implements Serializable
 		};
 	}
 
-	/**
-	 * the start date of this particular appointment instance
-	 */
-	private Date startDate;
-	
-	/**
-	 * the template appointment that stores this appointment's description, etc.
-	 */
-	private AppointmentTemplate parent;
+
+	private Date startDate;  //the start date of this particular appointment instance
+
+	private AppointmentTemplate parent;  //the template appointment that stores this appointment's description, etc.
 	
 	
 	/**
-	 * This is the constructor for RefAppointments<br/>
+	 * This is the constructor for RefAppointments
 	 * Creates a new bound reference to a TemplateAppointment.
 	 * 
  	 * @param d the startDate of the appointment.
@@ -105,8 +94,6 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	}
 	
 	/**
-	 * returns the AppointmentTemplate associated with this RefAppointment
-	 * 
 	 * @return the AppointmentTemplate associated with this RefAppointment
 	 */
 	public AppointmentTemplate getTemplate(){
@@ -126,8 +113,6 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	}
 	
 	/**
-	 * Returns the appointment start date
-	 * 
 	 * @return the appointment start date
 	 */
 	public Date getStartDate() {
@@ -165,8 +150,6 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	// THE FOLLOWING METHODS USE DATA FROM parent:	
 
 	/**
-	 * Returns the duration of the appointment template object in milliseconds.
-	 * 
 	 * @return the duration of the appointment template object in milliseconds.
 	 */
 	public long getDuration() {
@@ -186,8 +169,6 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	}
 
 	/**
-	 * Returns the appointment end date
-	 * 
 	 * @return the appointment end date
 	 */
 	public Date getEndDate(){
@@ -207,8 +188,6 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	}
 
 	/**
-	 * Returns the location of the appointment template Object.
-	 * 
 	 * @return the location of the appointment template Object.
 	 */
 	public String getLocation(){
@@ -228,8 +207,6 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	}
 
 	/**
-	 * Returns the pattern object of this appointment template.
-	 * 
 	 * @return the pattern object of this appointment template.
 	 */
 	public RecurrencePattern getPattern() {
@@ -248,8 +225,6 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	}
 	
 	/**
-	 * Returns the description of the appointment template object.
-	 * 
 	 * @return the description of the appointment template object.
 	 */
 	public String getDescription() {
@@ -269,8 +244,6 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	}
 
 	/**
-	 * Returns the title of the appointment template object.
-	 * 
 	 * @return the title of the appointment template object.
 	 */
 	public String getTitle() {
@@ -290,8 +263,6 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	}
 
 	/**
-	 * Returns the DateRange of the appointment object.
-	 * 
 	 * @return the DateRange of the appointment object.
 	 */
 	public DateRange getDateRange(){

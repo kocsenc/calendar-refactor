@@ -37,7 +37,7 @@ import com.std.util.range.WeekRange;
  * JFrame frame;
  * RecurrencePattern pattern;
  *
- * // to present the user with an opportunity to create a DayOfWeekPattern</br>
+ * // to present the user with an opportunity to create a DayOfWeekPattern
  * DayOfWeekDialog.getPattern(frame, pattern);
  *
  * The class methods block until the user finishes editing, and
@@ -53,7 +53,7 @@ public class DayOfWeekDialog extends JDialog {
 	/**
 	 * Prompts the user to create a DayOfWeekPattern
 	 * 
-	 * @param frame the <code>Frame</code> from which the dialog is displayed
+	 * @param frame the Frame from which the dialog is displayed
 	 * @param pattern pattern to start with
 	 * @return the created DayOfWeekPattern
 	 */
@@ -67,7 +67,7 @@ public class DayOfWeekDialog extends JDialog {
 	/**
 	 * Prompts the user to create a DayOfWeekPattern
 	 * 
-	 * @param frame the <code>Frame</code> from which the dialog is displayed
+	 * @param frame the Frame from which the dialog is displayed
 	 * @param pattern pattern to start with
 	 * @return the created DayOfWeekPattern
 	 */
@@ -85,9 +85,6 @@ public class DayOfWeekDialog extends JDialog {
 	 * Applies the changes of the form to the form's 
 	 * DayOfWeekPattern, and disposes the form if no 
 	 * errors occur.
-	 * 
-	 * @author xxx
-	 *
 	 */
 	private class OKActionListener implements ActionListener {
 
@@ -104,30 +101,16 @@ public class DayOfWeekDialog extends JDialog {
 			returnSuccessful();
 		}
 	}
+
+	private DayOfWeekPattern pattern; //the DayOfWeekPattern that will be passed back as a result of user input
+
+	private DatePanel startDate;  //start date field component
+
+	private DatePanel endDate; //end date field component
+
+	private JToggleButton[] days; //toggle buttons for each day of the week
 	
 	/**
-	 * the DayOfWeekPattern that will be passed back as a result of user input
-	 */
-	private DayOfWeekPattern pattern;
-	
-	/**
-	 * start date field component
-	 */
-	private DatePanel startDate;
-	
-	/**
-	 * end date field component
-	 */
-	private DatePanel endDate;
-	
-	/**
-	 * toggle buttons for each day of the week
-	 */
-	private JToggleButton[] days;
-	
-	/**
-	 * Returns the DayOfWeekPattern that was created as a result of user input
-	 * 
 	 * @return the DayOfWeekPattern that was created as a result of user input
 	 */
 	public DayOfWeekPattern getReturnPattern() {
