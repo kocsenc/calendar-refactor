@@ -1,33 +1,33 @@
 package test.rangeTests;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
-public class GridMonthRangeTest {
+import static org.junit.Assert.fail;
+
+public class GridMonthRangeTest{
 
 	@Test
-	public void testGridMonthRange() {
+	public void testGridMonthRange(){
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGridMonthRangeDate() {
+	public void testGridMonthRangeDate(){
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetWeeks() {
+	public void testGetWeeks(){
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testNextMonth() {
+	public void testNextMonth(){
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testPreviousMonth() {
+	public void testPreviousMonth(){
 		fail("Not yet implemented");
 	}
 

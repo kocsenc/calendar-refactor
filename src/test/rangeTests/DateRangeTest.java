@@ -1,48 +1,48 @@
 package test.rangeTests;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
-public class DateRangeTest {
+import static org.junit.Assert.fail;
+
+public class DateRangeTest{
 
 	@Test
-	public void testEqualsObject() {
+	public void testEqualsObject(){
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetDurationInDays() {
+	public void testGetDurationInDays(){
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetDurationInMS() {
+	public void testGetDurationInMS(){
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetEndDate() {
+	public void testGetEndDate(){
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetStartDate() {
+	public void testGetStartDate(){
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testSetEndDate() {
+	public void testSetEndDate(){
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testSetStartDate() {
+	public void testSetStartDate(){
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testToString() {
+	public void testToString(){
 		fail("Not yet implemented");
 	}
 

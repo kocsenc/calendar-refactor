@@ -1,39 +1,40 @@
 package com.std.controller.listener;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import com.std.controller.CalendarController;
 import com.std.controller.dialog.AppointmentDialog;
 import com.std.model.CalendarModelUtility;
 import com.std.model.appointment.RefAppointment;
 
-public class NewAppointmentActionListener implements ActionListener {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class NewAppointmentActionListener implements ActionListener{
 
 	/**
-	 * a reference to the controller so that this listener
-	 * can access both the model and the view.
+	 * a reference to the controller so that this listener can access both the
+	 * model and the view.
 	 */
 	private CalendarController controller;
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
-	 * 
-	 * @param CalendarControler cc is the reference to the controller 
+	 *
+	 * @param CalendarControler cc is the reference to the controller
 	 */
 	public NewAppointmentActionListener(CalendarController cc){
 		controller = cc;
 	}
-		
+
 	/**
-	 * This when the user clicks the new appointment button, it creates
-	 * a dialogue box that allows the user to enter new information
+	 * This when the user clicks the new appointment button, it creates a dialogue
+	 * box that allows the user to enter new information
 	 */
-	
-	public void actionPerformed(ActionEvent e) {
-		RefAppointment ref = CalendarModelUtility.getNewAppointment(controller.getModel());
-		
-		if(AppointmentDialog.changeAppointment(controller.getView(), ref)) {
+
+	public void actionPerformed(ActionEvent e){
+		RefAppointment ref =
+				CalendarModelUtility.getNewAppointment(controller.getModel());
+
+		if(AppointmentDialog.changeAppointment(controller.getView(), ref)){
 			CalendarModelUtility.addUsingPattern(controller.getModel(), ref);
 		}
 	}

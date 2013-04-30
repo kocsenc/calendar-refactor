@@ -5,28 +5,30 @@ import java.util.Date;
 
 /**
  * represents a full day as a range of dates
+ *
  * @author xxx
  */
-public class DayRange extends DateRange {
-	
+public class DayRange extends DateRange{
+
 	static final long serialVersionUID = 0L;
-	
+
 	/**
 	 * creates a DayRange representing today
 	 */
-	public DayRange() {
+	public DayRange(){
 		// the date parameter constructor 
 		// passes the null to the DateRange
 		// constructor, which uses new Date()
 		// by default
 		this(null);
 	}
-	
+
 	/**
 	 * creates a GridMonthRange representing the given date
+	 *
 	 * @param date day to represent
 	 */
-	public DayRange(Date date) {
+	public DayRange(Date date){
 		// defaults to new Date() if null
 		super(date);
 
@@ -45,15 +47,15 @@ public class DayRange extends DateRange {
 
 		// add a 1 day
 		cal.add(Calendar.HOUR_OF_DAY, 24);
-		
+
 		// set the end date
 		setEndDate(cal.getTime());
 	}
-	
+
 	/**
 	 * @return the next sequential day
 	 */
-	public DayRange nextDay() {
+	public DayRange nextDay(){
 		// our end date is exactly
 		// at midnight at the start of the
 		// next day, so we can use it
@@ -61,11 +63,11 @@ public class DayRange extends DateRange {
 		// new DayRange
 		return new DayRange(getEndDate());
 	}
-	
+
 	/**
 	 * @return the previous sequential day
 	 */
-	public DayRange previousDay() {
+	public DayRange previousDay(){
 		// because our start date is exactly
 		// at midnight at the start of the
 		// day, even one tick prior to that

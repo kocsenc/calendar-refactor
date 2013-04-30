@@ -1,28 +1,28 @@
 package test.rangeTests;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
-public class MonthRangeTest {
+import static org.junit.Assert.fail;
+
+public class MonthRangeTest{
 
 	@Test
-	public void testMonthRange() {
+	public void testMonthRange(){
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testMonthRangeDate() {
+	public void testMonthRangeDate(){
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testNextMonth() {
+	public void testNextMonth(){
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testPreviousMonth() {
+	public void testPreviousMonth(){
 		fail("Not yet implemented");
 	}
 

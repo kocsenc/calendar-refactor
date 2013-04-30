@@ -1,93 +1,93 @@
 package test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
-public class ObservableSetTest {
+import static org.junit.Assert.fail;
+
+public class ObservableSetTest{
 
 	@Test
-	public void testAdd() {
+	public void testAdd(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testAddAll() {
+	public void testAddAll(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testIterator() {
+	public void testIterator(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testRemove() {
+	public void testRemove(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testClear() {
+	public void testClear(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testContains() {
+	public void testContains(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testContainsAll() {
+	public void testContainsAll(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testIsEmpty() {
+	public void testIsEmpty(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testRemoveAll() {
+	public void testRemoveAll(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testRetainAll() {
+	public void testRetainAll(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testSize() {
+	public void testSize(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testToArray() {
+	public void testToArray(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testToArrayTArray() {
+	public void testToArrayTArray(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testObservableSet() {
+	public void testObservableSet(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testSetChanged() {
+	public void testSetChanged(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testClearChanged() {
+	public void testClearChanged(){
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testHasChanged() {
+	public void testHasChanged(){
 		fail("Not yet implemented"); // TODO
 	}
 
