@@ -25,21 +25,17 @@ import com.std.util.range.DateRange;
 /**
  * NDaysDialog is a utility class of the controller that 
  * provides an easy way to get user input in the form of a
- * NDaysPattern. <br/>
- * <br/>
- * Usage:</br>
- * <tt>
- * JFrame frame;</br>
- * RecurrencePattern pattern;</br>
- * </br>
- * // to present the user with an opportunity to create a NDaysPattern</br>
- * NDaysDialog.getPattern(frame, pattern);</br></tt>
- * </br>
+ * NDaysPattern.
+ *
+ * Usage:
+ * JFrame frame;
+ * RecurrencePattern pattern;
+ *
+ * // to present the user with an opportunity to create a NDaysPattern
+ * NDaysDialog.getPattern(frame, pattern);
+ *
  * The class methods block until the user finishes editing, and
  * returns the constructed NDaysPattern.
- * 
- * @author xxx
- *
  */
 public class NDaysDialog extends JDialog {
 	
@@ -51,7 +47,7 @@ public class NDaysDialog extends JDialog {
 	/**
 	 * Prompts the user to create a NDaysPattern
 	 * 
-	 * @param frame the <code>Frame</code> from which the dialog is displayed
+	 * @param frame the Frame from which the dialog is displayed
 	 * @param pattern pattern to start with
 	 * @return the created NDaysPattern
 	 */
@@ -65,7 +61,7 @@ public class NDaysDialog extends JDialog {
 	/**
 	 * Prompts the user to create a NDaysPattern
 	 * 
-	 * @param frame the <code>Frame</code> from which the dialog is displayed
+	 * @param frame the Frame from which the dialog is displayed
 	 * @param pattern pattern to start with
 	 * @return the created NDaysPattern
 	 */
@@ -83,9 +79,6 @@ public class NDaysDialog extends JDialog {
 	 * Applies the changes of the form to the form's 
 	 * NDaysPattern, and disposes the form if no 
 	 * errors occur.
-	 * 
-	 * @author xxx
-	 *
 	 */
 	private class OKActionListener implements ActionListener {
 
@@ -102,30 +95,16 @@ public class NDaysDialog extends JDialog {
 			returnSuccessful();
 		}
 	}
+
+	private NDaysPattern pattern;  //the NDaysPattern that will be passed back as a result of user input
+
+	private DatePanel startDate; //start date field component
+
+	private DatePanel endDate;  //end date field component
+
+	private JTextField number;  //the number of days between each recurrence
 	
 	/**
-	 * the NDaysPattern that will be passed back as a result of user input
-	 */
-	private NDaysPattern pattern;
-	
-	/**
-	 * start date field component
-	 */
-	private DatePanel startDate;
-	
-	/**
-	 * end date field component
-	 */
-	private DatePanel endDate;
-	
-	/**
-	 * the number of days between each recurrence
-	 */
-	private JTextField number;
-	
-	/**
-	 * Returns the NDaysPattern that was created as a result of user input
-	 * 
 	 * @return the NDaysPattern that was created as a result of user input
 	 */
 	public NDaysPattern getReturnPattern() {

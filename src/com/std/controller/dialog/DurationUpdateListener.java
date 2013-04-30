@@ -11,18 +11,14 @@ import com.std.util.range.DateRange;
 /**
  * DurationUpdateListener is a helper class for the AppointmentDialog and RecurrencePattern 
  * dialogs.  Both require observing one or more DatePanels for changes in duration, and this 
- * provides a convenient and standardized way of doing it.<br/>
- * <br/>
- * Usage:<br/>
- * <tt>
- * JLabel field;<br/>
- * DatePanel start;<br/>
- * DatePanel end;<br/>
- * <br/>
- * DurationUpdateListener listener = new DurationUpdateListener(field, start, end);</tt>
- * 
- * @author xxx
+ * provides a convenient and standardized way of doing it.
  *
+ * Usage:
+ * JLabel field;
+ * DatePanel start;
+ * DatePanel end;
+ *
+ * DurationUpdateListener listener = new DurationUpdateListener(field, start, end);
  */
 public class DurationUpdateListener implements ActionListener {
 	
@@ -39,21 +35,12 @@ public class DurationUpdateListener implements ActionListener {
 		field.setText(AppointmentUtility.getDurationDescription(
 			new DateRange(start.getDate(), end.getDate()).getDurationInMS()));
 	}
-	
-	/**
-	 * JLabel to print to
-	 */
-	private JLabel field;
-	
-	/**
-	 * start date of the range
-	 */
-	private DatePanel start;
-	
-	/**
-	 * end date of the range
-	 */
-	private DatePanel end;
+
+	private JLabel field;  //JLabel to print to
+
+	private DatePanel start;  //start date of the range
+
+	private DatePanel end; //end date of the range
 	
 	/**
 	 * called whenever the start or end dates are changed, and updates duration
