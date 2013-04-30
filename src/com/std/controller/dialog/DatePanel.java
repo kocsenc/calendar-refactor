@@ -70,7 +70,7 @@ public class DatePanel extends JPanel{
 	}
 
 	/**
-	 * the <code>Frame</code> from which the dialog is displayed
+	 * the Frame from which the dialog is displayed
 	 */
 	private Dialog dialog;
 
@@ -110,25 +110,17 @@ public class DatePanel extends JPanel{
 	}
 
 	/**
-	 * Removes an auxiliary action listener that would otherwise be notified after
-	 * the ellipsis button has been pressed
-	 *
-	 * @param listener the <code>ActionListener</code> to be removed
-	 */
-	public void removeActionListener(ActionListener listener){
-		listeners.remove(listener);
-	}
-
-	/**
 	 * creates a new DatePanel with an initial date and the given enabled button
 	 * state
 	 *
 	 * @param date       the initially selected date
 	 * @param enableAppt true iff the ellipsis button should be enabled
+	 * @param dialog 	 dialog
 	 */
-	public DatePanel(Date date, boolean enableAppt){
+	public DatePanel(Date date, boolean enableAppt, Dialog dialog){
 		super();
 		this.date = date;
+		this.dialog = dialog;
 		this.listeners = new HashSet<ActionListener>();
 
 		// date display

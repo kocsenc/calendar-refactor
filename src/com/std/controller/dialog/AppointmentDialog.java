@@ -371,10 +371,10 @@ public class AppointmentDialog extends JDialog{
 		locationField = new JTextField(appt.getLocation());
 
 		// start date
-		startDatePanel = new DatePanel(appt.getStartDate(), enableAppt);
+		startDatePanel = new DatePanel(appt.getStartDate(), enableAppt, dialog);
 
 		// end date
-		endDatePanel = new DatePanel(appt.getEndDate(), true);
+		endDatePanel = new DatePanel(appt.getEndDate(), true, dialog);
 
 		// duration
 		JLabel duration = new JLabel();

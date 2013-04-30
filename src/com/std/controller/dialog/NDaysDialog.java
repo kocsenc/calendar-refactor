@@ -145,8 +145,8 @@ public class NDaysDialog extends JDialog{
 		setLayout(new BorderLayout());
 
 		// dateRange fields
-		startDate = new DatePanel(pattern.getRange().getStartDate(), true);
-		endDate = new DatePanel(pattern.getRange().getEndDate(), true);
+		startDate = new DatePanel(pattern.getRange().getStartDate(), true, dialog);
+		endDate = new DatePanel(pattern.getRange().getEndDate(), true, dialog);
 		JLabel duration = new JLabel();
 
 		// dateRange listeners
