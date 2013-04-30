@@ -18,7 +18,6 @@ public class NDaysPatternTest{
 		cal.setTime(date);
 		cal.add(Calendar.DATE, 12);
 		Date endDate = cal.getTime();
-		;
 		DateRange dRange = new DateRange(date, date);
 		int n = 3;
 		NDaysPattern nPatt = new NDaysPattern(dRange, n);
@@ -35,7 +34,6 @@ public class NDaysPatternTest{
 		cal.setTime(date);
 		cal.add(Calendar.DATE, 12);
 		Date endDate = cal.getTime();
-		;
 		DateRange dRange = new DateRange(date, endDate);
 		int n = 3;
 		NDaysPattern nPatt = new NDaysPattern(dRange, n);
@@ -49,7 +47,6 @@ public class NDaysPatternTest{
 		cal.setTime(date);
 		cal.add(Calendar.DATE, 12);
 		Date endDate = cal.getTime();
-		;
 		DateRange dRange = new DateRange(date, endDate);
 		int n = 0;
 		NDaysPattern nPatt = new NDaysPattern(dRange, n);
