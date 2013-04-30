@@ -315,6 +315,7 @@ public class CalendarView extends JFrame{
 
 	public CalendarView() throws IOException{
 		super();
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		calMenu = new CalendarMenu();
