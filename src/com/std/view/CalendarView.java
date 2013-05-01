@@ -58,10 +58,22 @@ public class CalendarView extends JFrame {
      * This is the constructor, it sets up the different views and buttons and
      * starts the JFrame
      */
-    public CalendarView() throws IOException {
+    public CalendarView()  {
+        calMenu = new CalendarMenu();
+        try {
+            initComponents();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * This method initializes the GUI components
+     */
+    private void initComponents() throws IOException {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        calMenu = new CalendarMenu();
+
         this.setJMenuBar(calMenu);
 
         Date date = new Date();
@@ -124,13 +136,6 @@ public class CalendarView extends JFrame {
         this.setIconImage(ImageIO.read(new File("img/icon.png")));
 
         pack();
-    }
-
-    /**
-     * This method
-     */
-    private void initComponents() {
-
     }
 
     /**
