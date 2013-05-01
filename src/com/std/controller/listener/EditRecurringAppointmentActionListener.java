@@ -15,7 +15,7 @@ public class EditRecurringAppointmentActionListener implements ActionListener{
 	 * a reference to the controller so that this listener can access both the
 	 * model and the view.
 	 */
-	private CalendarController controller;
+	private final CalendarController controller;
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener

@@ -44,7 +44,7 @@ public class CalendarView extends JFrame{
 		DAILY
 	}
 
-	private CalendarMenu calMenu;
+	private final CalendarMenu calMenu;
 
 	private JLabel displayDate;
 	private JButton prevButton;

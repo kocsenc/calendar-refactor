@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class MonthlyPanel extends JPanel{
 
-	private List<MonthlyDayBlock> blocks;
+	private final List<MonthlyDayBlock> blocks;
 
 	/**
 	 * This is the constructor it initializes all the variables needed and then

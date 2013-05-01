@@ -287,7 +287,7 @@ public class DateDialog extends JDialog{
 		/**
 		 * array index of the element we're listening to
 		 */
-		private int index;
+		private final int index;
 
 		/**
 		 * Invoked when the one of the date buttons is selected.

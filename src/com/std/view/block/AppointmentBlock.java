@@ -17,7 +17,7 @@ import java.util.Calendar;
  */
 public class AppointmentBlock extends JTextArea{
 
-	private boolean limitDisplay;
+	private final boolean limitDisplay;
 
 	private static final SimpleDateFormat FORMAT =
 			new SimpleDateFormat("h:mm aa");

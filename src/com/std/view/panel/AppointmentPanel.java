@@ -26,18 +26,18 @@ public class AppointmentPanel extends JToggleButton{
 	 * These are all of the data fields that can be viewed by the user
 	 */
 
-	private JTextArea titleField;
-	private JTextArea locationField;
-	private JTextArea startDateField;
-	private JTextArea endDateField;
-	private JTextArea durationField;
-	private JTextArea recurrenceField;
-	private JTextArea descriptionField;
+	private final JTextArea titleField;
+	private final JTextArea locationField;
+	private final JTextArea startDateField;
+	private final JTextArea endDateField;
+	private final JTextArea durationField;
+	private final JTextArea recurrenceField;
+	private final JTextArea descriptionField;
 
-	private JButton editSingleAppt;
-	private JButton editAllAppt;
-	private JButton removeSingleAppt;
-	private JButton removeAllAppt;
+	private final JButton editSingleAppt;
+	private final JButton editAllAppt;
+	private final JButton removeSingleAppt;
+	private final JButton removeAllAppt;
 
 	public void addEditSingleListener(ActionListener listener){
 		editSingleAppt.addActionListener(listener);

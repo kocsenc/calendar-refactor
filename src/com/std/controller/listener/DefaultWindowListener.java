@@ -21,7 +21,7 @@ public class DefaultWindowListener implements WindowListener{
 	 */
 
 	private class CloseRunnable implements Runnable{
-		private Window win;
+		private final Window win;
 
 		public void run(){
 			win.dispose();
@@ -42,7 +42,7 @@ public class DefaultWindowListener implements WindowListener{
 	 * a reference to the controller so that this listener can access both the
 	 * model and the view.
 	 */
-	private CalendarController controller;
+	private final CalendarController controller;
 
 	/**
 	 * creates a new DefaultWindowListener

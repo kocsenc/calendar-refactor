@@ -24,12 +24,12 @@ public class CalendarController implements Observer{
 	 * The Calendar model is the mechanism to do all the logical operations of the
 	 * calendar (add/remove/modify appointments)
 	 */
-	private CalendarModel theModel;
+	private final CalendarModel theModel;
 
 	/**
 	 * The calendar view is the highest level of representation for the UI
 	 */
-	private CalendarView theView;
+	private final CalendarView theView;
 
 	/**
 	 * Called when there is a change in the model, this method will invoke the

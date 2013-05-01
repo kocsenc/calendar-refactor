@@ -32,12 +32,12 @@ public class WeeklyDayBlock extends JToggleButton implements DayBlock{
 	/**
 	 * The JLabel that shows the date that this represents
 	 */
-	private JLabel displayDate;
+	private final JLabel displayDate;
 
 	/**
 	 * The panel that all of the appointments will be added
 	 */
-	private JPanel center;
+	private final JPanel center;
 
 	/**
 	 * this is the action listener that will be listening to all of the

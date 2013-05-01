@@ -14,8 +14,8 @@ import java.util.Set;
 
 public class ToggleDayBlock extends JToggleButton{
 
-	private JLabel date;
-	private JPanel center;
+	private final JLabel date;
+	private final JPanel center;
 	private static final SimpleDateFormat FORMAT =
 			new SimpleDateFormat("MMM dd");
 	private Date today;

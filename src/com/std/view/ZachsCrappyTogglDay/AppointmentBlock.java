@@ -9,7 +9,7 @@ import java.util.Set;
 
 class AppointmentBlock extends JPanel{
 
-	private Set<AppointmentLabel> appoints;
+	private final Set<AppointmentLabel> appoints;
 
 	public AppointmentBlock(AppointmentLabel r){
 		super();
