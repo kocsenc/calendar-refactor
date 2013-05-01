@@ -40,6 +40,7 @@ public class Driver {
                     view = new CalendarView();
                 } catch (IOException e) {
                     e.printStackTrace();
+					System.exit(1);
                 }
                 view.setExtendedState(view.getExtendedState() | JFrame.MAXIMIZED_BOTH);
                 new CalendarController(model, view);
