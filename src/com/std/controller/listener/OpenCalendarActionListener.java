@@ -28,7 +28,7 @@ public class OpenCalendarActionListener implements ActionListener{
 	/**
 	 * creates a new AppointmentSelectionMouseListener
 	 *
-	 * @param CalendarControler cc is the reference to the controller
+	 * @param cc is the reference to the controller
 	 */
 	public OpenCalendarActionListener(CalendarController cc){
 		controller = cc;

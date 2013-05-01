@@ -23,7 +23,7 @@ public class AboutActionListener implements ActionListener{
 	/**
 	 * creates a new AboutActionListener
 	 *
-	 * @param CalendarControler cc is the reference to the controller
+	 * @param cc is the reference to the controller
 	 */
 	public AboutActionListener(CalendarController cc){
 		controller = cc;

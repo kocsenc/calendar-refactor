@@ -23,7 +23,7 @@ public class NewCalendarActionListener implements ActionListener{
 	/**
 	 * creates a new AppointmentSelectionMouseListener
 	 *
-	 * @param CalendarControler cc is the reference to the controller
+	 * @param cc is the reference to the controller
 	 */
 	public NewCalendarActionListener(CalendarController cc){
 		controller = cc;
@@ -32,7 +32,7 @@ public class NewCalendarActionListener implements ActionListener{
 	/**
 	 * This method resets the calendar to a blank one.
 	 *
-	 * @param ActionEvent e is the event spawn when the new calendar button is
+	 * @param e is the event spawn when the new calendar button is
 	 *                    pressed.
 	 */
 	public void actionPerformed(ActionEvent e){

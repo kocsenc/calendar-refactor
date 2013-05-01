@@ -28,7 +28,7 @@ public class RemoveAllAppointmentActionListener implements ActionListener{
 	/**
 	 * creates a new AppointmentSelectionMouseListener
 	 *
-	 * @param CalendarControler cc is the reference to the controller
+	 * @param cc is the reference to the controller
 	 */
 	public RemoveAllAppointmentActionListener(CalendarController cc){
 		controller = cc;

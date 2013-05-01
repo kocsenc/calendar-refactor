@@ -85,7 +85,7 @@ public class CalendarView extends JFrame{
 	/**
 	 * This passes a mouse listener down to the different views
 	 *
-	 * @param listener is the mouse listener to be added to the appointment blocks
+	 * @param is the mouse listener to be added to the appointment blocks
 	 */
 
 	public void addAppointmentSelectionListener(MouseListener mouse){

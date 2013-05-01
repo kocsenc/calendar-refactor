@@ -24,7 +24,7 @@ class DateSelectionMouseListener implements MouseListener{
 	/**
 	 * creates a new AppointmentSelectionMouseListener
 	 *
-	 * @param CalendarControler cc is the reference to the controller
+	 * @param cc is the reference to the controller
 	 */
 	public DateSelectionMouseListener(CalendarController cc){
 		controller = cc;
@@ -34,7 +34,7 @@ class DateSelectionMouseListener implements MouseListener{
 	 * This method is called whenever the user clicks a day in the view. This
 	 * method then updates the currentDate in the model.
 	 *
-	 * @param MouseEvent e is the event sent when the day in the panel is clicked.
+	 * @param e is the event sent when the day in the panel is clicked.
 	 */
 	public void mouseClicked(MouseEvent e){
 		//get the day block that this listener was listening too

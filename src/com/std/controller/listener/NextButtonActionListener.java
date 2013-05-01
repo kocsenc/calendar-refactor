@@ -23,7 +23,7 @@ public class NextButtonActionListener implements ActionListener{
 	/**
 	 * creates a new AppointmentSelectionMouseListener
 	 *
-	 * @param CalendarControler cc is the reference to the controller
+	 * @param cc is the reference to the controller
 	 */
 	public NextButtonActionListener(CalendarController cc){
 		controller = cc;
@@ -34,7 +34,7 @@ public class NextButtonActionListener implements ActionListener{
 	 * of the MainView (aka: based on which panel: monthly, weekly, or daily, is
 	 * being displayed in MainView).
 	 *
-	 * @param ActionEvent e is the ActionEvent passed when the next button is
+	 * @param e is the ActionEvent passed when the next button is
 	 *                    clicked
 	 */
 	public void actionPerformed(ActionEvent e){
