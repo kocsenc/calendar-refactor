@@ -121,9 +121,6 @@ public class MonthlyDayBlock extends JToggleButton implements DayBlock{
 				center.add(apptView);
 			}
 		}
-		else{
-
-		}
 
 		revalidate();
 		this.repaint();

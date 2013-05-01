@@ -65,6 +65,11 @@ public class DateRange implements Serializable{
 	}
 
 	public boolean equals(Object obj){
+
+		if(!(obj instanceof DateRange)){
+			return false;
+		}
+
 		// this is overridden to make sure we're
 		// testing equality by value and not by
 		// reference.  otherwise it would mess
