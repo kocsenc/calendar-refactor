@@ -362,13 +362,13 @@ public class DateDialog extends JDialog{
 		GridMonthRange range = new GridMonthRange(date);
 		Calendar rangeCal = Calendar.getInstance();
 		rangeCal.setTime(range.getStartDate());
-		for(int i = 0; i < buttons.length; i++){
-			buttons[i].setText("" + rangeCal.get(Calendar.DATE));
-			buttons[i].setEnabled(rangeCal.get(
-					Calendar.MONTH) == cal.get(Calendar.MONTH));
-			if(rangeCal.get(
-					Calendar.DAY_OF_MONTH) == cal.get(Calendar.DAY_OF_MONTH)){
-				buttons[i].doClick();
+		for (JToggleButton button : buttons) {
+			button.setText("" + rangeCal.get(Calendar.DATE));
+			button.setEnabled(
+					rangeCal.get(Calendar.MONTH) == cal.get(Calendar.MONTH));
+			if (rangeCal.get(Calendar.DAY_OF_MONTH) ==
+					cal.get(Calendar.DAY_OF_MONTH)) {
+				button.doClick();
 			}
 			rangeCal.add(Calendar.DATE, 1);
 		}
