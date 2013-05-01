@@ -49,6 +49,72 @@ public class AppointmentDialog extends JDialog{
 	private static final SimpleDateFormat FORMAT = new SimpleDateFormat(
 			"EEE, d MMM yyyy 'at' h:mm aa");
 
+
+	/**
+	 * the appointment that will be changed as a result of user input
+	 */
+	private RefAppointment appt;
+
+	/**
+	 * title field component
+	 */
+	private JTextField titleField;
+
+	/**
+	 * location field component
+	 */
+	private JTextField locationField;
+
+	/**
+	 * start date field component
+	 */
+	private DatePanel startDatePanel;
+
+	/**
+	 * end date field component
+	 */
+	private DatePanel endDatePanel;
+
+	/**
+	 * duration field display
+	 */
+	private JLabel duration;
+
+	/**
+	 * description field component
+	 */
+	private JTextArea description;
+
+	/**
+	 * recurrence pattern that is currently selected
+	 */
+	private RecurrencePattern pattern;
+
+	/**
+	 * pattern description display
+	 */
+	private JTextArea patternDesc;
+
+	/**
+	 * NDaysPattern selection button
+	 */
+	private JToggleButton nDays;
+
+	/**
+	 * DaysOfWeekPattern selection button
+	 */
+	private JToggleButton daysOfWeek;
+
+	/**
+	 * null pattern selection button
+	 */
+	private JToggleButton none;
+
+	/**
+	 * false if the user has canceled out of the dialog
+	 */
+	private boolean returnState;
+
 	/**
 	 * Prompts the user to change an Appointment.
 	 *
@@ -231,70 +297,7 @@ public class AppointmentDialog extends JDialog{
 		}
 	}
 
-	/**
-	 * the appointment that will be changed as a result of user input
-	 */
-	private RefAppointment appt;
 
-	/**
-	 * title field component
-	 */
-	private JTextField titleField;
-
-	/**
-	 * location field component
-	 */
-	private JTextField locationField;
-
-	/**
-	 * start date field component
-	 */
-	private DatePanel startDatePanel;
-
-	/**
-	 * end date field component
-	 */
-	private DatePanel endDatePanel;
-
-	/**
-	 * duration field display
-	 */
-	private JLabel duration;
-
-	/**
-	 * description field component
-	 */
-	private JTextArea description;
-
-	/**
-	 * recurrence pattern that is currently selected
-	 */
-	private RecurrencePattern pattern;
-
-	/**
-	 * pattern description display
-	 */
-	private JTextArea patternDesc;
-
-	/**
-	 * NDaysPattern selection button
-	 */
-	private JToggleButton nDays;
-
-	/**
-	 * DaysOfWeekPattern selection button
-	 */
-	private JToggleButton daysOfWeek;
-
-	/**
-	 * null pattern selection button
-	 */
-	private JToggleButton none;
-
-	/**
-	 * false if the user has canceled out of the dialog
-	 */
-	private boolean returnState;
 
 	/**
 	 * Returns false if the user has canceled out of the dialog
