@@ -23,10 +23,10 @@ public class Driver {
     public static void main(String[] args) throws IOException {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException e) {
-        } catch (UnsupportedLookAndFeelException e) {
-        } catch (InstantiationException e) {
-        } catch (IllegalAccessException e) {
+        } catch (ClassNotFoundException ignored) {
+        } catch (UnsupportedLookAndFeelException ignored) {
+        } catch (InstantiationException ignored) {
+        } catch (IllegalAccessException ignored) {
         }
 
 

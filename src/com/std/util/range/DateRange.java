@@ -76,7 +76,7 @@ public class DateRange implements Serializable{
 			ret = cmp.startDate.equals(startDate)
 					&& cmp.endDate.equals(endDate);
 		}
-		catch(Exception e){
+		catch(Exception ignored){
 		}
 		return ret;
 	}
