@@ -32,8 +32,6 @@ public class MonthlyPanel extends JPanel{
 	 * updates the view to display the appointment set sent as an argument.
 	 */
 	public MonthlyPanel(Date date) throws IOException{
-		super();
-
 		blocks = new ArrayList<MonthlyDayBlock>();
 
 		JPanel daysPanel = new JPanel();
@@ -45,6 +43,7 @@ public class MonthlyPanel extends JPanel{
 		tmpCal.setTime(week.getStartDate());
 		while(tmpCal.getTime().before(week.getEndDate())){
 			JLabel dayText =
+                    //Adding the day of the week on the top
 					new JLabel(tmpCal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()));
 			dayText.setFont(dayText.getFont().deriveFont(13f).deriveFont(Font.BOLD));
 			dayText.setOpaque(false);

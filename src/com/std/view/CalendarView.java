@@ -58,7 +58,7 @@ public class CalendarView extends JFrame {
      * This is the constructor, it sets up the different views and buttons and
      * starts the JFrame
      */
-    public CalendarView()  {
+    public CalendarView() {
         calMenu = new CalendarMenu();
         try {
             initComponents();
@@ -72,12 +72,8 @@ public class CalendarView extends JFrame {
      */
     private void initComponents() throws IOException {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-
-        this.setJMenuBar(calMenu);
-
+        setJMenuBar(calMenu);
         Date date = new Date();
-
         monthlyView = new MonthlyPanel(date);
         weeklyView = new WeeklyPanel(date);
         dailyView = new DailyPanel(date);
