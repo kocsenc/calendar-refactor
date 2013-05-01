@@ -19,7 +19,6 @@ public class ToggleDayBlock extends JToggleButton{
 	private static final SimpleDateFormat FORMAT =
 			new SimpleDateFormat("MMM dd");
 	private Date today;
-	private MouseListener apptListener;
 
 	public ToggleDayBlock(Date d){
 		super();
@@ -91,10 +90,6 @@ public class ToggleDayBlock extends JToggleButton{
 		date.setFont(date.getFont().deriveFont(18f));
 
 
-	}
-
-	public void addAppointmentListener(MouseListener aL){
-		apptListener = aL;
 	}
 
 	public static void main(String[] args){

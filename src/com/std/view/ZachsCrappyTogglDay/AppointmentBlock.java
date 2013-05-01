@@ -10,11 +10,10 @@ import java.util.Set;
 public class AppointmentBlock extends JPanel{
 
 	private Set<AppointmentLabel> appoints;
-	private GridBagConstraints constraints;
 
 	public AppointmentBlock(AppointmentLabel r){
 		super();
-		constraints = new GridBagConstraints();
+		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.gridy = GridBagConstraints.RELATIVE;
 		constraints.gridx = 0;
 		constraints.gridwidth = GridBagConstraints.REMAINDER;
