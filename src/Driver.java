@@ -17,16 +17,16 @@ public class Driver {
     /**
      * The main class for instantiating our application.
      *
-     * @param args	All args are ignored.
+     * @param args
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException ignored) {
-        } catch (UnsupportedLookAndFeelException ignored) {
-        } catch (InstantiationException ignored) {
-        } catch (IllegalAccessException ignored) {
+        } catch (ClassNotFoundException e) {
+        } catch (UnsupportedLookAndFeelException e) {
+        } catch (InstantiationException e) {
+        } catch (IllegalAccessException e) {
         }
 
 
@@ -36,12 +36,7 @@ public class Driver {
 
                 CalendarModel model = new CalendarModel();
                 CalendarView view = null;
-                try {
-                    view = new CalendarView();
-                } catch (IOException e) {
-                    e.printStackTrace();
-					System.exit(1);
-                }
+                view = new CalendarView();
                 view.setExtendedState(view.getExtendedState() | JFrame.MAXIMIZED_BOTH);
                 new CalendarController(model, view);
                 view.setVisible(true);
