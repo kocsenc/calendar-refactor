@@ -7,7 +7,7 @@ import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.text.SimpleDateFormat;
 
-public class AppointmentLabel extends JPanel{
+class AppointmentLabel extends JPanel{
 
 	private RefAppointment ref;
 	private static final SimpleDateFormat FORMAT =

@@ -42,7 +42,7 @@ public class AppointmentBlock extends JTextArea{
 	 *
 	 * @param a
 	 */
-	public void updateAppointment(RefAppointment a){
+	void updateAppointment(RefAppointment a){
 		thisAppointment = a;
 		if(!limitDisplay){
 			setText("Title: " + thisAppointment.getTitle() + "\n" +

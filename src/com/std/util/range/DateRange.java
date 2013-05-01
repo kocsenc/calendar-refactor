@@ -135,7 +135,7 @@ public class DateRange implements Serializable{
 	 *
 	 * @param endDate the end date of the range
 	 */
-	protected void setEndDate(Date endDate){
+	void setEndDate(Date endDate){
 		// this is necessary for sub classes
 		// that might have to calculate the
 		// end date after the call to the
@@ -152,7 +152,7 @@ public class DateRange implements Serializable{
 	 *
 	 * @param startDate the start date of the range
 	 */
-	protected void setStartDate(Date startDate){
+	void setStartDate(Date startDate){
 		// this is necessary for sub classes
 		// that might have to calculate the
 		// start date after the call to the

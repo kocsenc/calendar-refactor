@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 import java.util.HashSet;
 import java.util.Set;
 
-public class AppointmentBlock extends JPanel{
+class AppointmentBlock extends JPanel{
 
 	private Set<AppointmentLabel> appoints;
 

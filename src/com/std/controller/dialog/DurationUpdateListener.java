@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
  * DurationUpdateListener listener = new DurationUpdateListener(field, start,
  * end);
  */
-public class DurationUpdateListener implements ActionListener{
+class DurationUpdateListener implements ActionListener{
 
 	/**
 	 * prints the the duration of two dates to a JLabel

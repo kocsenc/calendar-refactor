@@ -3,7 +3,7 @@ package com.std.view.ZachsCrappyTogglDay;
 import javax.swing.*;
 import java.awt.*;
 
-public class TimeBlock extends JPanel{
+class TimeBlock extends JPanel{
 	private GridBagConstraints constraints;
 
 	public TimeBlock(int increments){

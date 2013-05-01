@@ -333,7 +333,7 @@ public class DateDialog extends JDialog{
 	/**
 	 * @return the date selected by user, null if the form was canceled out of
 	 */
-	public Date getReturnDate(){
+	Date getReturnDate(){
 		return returnDate;
 	}
 
@@ -344,7 +344,7 @@ public class DateDialog extends JDialog{
 	 * @param field  the calendar field.
 	 * @param amount the amount of date or time to be added to the field.
 	 */
-	public void addDate(int field, int amount){
+	void addDate(int field, int amount){
 
 		// set the new time
 		Calendar cal = Calendar.getInstance();

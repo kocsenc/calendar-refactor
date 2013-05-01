@@ -100,7 +100,7 @@ public class DayOfWeekDialog extends JDialog{
 	/**
 	 * @return the DayOfWeekPattern that was created as a result of user input
 	 */
-	public DayOfWeekPattern getReturnPattern(){
+	DayOfWeekPattern getReturnPattern(){
 		return pattern;
 	}
 

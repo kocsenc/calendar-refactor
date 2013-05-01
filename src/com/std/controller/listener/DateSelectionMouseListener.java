@@ -13,7 +13,7 @@ import java.util.Date;
  *
  * @author xxx
  */
-public class DateSelectionMouseListener implements MouseListener{
+class DateSelectionMouseListener implements MouseListener{
 
 	/**
 	 * a reference to the controller so that this listener can access both the
