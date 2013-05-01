@@ -303,7 +303,7 @@ public class DateDialog extends JDialog{
 		/**
 		 * creates a new listener at the index specified
 		 *
-		 * @param index
+		 * @param index		The index to specify for the new listener.
 		 */
 		public GridActionListener(int index){
 			this.index = index;

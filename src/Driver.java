@@ -17,7 +17,7 @@ public class Driver {
     /**
      * The main class for instantiating our application.
      *
-     * @param args
+     * @param args	All args are ignored.
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {

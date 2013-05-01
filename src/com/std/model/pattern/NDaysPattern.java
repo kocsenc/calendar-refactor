@@ -77,30 +77,30 @@ public class NDaysPattern extends RecurrencePattern{
 	/**
 	 * This method is for loading the Recurrence pattern
 	 *
-	 * @param o is the object stream to be reading from to
+	 * @param in is the object stream to be reading from
 	 *
 	 * @throws ClassNotFoundException if there is a casting error
 	 * @throws IOException            an I/O exception of some sort has occurred
 	 */
-	protected void readObject(ObjectInputStream out)
+	protected void readObject(ObjectInputStream in)
 			throws ClassNotFoundException, IOException{
-		int i = out.readInt();
+		int i = in.readInt();
 		setInstanceEveryDays(i);
 
-		DateRange r = (DateRange) out.readObject();
+		DateRange r = (DateRange) in.readObject();
 		setRange(r);
 	}
 
 	/**
 	 * This method id for saving the Recurrence pattern
 	 *
-	 * @param i is object stream to be reading from
+	 * @param out is object stream to be writing to.
 	 *
 	 * @throws IOException an I/O exception of some sort has occurred
 	 */
-	protected void writeObject(ObjectOutputStream in) throws IOException{
-		in.writeInt(n);
-		in.writeObject(getRange());
+	protected void writeObject(ObjectOutputStream out) throws IOException{
+		out.writeInt(n);
+		out.writeObject(getRange());
 	}
 
 	public void setInstanceEveryDays(int x){

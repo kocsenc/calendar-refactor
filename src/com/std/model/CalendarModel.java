@@ -63,8 +63,6 @@ public class CalendarModel extends Observable{
 		 * Collection.add}. Individual set implementations should clearly document any
 		 * restrictions on the elements that they may contain.
 		 *
-		 * @param e element to be added to this set
-		 *
 		 * @return true if this set did not already contain specified element
 		 *
 		 * @throws UnsupportedOperationException if the add operation is not supported
@@ -382,8 +380,6 @@ public class CalendarModel extends Observable{
 	/**
 	 * saves the data model to a file specified by the passed URI parameter, and
 	 * notifies any CalendarModel observers
-	 *
-	 * @param uri the path to save the file to
 	 *
 	 * @throws IOException          if an I/O error occurs while writing stream
 	 *                              header

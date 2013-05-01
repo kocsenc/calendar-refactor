@@ -153,29 +153,28 @@ public class DayOfWeekPattern extends RecurrencePattern{
 	/**
 	 * This method is for loading the Recurrence pattern
 	 *
-	 * @param o is the object stream to be reading from to
-	 *
+	 * @param in	The file handler to read the objects from.
 	 * @throws ClassNotFoundException if there is a casting error
 	 * @throws IOException            an I/O exception of some sort has occurred
 	 * @see <a href="http://java.sun.com/javase/6/docs/api/java/io/Serializable.html">Serializable</a>
 	 */
-	protected void readObject(ObjectInputStream out)
+	protected void readObject(ObjectInputStream in)
 			throws ClassNotFoundException, IOException{
-		setDays((boolean[]) out.readObject());
-		setRange((DateRange) out.readObject());
+		setDays((boolean[]) in.readObject());
+		setRange((DateRange) in.readObject());
 	}
 
 	/**
 	 * This method id for saving the Recurrence pattern
 	 *
-	 * @param i is object stream to be reading from
+	 * @param out is object stream to be writing to
 	 *
 	 * @throws IOException an I/O exception of some sort has occurred
 	 * @see <a href="http://java.sun.com/javase/6/docs/api/java/io/Serializable.html">Serializable</a>
 	 */
-	protected void writeObject(ObjectOutputStream in) throws IOException{
-		in.writeObject(days);
-		in.writeObject(getRange());
+	protected void writeObject(ObjectOutputStream out) throws IOException{
+		out.writeObject(days);
+		out.writeObject(getRange());
 	}
 
 }
