@@ -21,6 +21,7 @@ public class CalendarMenu extends JMenuBar {
     private final JMenuItem openCalendar;
     private final JMenuItem saveCalendar;
     private final JMenuItem saveAsCalendar;
+	private final JMenuItem exportCalendar;
     private final JMenuItem exitApplication;
     private final JMenuItem newAppointment;
     private final JMenuItem editAppointment;
@@ -106,6 +107,11 @@ public class CalendarMenu extends JMenuBar {
 
         saveAsCalendar = new JMenuItem("Save As...");
         fileMenu.add(saveAsCalendar);
+
+		fileMenu.addSeparator();
+
+		exportCalendar = new JMenuItem("Export");
+		fileMenu.add(exportCalendar);
 
         fileMenu.addSeparator();
 
