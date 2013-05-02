@@ -13,16 +13,18 @@ import java.io.Serializable;
  * but cannot serve directly as an appointment because it lacks a start date. To
  * make a full appointment, one can instantiate the template by making a
  * RefAppointment (reference appointment) that references a template and
- * contains a start date for binding it to the calendar.<br/> <br/> Usage:<br/>
- * <tt> CalendarModel model = new CalendarModel();<br/> <br/> // creates a new
- * template<br/> AppointmentTemplate template = new AppointmentTemplate("title",
- * "", "n/a", 0);<br/> <br/> // adds it to the calendar model<br/>
- * model.getAppointmentTemplateSet().add(template);<br/> <br/> // creates a new
- * reference to the template<br/> RefAppointment reference = new
- * RefAppointment(template, new Date());<br/> <br/> // adds the reference to the
- * calendar model<br/> model.getAppointmentSet().add(reference); </tt>
- *
- * @author xxx
+ * contains a start date for binding it to the calendar.
+ * Usage:
+ * CalendarModel model = new CalendarModel();
+ * // creates a new template
+ * AppointmentTemplate template = new AppointmentTemplate("title","", "n/a", 0);
+ * // adds it to the calendar model
+ * model.getAppointmentTemplateSet().add(template);
+ * // creates a new reference to the template
+ * RefAppointment reference = new
+ * RefAppointment(template, new Date());
+ * // adds the reference to the calendar model
+ * model.getAppointmentSet().add(reference);
  */
 public class AppointmentTemplate
 		extends java.util.Observable implements Serializable{
