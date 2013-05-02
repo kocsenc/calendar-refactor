@@ -83,8 +83,6 @@ public class DatePanel extends JPanel{
 	}
 
 	/**
-	 * Returns the currently selected date
-	 *
 	 * @return the currently selected date
 	 */
 	public Date getDate(){
@@ -92,8 +90,8 @@ public class DatePanel extends JPanel{
 	}
 
 	/**
-	 * Adds an auxiliary action listener that should be notified after the ellipsis
-	 * button has been pressed
+	 * Adds an auxiliary action listener that should be notified after the
+	 * ellipsis button has been pressed.
 	 *
 	 * @param listener the <code>ActionListener</code> to be added
 	 */
@@ -102,8 +100,8 @@ public class DatePanel extends JPanel{
 	}
 
 	/**
-	 * creates a new DatePanel with an initial date and the given enabled button
-	 * state
+	 * Creates a new DatePanel with an initial date and the given enabled
+	 * button state.
 	 *
 	 * @param date       the initially selected date
 	 * @param enableAppt true iff the ellipsis button should be enabled
