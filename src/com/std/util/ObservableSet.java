@@ -17,8 +17,6 @@ public class ObservableSet
 	 * InternalSet is a modified HashSet that communicates back to the enclosing
 	 * ObservableSet via the private elementAdded and elementRemoved functions.
 	 * These are called when an element is added or removed respectively.
-	 *
-	 * @param <U> the type of elements maintained by this set
 	 */
 	private class InternalSet extends HashSet<U>{
 

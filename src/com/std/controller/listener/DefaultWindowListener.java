@@ -21,7 +21,7 @@ public class DefaultWindowListener implements WindowListener{
 	 */
 
 	private class CloseRunnable implements Runnable{
-		private Window win;
+		private final Window win;
 
 		public void run(){
 			win.dispose();
@@ -42,12 +42,12 @@ public class DefaultWindowListener implements WindowListener{
 	 * a reference to the controller so that this listener can access both the
 	 * model and the view.
 	 */
-	private CalendarController controller;
+	private final CalendarController controller;
 
 	/**
 	 * creates a new DefaultWindowListener
 	 *
-	 * @param CalendarControler cc is the reference to the controller
+	 * @param cc is the reference to the controller
 	 */
 	public DefaultWindowListener(CalendarController cc){
 		controller = cc;
@@ -59,7 +59,7 @@ public class DefaultWindowListener implements WindowListener{
 	 * explaining that there are unsaved changed, and asking what to do about them:
 	 * save, discard, or to cancel the dispose operation.
 	 *
-	 * @param e is the action event, it is not used
+	 * @param evt is the action event, it is not used
 	 */
 	public void windowClosing(WindowEvent evt){
 		controller.confirm(new CloseRunnable(evt.getWindow()));

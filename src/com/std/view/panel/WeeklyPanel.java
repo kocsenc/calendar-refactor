@@ -27,7 +27,7 @@ public class WeeklyPanel extends JPanel{
 	 * These are the representaions of all the days in this week
 	 */
 
-	private List<WeeklyDayBlock> blocks;
+	private final List<WeeklyDayBlock> blocks;
 
 	/**
 	 * This is the constructor of the class it creates all of the weekDayBlocks

@@ -36,11 +36,7 @@ public class Driver {
 
                 CalendarModel model = new CalendarModel();
                 CalendarView view = null;
-                try {
-                    view = new CalendarView();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                view = new CalendarView();
                 view.setExtendedState(view.getExtendedState() | JFrame.MAXIMIZED_BOTH);
                 new CalendarController(model, view);
                 view.setVisible(true);

@@ -287,7 +287,7 @@ public class DateDialog extends JDialog{
 		/**
 		 * array index of the element we're listening to
 		 */
-		private int index;
+		private final int index;
 
 		/**
 		 * Invoked when the one of the date buttons is selected.
@@ -303,7 +303,7 @@ public class DateDialog extends JDialog{
 		/**
 		 * creates a new listener at the index specified
 		 *
-		 * @param index
+		 * @param index		The index to specify for the new listener.
 		 */
 		public GridActionListener(int index){
 			this.index = index;
@@ -333,7 +333,7 @@ public class DateDialog extends JDialog{
 	/**
 	 * @return the date selected by user, null if the form was canceled out of
 	 */
-	public Date getReturnDate(){
+	Date getReturnDate(){
 		return returnDate;
 	}
 
@@ -344,7 +344,7 @@ public class DateDialog extends JDialog{
 	 * @param field  the calendar field.
 	 * @param amount the amount of date or time to be added to the field.
 	 */
-	public void addDate(int field, int amount){
+	void addDate(int field, int amount){
 
 		// set the new time
 		Calendar cal = Calendar.getInstance();
@@ -362,13 +362,13 @@ public class DateDialog extends JDialog{
 		GridMonthRange range = new GridMonthRange(date);
 		Calendar rangeCal = Calendar.getInstance();
 		rangeCal.setTime(range.getStartDate());
-		for(int i = 0; i < buttons.length; i++){
-			buttons[i].setText("" + rangeCal.get(Calendar.DATE));
-			buttons[i].setEnabled(rangeCal.get(
-					Calendar.MONTH) == cal.get(Calendar.MONTH));
-			if(rangeCal.get(
-					Calendar.DAY_OF_MONTH) == cal.get(Calendar.DAY_OF_MONTH)){
-				buttons[i].doClick();
+		for (JToggleButton button : buttons) {
+			button.setText("" + rangeCal.get(Calendar.DATE));
+			button.setEnabled(
+					rangeCal.get(Calendar.MONTH) == cal.get(Calendar.MONTH));
+			if (rangeCal.get(Calendar.DAY_OF_MONTH) ==
+					cal.get(Calendar.DAY_OF_MONTH)) {
+				button.doClick();
 			}
 			rangeCal.add(Calendar.DATE, 1);
 		}

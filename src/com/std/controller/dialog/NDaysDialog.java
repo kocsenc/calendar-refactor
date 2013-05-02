@@ -93,7 +93,7 @@ public class NDaysDialog extends JDialog{
 	/**
 	 * @return the NDaysPattern that was created as a result of user input
 	 */
-	public NDaysPattern getReturnPattern(){
+	NDaysPattern getReturnPattern(){
 		return pattern;
 	}
 

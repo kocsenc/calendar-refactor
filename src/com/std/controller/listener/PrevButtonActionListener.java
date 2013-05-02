@@ -18,12 +18,12 @@ public class PrevButtonActionListener implements ActionListener{
 	 * a reference to the controller so that this listener can access both the
 	 * model and the view.
 	 */
-	private CalendarController controller;
+	private final CalendarController controller;
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
 	 *
-	 * @param CalendarControler cc is the reference to the controller
+	 * @param cc is the reference to the controller
 	 */
 	public PrevButtonActionListener(CalendarController cc){
 		controller = cc;
@@ -34,7 +34,7 @@ public class PrevButtonActionListener implements ActionListener{
 	 * of the MainView (aka: based on which panel: monthly, weekly, or daily, is
 	 * being displayed in MainView).
 	 *
-	 * @param ActionEvent e is the ActionEvent passed when the next button is
+	 * @param e is the ActionEvent passed when the next button is
 	 *                    clicked
 	 */
 	public void actionPerformed(ActionEvent e){

@@ -18,12 +18,12 @@ public class AppointmentSelectionMouseListener implements MouseListener{
 	 * a reference to the controller so that this listener can access both the
 	 * model and the view.
 	 */
-	private CalendarController controller;
+	private final CalendarController controller;
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
 	 *
-	 * @param CalendarControler cc is the reference to the controller
+	 * @param cc is the reference to the controller
 	 */
 	public AppointmentSelectionMouseListener(CalendarController cc){
 		controller = cc;
@@ -33,7 +33,7 @@ public class AppointmentSelectionMouseListener implements MouseListener{
 	 * This method is called whenever the user clicks an appointment in the view.
 	 * This method then updates the currentAppointment in the model.
 	 *
-	 * @param MouseEvent e is the event sent when the appointment in the panel is
+	 * @param e is the event sent when the appointment in the panel is
 	 *                   clicked.
 	 */
 	public void mouseClicked(MouseEvent e){

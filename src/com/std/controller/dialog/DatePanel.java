@@ -77,7 +77,7 @@ public class DatePanel extends JPanel{
 	/**
 	 * current date display
 	 */
-	private JTextField label;
+	private final JTextField label;
 
 	/**
 	 * currently selected date
@@ -88,7 +88,7 @@ public class DatePanel extends JPanel{
 	 * auxilliary action listeners that should be notified after the ellipsis
 	 * button has been pressed
 	 */
-	private Set<ActionListener> listeners;
+	private final Set<ActionListener> listeners;
 
 	/**
 	 * Returns the currently selected date

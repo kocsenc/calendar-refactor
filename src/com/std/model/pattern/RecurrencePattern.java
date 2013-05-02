@@ -33,7 +33,7 @@ public abstract class RecurrencePattern implements Serializable{
 	 * @throws NullPointerException     if d is null
 	 * @throws IllegalArgumentException if the duration of d is less than 0
 	 */
-	public RecurrencePattern(DateRange d){
+	RecurrencePattern(DateRange d){
 		setRange(d);
 	}
 
@@ -61,7 +61,7 @@ public abstract class RecurrencePattern implements Serializable{
 	 * @throws NullPointerException     if d is null
 	 * @throws IllegalArgumentException if the duration of d is less than 0
 	 */
-	protected void setRange(DateRange d){
+	void setRange(DateRange d){
 		if(d == null){
 			throw new NullPointerException();
 		}

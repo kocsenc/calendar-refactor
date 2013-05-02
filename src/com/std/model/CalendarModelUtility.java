@@ -126,8 +126,7 @@ public class CalendarModelUtility{
 	 * @return returns a default appointmnet template
 	 */
 
-	public static AppointmentTemplate getNewAppointmentTemplate(
-			CalendarModel model){
+	private static AppointmentTemplate getNewAppointmentTemplate(CalendarModel model){
 		AppointmentTemplate ret = new AppointmentTemplate("", "", "", 0);
 		ret.setFields(model.getCurrentDefaults());
 		return ret;
@@ -141,8 +140,7 @@ public class CalendarModelUtility{
 	 * @return returns a default RefAppointment
 	 */
 
-	public static RefAppointment getNewAppointment(
-			CalendarModel model, AppointmentTemplate apptTmpl){
+	private static RefAppointment getNewAppointment(CalendarModel model, AppointmentTemplate apptTmpl){
 		return new RefAppointment(model.getCurrentDate(), apptTmpl);
 	}
 

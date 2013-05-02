@@ -15,12 +15,12 @@ public class EditRecurringAppointmentActionListener implements ActionListener{
 	 * a reference to the controller so that this listener can access both the
 	 * model and the view.
 	 */
-	private CalendarController controller;
+	private final CalendarController controller;
 
 	/**
 	 * creates a new AppointmentSelectionMouseListener
 	 *
-	 * @param CalendarControler cc is the reference to the controller
+	 * @param cc is the reference to the controller
 	 */
 	public EditRecurringAppointmentActionListener(CalendarController cc){
 		controller = cc;
@@ -30,7 +30,7 @@ public class EditRecurringAppointmentActionListener implements ActionListener{
 	 * This allows the user to modify an appointment when they click the edit
 	 * button.
 	 *
-	 * @param ActionEvent e is the event sent to this method when the user pressed
+	 * @param e is the event sent to this method when the user pressed
 	 *                    the edit button.
 	 */
 	public void actionPerformed(ActionEvent e){

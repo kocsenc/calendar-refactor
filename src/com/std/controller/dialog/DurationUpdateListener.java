@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
  * DurationUpdateListener listener = new DurationUpdateListener(field, start,
  * end);
  */
-public class DurationUpdateListener implements ActionListener{
+class DurationUpdateListener implements ActionListener{
 
 	/**
 	 * prints the the duration of two dates to a JLabel
@@ -34,11 +34,11 @@ public class DurationUpdateListener implements ActionListener{
 				new DateRange(start.getDate(), end.getDate()).getDurationInMS()));
 	}
 
-	private JLabel field;  //JLabel to print to
+	private final JLabel field;  //JLabel to print to
 
-	private DatePanel start;  //start date of the range
+	private final DatePanel start;  //start date of the range
 
-	private DatePanel end; //end date of the range
+	private final DatePanel end; //end date of the range
 
 	/**
 	 * called whenever the start or end dates are changed, and updates duration
