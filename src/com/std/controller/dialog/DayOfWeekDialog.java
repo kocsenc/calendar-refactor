@@ -31,10 +31,13 @@ import java.util.Locale;
  */
 public class DayOfWeekDialog extends JDialog{
 
-	/**
-	 * UID Used for Serializable
-	 */
+	// UID Used for Serializable
 	private static final long serialVersionUID = 7758394355066019219L;
+
+	private DayOfWeekPattern pattern; // pattern passed as result of user input
+	private DatePanel startDate;  //start date field component
+	private DatePanel endDate; //end date field component
+	private JToggleButton[] days; //toggle buttons for each day of the week
 
 	/**
 	 * Prompts the user to create a DayOfWeekPattern
@@ -69,15 +72,15 @@ public class DayOfWeekDialog extends JDialog{
 	/**
 	 * ActionListener intended to be used with the "OK" button on the
 	 * DayOfWeekDialog form.
-	 * <p/>
-	 * Applies the changes of the form to the form's DayOfWeekPattern, and disposes
-	 * the form if no errors occur.
+	 *
+	 * Applies the changes of the form to the form's DayOfWeekPattern, and
+	 * disposes the form if no errors occur.
 	 */
 	private class OKActionListener implements ActionListener{
 
 		/**
 		 * Invoked when the "OK" button is pressed.
-		 * <p/>
+		 *
 		 * Applies the changes of the form to the form's DayOfWeekPattern, and
 		 * disposes the form if no errors occur.
 		 *
@@ -88,15 +91,6 @@ public class DayOfWeekDialog extends JDialog{
 		}
 	}
 
-	private DayOfWeekPattern pattern;
-			//the DayOfWeekPattern that will be passed back as a result of user input
-
-	private DatePanel startDate;  //start date field component
-
-	private DatePanel endDate; //end date field component
-
-	private JToggleButton[] days; //toggle buttons for each day of the week
-
 	/**
 	 * @return the DayOfWeekPattern that was created as a result of user input
 	 */
@@ -105,12 +99,11 @@ public class DayOfWeekDialog extends JDialog{
 	}
 
 	/**
-	 * applies the changes of the user edit, and disposes the form, returning
+	 * Applies the changes of the user edit, and disposes the form, returning
 	 * control back to the parent form.
 	 */
 	private void returnSuccessful(){
 		try{
-
 			// construct the days selected booleans
 			boolean[] b = new boolean[7];
 			for(int i = 0; i < 7; i++){
@@ -125,8 +118,7 @@ public class DayOfWeekDialog extends JDialog{
 			dispose();
 
 			// if we catch any errors, alert the user and don't dispose the form
-		}
-		catch(Exception e){
+		} catch(Exception e) {
 			JOptionPane.showMessageDialog(
 					this, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
 		}
@@ -140,22 +132,17 @@ public class DayOfWeekDialog extends JDialog{
 	 * @param base RecurrencePattern that will be used to initialize the fields
 	 */
 	private void init(RecurrencePattern base){
-		// because base could be any type of pattern, we need
-		// to somehow convert it to a DayOfWeekPattern so we
-		// can use it for the defaults.  if it's null, make
-		// our own default, if it's already a DayOfWeekPattern,
-		// then cast it, otherwise, use it for its dateRange
+		/* Because base could be any type of pattern, we need to somehow convert
+		it to a DayOfWeekPattern so we can use it for the defaults.  if it's
+		null, make our own default, if it's already a DayOfWeekPattern,
+		then cast it, otherwise, use it for its dateRange */
 		DayOfWeekPattern pattern;
-		if(base == null){
+		if(base == null)
 			pattern = new DayOfWeekPattern(new DateRange(), new boolean[7]);
-		}
-		else if(base instanceof DayOfWeekPattern){
+		else if(base instanceof DayOfWeekPattern)
 			pattern = (DayOfWeekPattern) base;
-		}
-		else{
+		else
 			pattern = new DayOfWeekPattern(base.getRange(), new boolean[7]);
-		}
-
 		setLayout(new BorderLayout());
 
 		// dateRange fields
@@ -213,12 +200,11 @@ public class DayOfWeekDialog extends JDialog{
 
 		pack();
 		setMinimumSize(getSize());
-
 		setLocationRelativeTo(null);
 	}
 
 	/**
-	 * creates a new DayOfWeekDialog initialized to an existing pattern
+	 * Creates a new DayOfWeekDialog initialized to an existing pattern.
 	 *
 	 * @param frame   from which the dialog is displayed
 	 * @param pattern pattern to initialize the fields to
@@ -229,7 +215,7 @@ public class DayOfWeekDialog extends JDialog{
 	}
 
 	/**
-	 * creates a new DayOfWeekDialog initialized to an existing pattern
+	 * Creates a new DayOfWeekDialog initialized to an existing pattern.
 	 *
 	 * @param frame   from which the dialog is displayed
 	 * @param pattern pattern to initialize the fields to
