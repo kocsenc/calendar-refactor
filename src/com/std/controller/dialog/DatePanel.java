@@ -14,36 +14,49 @@ import java.util.Set;
  * dialogs.  Both require editing one or more dates, and this provides a
  * convenient and standardized way of doing it.<br/> <br/> Usage:<br/>
  * <tt>DatePanel datePanel = new DatePanel(new Date(), true);</tt>
- *
- * @author xxx
  */
 public class DatePanel extends JPanel{
 
-	/**
-	 * UID Used for Serializable
-	 */
+	// UID Used for Serializable
 	private static final long serialVersionUID = -1945081777034974946L;
 
-	/**
-	 * format to use when displaying date information
-	 */
+	// format to use when displaying date information
 	private static final SimpleDateFormat FORMAT =
 			new SimpleDateFormat("EEE, d MMM yyyy 'at' h:mm aa");
 
 	/**
+	 * the Frame from which the dialog is displayed
+	 */
+	private Dialog dialog;
+
+	/**
+	 * current date display
+	 */
+	private final JTextField label;
+
+	/**
+	 * currently selected date
+	 */
+	private Date date;
+
+	/**
+	 * auxilliary action listeners that should be notified after the ellipsis
+	 * button has been pressed
+	 */
+	private final Set<ActionListener> listeners;
+
+	/**
 	 * ActionListener intended to be used with the "..." button on the DatePanel
 	 * form.
-	 * <p/>
+	 *
 	 * Prompts the user to select a date, then sets its internal date to the new
 	 * input
-	 *
-	 * @author xxx
 	 */
 	private class EllipsisActionListener implements ActionListener{
 
 		/**
 		 * Invoked when the "..." button is pressed.
-		 * <p/>
+		 *
 		 * Prompts the user to select a date, then sets its internal date to the new
 		 * input
 		 *
@@ -70,29 +83,6 @@ public class DatePanel extends JPanel{
 	}
 
 	/**
-	 * the Frame from which the dialog is displayed
-	 */
-	private Dialog dialog;
-
-	/**
-	 * current date display
-	 */
-	private final JTextField label;
-
-	/**
-	 * currently selected date
-	 */
-	private Date date;
-
-	/**
-	 * auxilliary action listeners that should be notified after the ellipsis
-	 * button has been pressed
-	 */
-	private final Set<ActionListener> listeners;
-
-	/**
-	 * Returns the currently selected date
-	 *
 	 * @return the currently selected date
 	 */
 	public Date getDate(){
@@ -100,8 +90,8 @@ public class DatePanel extends JPanel{
 	}
 
 	/**
-	 * Adds an auxiliary action listener that should be notified after the ellipsis
-	 * button has been pressed
+	 * Adds an auxiliary action listener that should be notified after the
+	 * ellipsis button has been pressed.
 	 *
 	 * @param listener the <code>ActionListener</code> to be added
 	 */
@@ -110,8 +100,8 @@ public class DatePanel extends JPanel{
 	}
 
 	/**
-	 * creates a new DatePanel with an initial date and the given enabled button
-	 * state
+	 * Creates a new DatePanel with an initial date and the given enabled
+	 * button state.
 	 *
 	 * @param date       the initially selected date
 	 * @param enableAppt true iff the ellipsis button should be enabled

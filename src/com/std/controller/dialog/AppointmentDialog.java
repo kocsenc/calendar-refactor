@@ -18,7 +18,6 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -37,83 +36,21 @@ import java.util.Date;
  * changes directly to the passed appointment.
  */
 public class AppointmentDialog extends JDialog{
-
-	/**
-	 * UID Used for Serializable
-	 */
+	// UID Used for Serializable
 	private static final long serialVersionUID = 5613941454015423846L;
 
-	/**
-	 * format to use when displaying date information
-	 */
-	private static final SimpleDateFormat FORMAT = new SimpleDateFormat(
-			"EEE, d MMM yyyy 'at' h:mm aa");
-
-
-	/**
-	 * the appointment that will be changed as a result of user input
-	 */
-	private RefAppointment appt;
-
-	/**
-	 * title field component
-	 */
-	private JTextField titleField;
-
-	/**
-	 * location field component
-	 */
-	private JTextField locationField;
-
-	/**
-	 * start date field component
-	 */
-	private DatePanel startDatePanel;
-
-	/**
-	 * end date field component
-	 */
-	private DatePanel endDatePanel;
-
-	/**
-	 * duration field display
-	 */
-	private JLabel duration;
-
-	/**
-	 * description field component
-	 */
-	private JTextArea description;
-
-	/**
-	 * recurrence pattern that is currently selected
-	 */
-	private RecurrencePattern pattern;
-
-	/**
-	 * pattern description display
-	 */
-	private JTextArea patternDesc;
-
-	/**
-	 * NDaysPattern selection button
-	 */
-	private JToggleButton nDays;
-
-	/**
-	 * DaysOfWeekPattern selection button
-	 */
-	private JToggleButton daysOfWeek;
-
-	/**
-	 * null pattern selection button
-	 */
-	private JToggleButton none;
-
-	/**
-	 * false if the user has canceled out of the dialog
-	 */
-	private boolean returnState;
+	private RefAppointment appt; // appointment to change
+	private JTextField titleField; // title field component
+	private JTextField locationField; // location field component
+	private DatePanel startDatePanel; // start date field component
+	private DatePanel endDatePanel; // end date field component
+	private JTextArea description; // description field component
+	private RecurrencePattern pattern; // recurrence pattern currently selected
+	private JTextArea patternDesc; // pattern description display
+	private JToggleButton nDays; // NDaysPattern selection button
+	private JToggleButton daysOfWeek; // DaysOfWeekPattern selection button
+	private JToggleButton none; // null pattern selection button
+	private boolean returnState; // false if user has canceled out of the dialog
 
 	/**
 	 * Prompts the user to change an Appointment.
@@ -125,37 +62,6 @@ public class AppointmentDialog extends JDialog{
 	 */
 	public static boolean changeAppointment(JFrame frame, RefAppointment appt){
 		AppointmentDialog dialog = new AppointmentDialog(frame, appt);
-		dialog.setVisible(true);
-		return dialog.getReturnState();
-	}
-
-	/**
-	 * Prompts the user to change an Appointment.
-	 *
-	 * @param frame the Frame from which the dialog is displayed
-	 * @param appt  appointment to prompt changes for
-	 *
-	 * @return false iff the user has canceled out of the dialog
-	 */
-	public static boolean changeAppointment(Dialog frame, RefAppointment appt){
-		AppointmentDialog dialog = new AppointmentDialog(frame, appt);
-		dialog.setVisible(true);
-		return dialog.getReturnState();
-	}
-
-	/**
-	 * Prompts the user to change an Appointment.
-	 *
-	 * @param frame the <code>Frame</code> from which the dialog is displayed
-	 * @param model a Calendar model used to get the default settings
-	 *
-	 * @return false iff the user has canceled out of the dialog
-	 */
-	public static boolean changeAppointmentDefaults(
-			Dialog frame, CalendarModel model){
-		AppointmentDialog dialog =
-				new AppointmentDialog(frame, model.getCurrentDefaults());
-		dialog.setTitle("Edit Appointment Defaults");
 		dialog.setVisible(true);
 		return dialog.getReturnState();
 	}
@@ -180,17 +86,15 @@ public class AppointmentDialog extends JDialog{
 	/**
 	 * ActionListener intended to be used with the "OK" button on the
 	 * AppointmentDialog form.
-	 * <p/>
-	 * Applies the changes of the form to the form's RefAppointment, and disposes
-	 * the form if no errors occur.
 	 *
-	 * @author xxx
+	 * Applies the changes of the form to the form's RefAppointment, and disposes
+	 * the form if no errors occurs.
 	 */
 	private class OKListener implements ActionListener{
 
 		/**
 		 * Invoked when the "OK" button is pressed.
-		 * <p/>
+		 *
 		 * Applies the changes of the form to the form's RefAppointment, and disposes
 		 * the form if no errors occur.
 		 *
@@ -204,17 +108,15 @@ public class AppointmentDialog extends JDialog{
 	/**
 	 * ActionListener intended to be used with the "no recurrence" button on the
 	 * AppointmentDialog form.
-	 * <p/>
+	 *
 	 * Sets the pattern to null, and updates the pattern description to match the
 	 * selection
-	 *
-	 * @author xxx
 	 */
 	private class NoPatternButtonListener implements ActionListener{
 
 		/**
 		 * Invoked when the "no recurrence" button is pressed.
-		 * <p/>
+		 *
 		 * Sets the pattern to null, and updates the pattern description to match the
 		 * selection
 		 *
@@ -229,11 +131,9 @@ public class AppointmentDialog extends JDialog{
 	/**
 	 * ActionListener intended to be used with the "periodically" button on the
 	 * AppointmentDialog form.
-	 * <p/>
+	 *
 	 * Prompts the user for pattern input, sets the pattern to the returned
 	 * NDaysPattern, and updates the pattern description to match the selection
-	 *
-	 * @author xxx
 	 */
 	private class NDaysButtonListener implements ActionListener{
 
@@ -263,18 +163,16 @@ public class AppointmentDialog extends JDialog{
 	/**
 	 * ActionListener intended to be used with the "select days" button on the
 	 * AppointmentDialog form.
-	 * <p/>
+	 *
 	 * Prompts the user for pattern input, sets the pattern to the returned
 	 * DayOfWeekPattern, and updates the pattern description to match the
 	 * selection
-	 *
-	 * @author xxx
 	 */
 	private class DayOfWeekButtonListener implements ActionListener{
 
 		/**
 		 * Invoked when the "select days" button is pressed.
-		 * <p/>
+		 *
 		 * Prompts the user for pattern input, sets the pattern to the returned
 		 * DayOfWeekPattern, and updates the pattern description to match the
 		 * selection
@@ -300,8 +198,6 @@ public class AppointmentDialog extends JDialog{
 
 
 	/**
-	 * Returns false if the user has canceled out of the dialog
-	 *
 	 * @return false if the user has canceled out of the dialog
 	 */
 	private boolean getReturnState(){
@@ -319,7 +215,7 @@ public class AppointmentDialog extends JDialog{
 	}
 
 	/**
-	 * applies the changes of the user edit, and disposes the form, returning
+	 * Applies the changes of the user edit, and disposes the form, returning
 	 * control back to the parent form.
 	 */
 	private void returnSuccessful(){
@@ -359,7 +255,7 @@ public class AppointmentDialog extends JDialog{
 	}
 
 	/**
-	 * updates the pattern description based on the value of pattern
+	 * Updates the pattern description based on the value of pattern
 	 */
 	private void updatePatternDesc(){
 
@@ -383,8 +279,6 @@ public class AppointmentDialog extends JDialog{
 	}
 
 	/**
-	 * Returns a new panel for editing the Recurrence pattern
-	 *
 	 * @return a new panel for editing the Recurrence pattern
 	 */
 	private JPanel getNewPatternPanel(){
@@ -438,8 +332,6 @@ public class AppointmentDialog extends JDialog{
 	}
 
 	/**
-	 * Returns a new panel for editing the description
-	 *
 	 * @return a new panel for editing the description
 	 */
 	private JPanel getNewCenterPanel(){
@@ -474,12 +366,9 @@ public class AppointmentDialog extends JDialog{
 	 * @return a new panel for editing the description
 	 */
 	private JPanel getNewNorthPanel(boolean enableAppt){
-
-		// title
-		titleField = new JTextField(appt.getTitle());
-
-		// location
-		locationField = new JTextField(appt.getLocation());
+		titleField = new JTextField(appt.getTitle()); // title
+		locationField = new JTextField(appt.getLocation()); // location
+		JLabel duration = new JLabel(); // duration
 
 		// start date
 		startDatePanel = new DatePanel(appt.getStartDate(), enableAppt, this);
@@ -487,17 +376,10 @@ public class AppointmentDialog extends JDialog{
 		// end date
 		endDatePanel = new DatePanel(appt.getEndDate(), true, this);
 
-		// duration
-		duration = new JLabel();
-
 		// listeners
-		startDatePanel.addActionListener(new DurationUpdateListener(
-				duration, startDatePanel, endDatePanel));
-		endDatePanel.addActionListener(new DurationUpdateListener(
-				duration, startDatePanel, endDatePanel));
-		DurationUpdateListener.updateDuration(
-				duration, startDatePanel, endDatePanel);
-
+		startDatePanel.addActionListener(new DurationUpdateListener(duration, startDatePanel, endDatePanel));
+		endDatePanel.addActionListener(new DurationUpdateListener(duration, startDatePanel, endDatePanel));
+		DurationUpdateListener.updateDuration(duration, startDatePanel, endDatePanel);
 
 		// panel to return
 		JPanel ret = new JPanel();
@@ -564,17 +446,6 @@ public class AppointmentDialog extends JDialog{
 	}
 
 	/**
-	 * creates a new AppointmentDialog
-	 *
-	 * @param frame from which the dialog is displayed
-	 * @param appt  appointment to prompt changes for
-	 */
-	private AppointmentDialog(Dialog frame, RefAppointment appt){
-		super(frame, true);
-		init(appt, true);
-	}
-
-	/**
 	 * Creates a new AppointmentDialog based on a template, with disabled
 	 * RefAppointment fields
 	 *
@@ -586,15 +457,4 @@ public class AppointmentDialog extends JDialog{
 		init(new RefAppointment(new Date(), apptTmpl), false);
 	}
 
-	/**
-	 * Creates a new AppointmentDialog based on a template, with disabled
-	 * RefAppointment fields
-	 *
-	 * @param frame    from which the dialog is displayed
-	 * @param apptTmpl appointment to prompt changes for
-	 */
-	private AppointmentDialog(Dialog frame, AppointmentTemplate apptTmpl){
-		super(frame, true);
-		init(new RefAppointment(new Date(), apptTmpl), false);
-	}
 }
