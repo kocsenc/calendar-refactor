@@ -15,20 +15,13 @@ import java.util.Observer;
  * between the view and the model. Whenever the model changes this observe can
  * change what is needed in the view, also when there is an ActionEvent this
  * class passes the information to the model
- *
- * @author xxx
  */
 public class CalendarController implements Observer{
 
-	/**
-	 * The Calendar model is the mechanism to do all the logical operations of the
-	 * calendar (add/remove/modify appointments)
-	 */
+	// performs logical operations of calendar (add/remove/modify appointments)
 	private final CalendarModel theModel;
 
-	/**
-	 * The calendar view is the highest level of representation for the UI
-	 */
+	// highest level of representation for the UI
 	private final CalendarView theView;
 
 	/**
@@ -49,8 +42,8 @@ public class CalendarController implements Observer{
 	}
 
 	/**
-	 * This method instantiates all the necessary listeners, giving them reference
-	 * to this CalendarController, and then adds them to CalendarView
+	 * This method instantiates all the necessary listeners, giving them
+	 * reference to this CalendarController, and then adds them to CalendarView.
 	 */
 	private void instantiateListeners(){
 
@@ -139,8 +132,6 @@ public class CalendarController implements Observer{
 	}
 
 	/**
-	 * Returns the highest level of representation for the UI
-	 *
 	 * @return returns the highest level of representation for the UI
 	 */
 	public CalendarView getView(){
@@ -148,8 +139,6 @@ public class CalendarController implements Observer{
 	}
 
 	/**
-	 * Returns the mechanism to do all the logical operations of the calendar
-	 *
 	 * @return returns mechanism to do all logical operations of the calendar
 	 */
 	public CalendarModel getModel(){
@@ -206,13 +195,11 @@ public class CalendarController implements Observer{
 
 			// if there's been no changes, open normally
 		}
-		else{
+		else
 			ret = true;
-		}
 
-		if(ret){
+		if(ret)
 			runnable.run();
-		}
 		return ret;
 	}
 
@@ -235,11 +222,10 @@ public class CalendarController implements Observer{
 	}
 
 	/**
-	 * This methd checks to see if the program needs to save or save a
+	 * This method checks to see if the program needs to save or save a
 	 *
 	 * @return true if the program can just save, or save as otherwise
 	 */
-
 	public boolean save(){
 		boolean ret = false;
 		try{
@@ -282,8 +268,9 @@ public class CalendarController implements Observer{
 	}
 
 	/**
-	 * The constructor of the Controller takes a model and a view and adds various
-	 * listeners to the view and then adds itself as an observer of the model
+	 * The constructor of the Controller takes a model and a view and adds
+	 * various listeners to the view and then adds itself as an observer of
+	 * the model.
 	 *
 	 * @param model mechanism to do all the logical operations of the calendar
 	 * @param view  the highest level of representation for the UI

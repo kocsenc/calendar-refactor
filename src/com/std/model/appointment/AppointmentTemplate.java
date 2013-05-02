@@ -27,39 +27,16 @@ import java.io.Serializable;
 public class AppointmentTemplate
 		extends java.util.Observable implements Serializable{
 
-	/**
-	 * UID Used for Serializable
-	 */
+	// UID Used for Serializable
 	private static final long serialVersionUID = 8219757873492578630L;
 
-	/**
-	 * Title of the appointment.
-	 */
-	private String title;
+	private String title; // title of the appointment
+	private String description; // description of the appointment
+	private String location; // where the appointment takes place
+	private long duration; // how long appointment occurs, in milliseconds
+	private RecurrencePattern recPattern; // pattern used for appointment
 
 	/**
-	 * Description of the appointment.
-	 */
-	private String description;
-
-	/**
-	 * Where the appointment takes place.
-	 */
-	private String location;
-
-	/**
-	 * How long the appointment occurs for in milliseconds.
-	 */
-	private long duration;
-
-	/**
-	 * The pattern that this appointment recurs by (daily,weekly, etc.)
-	 */
-	private RecurrencePattern recPattern;
-
-	/**
-	 * Returns the title of the appointment template object.
-	 *
 	 * @return the title of the appointment template object.
 	 */
 	public String getTitle(){
@@ -67,8 +44,6 @@ public class AppointmentTemplate
 	}
 
 	/**
-	 * Returns the description of the appointment template object.
-	 *
 	 * @return the description of the appointment template object.
 	 */
 	public String getDescription(){
@@ -76,8 +51,6 @@ public class AppointmentTemplate
 	}
 
 	/**
-	 * Returns the location of the appointment template Object.
-	 *
 	 * @return the location of the appointment template Object.
 	 */
 	public String getLocation(){
@@ -85,8 +58,6 @@ public class AppointmentTemplate
 	}
 
 	/**
-	 * Returns the duration of the appointment template object in milliseconds.
-	 *
 	 * @return the duration of the appointment template object in milliseconds.
 	 */
 	public long getDuration(){
@@ -94,8 +65,6 @@ public class AppointmentTemplate
 	}
 
 	/**
-	 * Returns the pattern object of this appointment template.
-	 *
 	 * @return the pattern object of this appointment template.
 	 */
 	public RecurrencePattern getPattern(){
@@ -183,8 +152,8 @@ public class AppointmentTemplate
 	}
 
 	/**
-	 * Sets the location of the appointment, and notifies observers if a change has
-	 * taken place.
+	 * Sets the location of the appointment, and notifies observers if a change
+	 * has taken place.
 	 *
 	 * @param loc the new location for the appointment
 	 *
@@ -214,8 +183,8 @@ public class AppointmentTemplate
 	}
 
 	/**
-	 * Sets the duration of the appointment, and notifies observers if a change has
-	 * taken place.
+	 * Sets the duration of the appointment, and notifies observers if a change
+	 * has taken place.
 	 *
 	 * @param duration the new duration for the appointment in milliseconds
 	 *
@@ -241,8 +210,8 @@ public class AppointmentTemplate
 	}
 
 	/**
-	 * Sets the pattern of the appointment, and notifies observers if a change has
-	 * taken place.
+	 * Sets the pattern of the appointment, and notifies observers if a change
+	 * has taken place.
 	 *
 	 * @param pattern the new pattern for the appointment
 	 */
@@ -252,8 +221,8 @@ public class AppointmentTemplate
 	}
 
 	/**
-	 * Sets all the fields of the appointment, and notifies observers if a change
-	 * has taken place.
+	 * Sets all the fields of the appointment, and notifies observers if a
+	 * change has taken place.
 	 *
 	 * @param apptTmpl the new appointment fields
 	 */
@@ -284,7 +253,7 @@ public class AppointmentTemplate
 	}
 
 	/**
-	 * Saves the object to an object output stream
+	 * Saves the object to an object output stream.
 	 *
 	 * @param ostream the object stream to be writing to
 	 *
@@ -305,7 +274,7 @@ public class AppointmentTemplate
 	}
 
 	/**
-	 * creates a new AppointmentTemplate
+	 * Creates a new AppointmentTemplate.
 	 *
 	 * @param title       Title of the appointment.
 	 * @param description Description of the appointment.
