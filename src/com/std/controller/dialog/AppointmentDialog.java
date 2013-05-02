@@ -18,7 +18,6 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -40,16 +39,11 @@ public class AppointmentDialog extends JDialog{
 	// UID Used for Serializable
 	private static final long serialVersionUID = 5613941454015423846L;
 
-	// format to use when displaying date information
-	private static final SimpleDateFormat FORMAT = new SimpleDateFormat(
-			"EEE, d MMM yyyy 'at' h:mm aa");
-
 	private RefAppointment appt; // appointment to change
 	private JTextField titleField; // title field component
 	private JTextField locationField; // location field component
 	private DatePanel startDatePanel; // start date field component
 	private DatePanel endDatePanel; // end date field component
-	private JLabel duration; // duration field display
 	private JTextArea description; // description field component
 	private RecurrencePattern pattern; // recurrence pattern currently selected
 	private JTextArea patternDesc; // pattern description display
@@ -68,37 +62,6 @@ public class AppointmentDialog extends JDialog{
 	 */
 	public static boolean changeAppointment(JFrame frame, RefAppointment appt){
 		AppointmentDialog dialog = new AppointmentDialog(frame, appt);
-		dialog.setVisible(true);
-		return dialog.getReturnState();
-	}
-
-	/**
-	 * Prompts the user to change an Appointment.
-	 *
-	 * @param frame the Frame from which the dialog is displayed
-	 * @param appt  appointment to prompt changes for
-	 *
-	 * @return false iff the user has canceled out of the dialog
-	 */
-	public static boolean changeAppointment(Dialog frame, RefAppointment appt){
-		AppointmentDialog dialog = new AppointmentDialog(frame, appt);
-		dialog.setVisible(true);
-		return dialog.getReturnState();
-	}
-
-	/**
-	 * Prompts the user to change an Appointment.
-	 *
-	 * @param frame the <code>Frame</code> from which the dialog is displayed
-	 * @param model a Calendar model used to get the default settings
-	 *
-	 * @return false iff the user has canceled out of the dialog
-	 */
-	public static boolean changeAppointmentDefaults(
-			Dialog frame, CalendarModel model){
-		AppointmentDialog dialog =
-				new AppointmentDialog(frame, model.getCurrentDefaults());
-		dialog.setTitle("Edit Appointment Defaults");
 		dialog.setVisible(true);
 		return dialog.getReturnState();
 	}
@@ -403,12 +366,9 @@ public class AppointmentDialog extends JDialog{
 	 * @return a new panel for editing the description
 	 */
 	private JPanel getNewNorthPanel(boolean enableAppt){
-
-		// title
-		titleField = new JTextField(appt.getTitle());
-
-		// location
-		locationField = new JTextField(appt.getLocation());
+		titleField = new JTextField(appt.getTitle()); // title
+		locationField = new JTextField(appt.getLocation()); // location
+		JLabel duration = new JLabel(); // duration
 
 		// start date
 		startDatePanel = new DatePanel(appt.getStartDate(), enableAppt, this);
@@ -416,17 +376,10 @@ public class AppointmentDialog extends JDialog{
 		// end date
 		endDatePanel = new DatePanel(appt.getEndDate(), true, this);
 
-		// duration
-		duration = new JLabel();
-
 		// listeners
-		startDatePanel.addActionListener(new DurationUpdateListener(
-				duration, startDatePanel, endDatePanel));
-		endDatePanel.addActionListener(new DurationUpdateListener(
-				duration, startDatePanel, endDatePanel));
-		DurationUpdateListener.updateDuration(
-				duration, startDatePanel, endDatePanel);
-
+		startDatePanel.addActionListener(new DurationUpdateListener(duration, startDatePanel, endDatePanel));
+		endDatePanel.addActionListener(new DurationUpdateListener(duration, startDatePanel, endDatePanel));
+		DurationUpdateListener.updateDuration(duration, startDatePanel, endDatePanel);
 
 		// panel to return
 		JPanel ret = new JPanel();
@@ -493,17 +446,6 @@ public class AppointmentDialog extends JDialog{
 	}
 
 	/**
-	 * Creates a new AppointmentDialog
-	 *
-	 * @param frame from which the dialog is displayed
-	 * @param appt  appointment to prompt changes for
-	 */
-	private AppointmentDialog(Dialog frame, RefAppointment appt){
-		super(frame, true);
-		init(appt, true);
-	}
-
-	/**
 	 * Creates a new AppointmentDialog based on a template, with disabled
 	 * RefAppointment fields
 	 *
@@ -515,15 +457,4 @@ public class AppointmentDialog extends JDialog{
 		init(new RefAppointment(new Date(), apptTmpl), false);
 	}
 
-	/**
-	 * Creates a new AppointmentDialog based on a template, with disabled
-	 * RefAppointment fields
-	 *
-	 * @param frame    from which the dialog is displayed
-	 * @param apptTmpl appointment to prompt changes for
-	 */
-	private AppointmentDialog(Dialog frame, AppointmentTemplate apptTmpl){
-		super(frame, true);
-		init(new RefAppointment(new Date(), apptTmpl), false);
-	}
 }
