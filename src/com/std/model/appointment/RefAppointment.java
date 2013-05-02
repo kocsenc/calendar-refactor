@@ -22,41 +22,43 @@ import java.util.Date;
  * <p/>
  * Usage: CalendarModel model = new CalendarModel();
  * <p/>
- * // creates a new template AppointmentTemplate template = new
+ * // Creates a new template AppointmentTemplate template = new
  * AppointmentTemplate("title", "", "n/a", 0);
  * <p/>
- * // adds it to the calendar model model.getAppointmentTemplateSet().add(template);
+ * // adds it to the calendar model model.getAppointmentTemplateSet().
+ * add(template);
  * <p/>
  * // creates a new reference to the template RefAppointment reference = new
  * RefAppointment(template, new Date());
  * <p/>
- * // adds the reference to the calendar model model.getAppointmentSet().add(reference);
+ * // adds the reference to the calendar model model.getAppointmentSet().
+ * add(reference);
  */
 public class RefAppointment extends java.util.Observable
 		implements Serializable{
 
-
+	// UID Used for Serializable
 	private static final long serialVersionUID = -4331942306839501945L;
-			//UID Used for Serializable
 
-	/**
-	 * compares two Appointments by their start dates
-	 */
+	// compares two Appointments by their start dates
 	public static final Comparator<RefAppointment> COMPARATOR_APPOINTMENT_START;
 
-	/**
-	 * compares two Appointments by their end dates
-	 */
+	// compares two Appointments by their end dates
 	public static final Comparator<RefAppointment> COMPARATOR_APPOINTMENT_END;
+
+	// start date of a particular appointment instance
+	private Date startDate;
+
+	// template appointment that stores the appointment description, etc.
+	private AppointmentTemplate parent;
 
 	static{
 		// set the start comparator
 		COMPARATOR_APPOINTMENT_START = new Comparator<RefAppointment>(){
 			public int compare(RefAppointment o1, RefAppointment o2){
 				int ret = o1.getStartDate().compareTo(o2.getStartDate());
-				if(ret == 0 && !o1.equals(o2)){
+				if(ret == 0 && !o1.equals(o2))
 					ret++;
-				}
 				return ret;
 			}
 		};
@@ -65,21 +67,12 @@ public class RefAppointment extends java.util.Observable
 		COMPARATOR_APPOINTMENT_END = new Comparator<RefAppointment>(){
 			public int compare(RefAppointment o1, RefAppointment o2){
 				int ret = o1.getEndDate().compareTo(o2.getEndDate());
-				if(ret == 0 && !o1.equals(o2)){
+				if(ret == 0 && !o1.equals(o2))
 					ret++;
-				}
 				return ret;
 			}
 		};
 	}
-
-
-	private Date startDate;
-			//the start date of this particular appointment instance
-
-	private AppointmentTemplate parent;
-			//the template appointment that stores this appointment's description, etc.
-
 
 	/**
 	 * This is the constructor for RefAppointments Creates a new bound reference to
@@ -104,7 +97,7 @@ public class RefAppointment extends java.util.Observable
 	}
 
 	/**
-	 * sets the AppointmentTemplate associated with this RefAppointment
+	 * Sets the AppointmentTemplate associated with this RefAppointment.
 	 *
 	 * @param t the new AppointmentTemplate associated with this RefAppointment
 	 *
