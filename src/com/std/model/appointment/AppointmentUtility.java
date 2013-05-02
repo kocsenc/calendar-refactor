@@ -10,8 +10,6 @@ import java.util.*;
 
 /**
  * AppointmentUtility is a utility class for working with Appointments
- *
- * @author xxx
  */
 public class AppointmentUtility{
 
@@ -27,17 +25,15 @@ public class AppointmentUtility{
 	 * @param set   set of all appointments
 	 * @param range range to bound by
 	 *
-	 * @return a sorted set of the appointments in set that are at least partially
-	 *         contained by range
+	 * @return a sorted set of the appointments in set that are at least
+	 * partially contained by range
 	 */
 	public static SortedSet<RefAppointment> getRange(
 			Set<RefAppointment> set, DateRange range){
-		if(set == null){
+		if(set == null)
 			throw new NullPointerException("set");
-		}
-		if(range == null){
+		if(range == null)
 			throw new NullPointerException("range");
-		}
 
 		TreeSet<RefAppointment> startSet = new TreeSet<RefAppointment>(
 				RefAppointment.COMPARATOR_APPOINTMENT_START);
@@ -60,19 +56,18 @@ public class AppointmentUtility{
 	}
 
 	/**
-	 * Returns a set of all the associated RefAppointments of a AppointmentTemplate
-	 * according to its RecurrencePattern
+	 * Returns a set of all the associated RefAppointments of a
+	 * AppointmentTemplate according to its RecurrencePattern
 	 *
 	 * @param apptTmpl AppointmentTemplate to generate the pattern references of
 	 *
-	 * @return a set of all the associated RefAppointments of a AppointmentTemplate
-	 *         according to its RecurrencePattern
+	 * @return a set of all the associated RefAppointments of a
+	 * AppointmentTemplate according to its RecurrencePattern
 	 */
 	public static Set<RefAppointment> generatePatternAppointments(
 			AppointmentTemplate apptTmpl){
-		if(apptTmpl == null){
+		if(apptTmpl == null)
 			throw new NullPointerException("set");
-		}
 
 		Set<RefAppointment> ret = new HashSet<RefAppointment>();
 		if(apptTmpl.getPattern() != null){
@@ -94,60 +89,47 @@ public class AppointmentUtility{
 
 				// generate the description string for NDaysPattern
 				NDaysPattern ptt = (NDaysPattern) pattern;
-				if(ptt.instanceEvery() == 1){
+				if(ptt.instanceEvery() == 1)
 					text = "recurs every day";
-				}
-				else if(ptt.instanceEvery() > 1){
+				else if(ptt.instanceEvery() > 1)
 					text = "recurs every " + ptt.instanceEvery() + " days ";
-				}
-
 			}
 			else if(pattern instanceof DayOfWeekPattern){
 
 				// generate the description string for DayOfWeekPattern
 				DayOfWeekPattern ptt = (DayOfWeekPattern) pattern;
-				if(ptt.onSunday()){
+				if(ptt.onSunday())
 					text += (text.length() == 0 ? "" : ", ") + "Sunday";
-				}
-				if(ptt.onMonday()){
+				if(ptt.onMonday())
 					text += (text.length() == 0 ? "" : ", ") + "Monday";
-				}
-				if(ptt.onTuesday()){
+				if(ptt.onTuesday())
 					text += (text.length() == 0 ? "" : ", ") + "Tuesday";
-				}
-				if(ptt.onWednesday()){
+				if(ptt.onWednesday())
 					text += (text.length() == 0 ? "" : ", ") + "Wednesday";
-				}
-				if(ptt.onThursday()){
+				if(ptt.onThursday())
 					text += (text.length() == 0 ? "" : ", ") + "Thursday";
-				}
-				if(ptt.onFriday()){
+				if(ptt.onFriday())
 					text += (text.length() == 0 ? "" : ", ") + "Friday";
-				}
-				if(ptt.onSaturday()){
+				if(ptt.onSaturday())
 					text += (text.length() == 0 ? "" : ", ") + "Saturday";
-				}
-				if(text.length() > 0){
+				if(text.length() > 0)
 					text = "recurs on " + text;
-				}
 			}
 
 			// append the RecurrencePattern dateRange data
 			if(text.length() > 0){
 				text += " from "
-						+ FORMAT.format(pattern.getRange().getStartDate())
-						+ " to "
-						+ FORMAT.format(pattern.getRange().getEndDate());
+					+ FORMAT.format(pattern.getRange().getStartDate())
+					+ " to "
+					+ FORMAT.format(pattern.getRange().getEndDate());
 			}
 		}
 
-		// if we've come this far and still have an empty string,
-		// either the pattern is null, or it otherwise doesn't
-		// recur.  so, set the text to reflect that, and replace
-		// whatever pattern we had with a null pattern.
-		if(text.length() == 0){
+		/* If we've come this far and still have an empty string, either the
+		pattern is null, or it otherwise doesn't recur. So, set the text to
+		reflect that, and replace whatever pattern we had with a null pattern.*/
+		if(text.length() == 0)
 			text = NO_RECUR;
-		}
 
 		return text;
 	}
@@ -167,24 +149,19 @@ public class AppointmentUtility{
 
 		// construct the string
 		String s = "";
-		if(weeks != 0){
+		if(weeks != 0)
 			s += weeks + " week" + (weeks == 1 ? "" : "s");
-		}
-		if(days != 0){
+		if(days != 0)
 			s += (s.length() == 0 ? "" : ", ") + days + " day" +
 					(days == 1 ? "" : "s");
-		}
-		if(hours != 0){
+		if(hours != 0)
 			s += (s.length() == 0 ? "" : ", ") + hours + " hour" +
 					(hours == 1 ? "" : "s");
-		}
-		if(min != 0){
+		if(min != 0)
 			s += (s.length() == 0 ? "" : ", ") + min + " minute" +
 					(min == 1 ? "" : "s");
-		}
-		if(s.length() == 0){
+		if(s.length() == 0)
 			s = "instantaneous";
-		}
 
 		// set the text
 		return s;
