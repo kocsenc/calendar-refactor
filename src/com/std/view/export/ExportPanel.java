@@ -12,6 +12,6 @@ import javax.swing.*;
 public class ExportPanel extends JFrame {
 	public static enum EXPORT_TYPE {
 		CSV,
-		DCAL,
+		DCAL
 	}
 }
