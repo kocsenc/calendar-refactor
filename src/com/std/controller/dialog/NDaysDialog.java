@@ -24,10 +24,13 @@ import java.awt.event.ActionListener;
  */
 public class NDaysDialog extends JDialog{
 
-	/**
-	 * UID Used for Serializable
-	 */
+	// UID Used for Serializable
 	private static final long serialVersionUID = 2554342305598276958L;
+
+	private NDaysPattern pattern;// pattern passed as result of user input
+	private DatePanel startDate; //start date field component
+	private DatePanel endDate;  //end date field component
+	private JTextField number;  //the number of days between each recurrence
 
 	/**
 	 * Prompts the user to create a NDaysPattern
@@ -60,17 +63,17 @@ public class NDaysDialog extends JDialog{
 	}
 
 	/**
-	 * ActionListener intended to be used with the "OK" button on the NDaysDialog
-	 * form.
-	 * <p/>
-	 * Applies the changes of the form to the form's NDaysPattern, and disposes the
-	 * form if no errors occur.
+	 * ActionListener intended to be used with the "OK" button on the
+	 * NDaysDialog form.
+	 *
+	 * Applies the changes of the form to the form's NDaysPattern, and disposes
+	 * the form if no errors occur.
 	 */
 	private class OKActionListener implements ActionListener{
 
 		/**
 		 * Invoked when the "OK" button is pressed.
-		 * <p/>
+		 *
 		 * Applies the changes of the form to the form's NDaysPattern, and disposes
 		 * the form if no errors occur.
 		 *
@@ -81,15 +84,6 @@ public class NDaysDialog extends JDialog{
 		}
 	}
 
-	private NDaysPattern pattern;
-			//the NDaysPattern that will be passed back as a result of user input
-
-	private DatePanel startDate; //start date field component
-
-	private DatePanel endDate;  //end date field component
-
-	private JTextField number;  //the number of days between each recurrence
-
 	/**
 	 * @return the NDaysPattern that was created as a result of user input
 	 */
@@ -98,7 +92,7 @@ public class NDaysDialog extends JDialog{
 	}
 
 	/**
-	 * applies the changes of the user edit, and disposes the form, returning
+	 * Applies the changes of the user edit, and disposes the form, returning
 	 * control back to the parent form.
 	 */
 	private void returnSuccessful(){
@@ -110,7 +104,7 @@ public class NDaysDialog extends JDialog{
 		}
 		catch(NumberFormatException e){
 			JOptionPane.showMessageDialog(this,
-										  "number of days is not a number", "", JOptionPane.ERROR_MESSAGE);
+			"number of days is not a number", "", JOptionPane.ERROR_MESSAGE);
 		}
 		catch(Exception e){
 			JOptionPane.showMessageDialog(
@@ -121,16 +115,15 @@ public class NDaysDialog extends JDialog{
 	/**
 	 * Initializes this NDaysDialog object, acts as a common constructor /
 	 * initializer for the actual constructors that would otherwise perform
-	 * redundant code
+	 * redundant code.
 	 *
 	 * @param base the RecurrencePattern that will be used to initialize fields
 	 */
 	private void init(RecurrencePattern base){
-		// because base could be any type of pattern, we need
-		// to somehow convert it to a NDaysPattern so we
-		// can use it for the defaults.  if it's null, make
-		// our own default, if it's already a NDaysPattern,
-		// then cast it, otherwise, use it for its dateRange
+		/* Because base could be any type of pattern, we need to somehow convert
+		it to a NDaysPattern so we can use it for the defaults.  if it's null,
+		make our own default, if it's already a NDaysPattern, then cast it.
+		Otherwise, use it for its dateRange */
 		NDaysPattern pattern;
 		if(base == null){
 			pattern = new NDaysPattern(new DateRange(), 0);
@@ -197,9 +190,8 @@ public class NDaysDialog extends JDialog{
 		setLocationRelativeTo(null);
 	}
 
-
 	/**
-	 * creates a new NDaysDialog initialized to an existing pattern
+	 * Creates a new NDaysDialog initialized to an existing pattern.
 	 *
 	 * @param frame   from which the dialog is displayed
 	 * @param pattern pattern to initialize the fields to
@@ -209,9 +201,8 @@ public class NDaysDialog extends JDialog{
 		init(pattern);
 	}
 
-
 	/**
-	 * creates a new NDaysDialog initialized to an existing pattern
+	 * Creates a new NDaysDialog initialized to an existing pattern.
 	 *
 	 * @param frame   from which the dialog is displayed
 	 * @param pattern pattern to initialize the fields to
