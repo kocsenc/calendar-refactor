@@ -564,7 +564,7 @@ public class DateDialog extends JDialog{
 			ints[i] = "" + i;
 		}
 		JComboBox hours = new JComboBox(ints);
-		((BasicComboBoxRenderer) hours.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+		//((BasicComboBoxRenderer) hours.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 		hours.setSelectedIndex(cal.get(Calendar.HOUR) % 12);
 		hours.addActionListener(new HourListener());
 
@@ -574,7 +574,7 @@ public class DateDialog extends JDialog{
 			ints[i] = (i < 10 ? "0" : "") + i;
 		}
 		JComboBox minutes = new JComboBox(ints);
-		((BasicComboBoxRenderer) minutes.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+		//((BasicComboBoxRenderer) minutes.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 		minutes.setSelectedIndex(cal.get(Calendar.MINUTE));
 		minutes.addActionListener(new MinuteListener());
 
@@ -585,8 +585,8 @@ public class DateDialog extends JDialog{
 						"PM"
 				}
 		);
-		((BasicComboBoxRenderer) amPm.getRenderer()).
-															setHorizontalAlignment(SwingConstants.CENTER);
+		//((BasicComboBoxRenderer) amPm.getRenderer()).
+															//setHorizontalAlignment(SwingConstants.CENTER);
 		amPm.setSelectedIndex(cal.get(Calendar.AM_PM) == Calendar.AM ? 0 : 1);
 		amPm.addActionListener(new AmPmListener());
 
