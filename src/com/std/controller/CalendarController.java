@@ -6,6 +6,7 @@ import com.std.view.CalendarView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
@@ -128,7 +129,7 @@ public class CalendarController implements Observer{
 
 		// listens for when the menu item "About" is selected
 		AboutActionListener aboutL = new AboutActionListener(this);
-		theView.addAboutActionListener(aboutL);
+		theView.addAboutActionListener((ActionListener) aboutL);
 	}
 
 	/**

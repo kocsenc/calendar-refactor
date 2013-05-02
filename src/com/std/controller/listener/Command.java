@@ -1,5 +1,7 @@
 package com.std.controller.listener;
 
+import com.std.controller.CalendarController;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Kocsen
@@ -10,5 +12,8 @@ package com.std.controller.listener;
 public interface Command {
 
 
-    void execute();
+    /**
+     *
+     */
+    void execute(CalendarController cc);
 }
