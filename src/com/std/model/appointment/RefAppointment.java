@@ -19,17 +19,15 @@ import java.util.Date;
  * can create a template, and instantiate it by making a RefAppointment that
  * references the template and contains a start date for binding it to the
  * calendar.
- * <p/>
+ *
  * Usage: CalendarModel model = new CalendarModel();
- * <p/>
  * // creates a new template AppointmentTemplate template = new
  * AppointmentTemplate("title", "", "n/a", 0);
- * <p/>
+ *
  * // adds it to the calendar model model.getAppointmentTemplateSet().add(template);
- * <p/>
  * // creates a new reference to the template RefAppointment reference = new
  * RefAppointment(template, new Date());
- * <p/>
+ *
  * // adds the reference to the calendar model model.getAppointmentSet().add(reference);
  */
 public class RefAppointment extends java.util.Observable
