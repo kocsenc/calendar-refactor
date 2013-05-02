@@ -19,15 +19,15 @@ import java.util.Locale;
  * opportunity to select a date</br> AppointmentDialog.changeAppointment(frame,
  * startDate);</br></tt> </br> The class methods block until the user finishes
  * editing, and returns the selected date.
- *
- * @author xxx
  */
 public class DateDialog extends JDialog{
-
-	/**
-	 * UID Used for Serializable
-	 */
+	// UID Used for Serializable
 	private static final long serialVersionUID = -8475931971102498692L;
+
+	private Date date; // the currently selected date
+	private Date returnDate; // date returned; null if form was cancelled
+	private JLabel label; // display for the current month and year
+	private JToggleButton[] buttons; // array of day elements in the grid
 
 	/**
 	 * Prompts the user to select a Date.
@@ -60,16 +60,14 @@ public class DateDialog extends JDialog{
 	/**
 	 * ActionListener intended to be used with the "<<" button on the DateDialog
 	 * form.
-	 * <p/>
-	 * Subtracts 1 year from the currently selected date
 	 *
-	 * @author xxx
+	 * Subtracts 1 year from the currently selected date
 	 */
 	private class PreviousYearListener implements ActionListener{
 
 		/**
 		 * Invoked when the "<<" button is pressed.
-		 * <p/>
+		 *
 		 * Subtracts 1 year from the currently selected date
 		 *
 		 * @param e not used
@@ -82,16 +80,14 @@ public class DateDialog extends JDialog{
 	/**
 	 * ActionListener intended to be used with the "<" button on the DateDialog
 	 * form.
-	 * <p/>
-	 * Subtracts 1 month from the currently selected date
 	 *
-	 * @author xxx
+	 * Subtracts 1 month from the currently selected date
 	 */
 	private class PreviousMonthListener implements ActionListener{
 
 		/**
 		 * Invoked when the "<" button is pressed.
-		 * <p/>
+		 *
 		 * Subtracts 1 month from the currently selected date
 		 *
 		 * @param e not used
@@ -104,16 +100,14 @@ public class DateDialog extends JDialog{
 	/**
 	 * ActionListener intended to be used with the ">" button on the DateDialog
 	 * form.
-	 * <p/>
-	 * Adds 1 month to the currently selected date
 	 *
-	 * @author xxx
+	 * Adds 1 month to the currently selected date
 	 */
 	private class NextMonthListener implements ActionListener{
 
 		/**
 		 * Invoked when the ">" button is pressed.
-		 * <p/>
+		 *
 		 * Adds 1 month to the currently selected date
 		 *
 		 * @param e not used
@@ -126,16 +120,14 @@ public class DateDialog extends JDialog{
 	/**
 	 * ActionListener intended to be used with the ">>" button on the DateDialog
 	 * form.
-	 * <p/>
-	 * Adds 1 year to the currently selected date
 	 *
-	 * @author xxx
+	 * Adds 1 year to the currently selected date
 	 */
 	private class NextYearListener implements ActionListener{
 
 		/**
 		 * Invoked when the ">>" button is pressed.
-		 * <p/>
+		 *
 		 * Adds 1 year to the currently selected date
 		 *
 		 * @param e not used
@@ -148,16 +140,14 @@ public class DateDialog extends JDialog{
 	/**
 	 * HourListener intended to be used with the hourly combo box on the DateDialog
 	 * form.
-	 * <p/>
-	 * sets the date to the hour selected
 	 *
-	 * @author xxx
+	 * sets the date to the hour selected
 	 */
 	private class HourListener implements ActionListener{
 
 		/**
 		 * Invoked when the hourly combo box is changed.
-		 * <p/>
+		 *
 		 * sets the date to the hour selected
 		 *
 		 * @param e not used
@@ -181,17 +171,15 @@ public class DateDialog extends JDialog{
 	/**
 	 * MinuteListener intended to be used with the minute combo box on the
 	 * DateDialog form.
-	 * <p/>
-	 * sets the date to the minute selected
 	 *
-	 * @author xxx
+	 * Sets the date to the minute selected.
 	 */
 	private class MinuteListener implements ActionListener{
 
 		/**
 		 * Invoked when the minute combo box is changed.
-		 * <p/>
-		 * sets the date to the minute selected
+		 *
+		 * Sets the date to the minute selected.
 		 *
 		 * @param e not used
 		 */
@@ -214,17 +202,15 @@ public class DateDialog extends JDialog{
 	/**
 	 * AmPmListener intended to be used with the AM / PM combo box on the
 	 * DateDialog form.
-	 * <p/>
-	 * sets the date to AM or PM as selected
 	 *
-	 * @author xxx
+	 * Sets the date to AM or PM as selected.
 	 */
 	private class AmPmListener implements ActionListener{
 
 		/**
 		 * Invoked when the AM / PM combo box is changed.
-		 * <p/>
-		 * sets the date to AM or PM as selected
+		 *
+		 * Sets the date to AM or PM as selected.
 		 *
 		 * @param e not used
 		 */
@@ -253,19 +239,17 @@ public class DateDialog extends JDialog{
 	/**
 	 * ActionListener intended to be used with the "OK" button on the DateDialog
 	 * form.
-	 * <p/>
-	 * Applies the changes of the form to the form's return date, and disposes the
-	 * form if no errors occur.
 	 *
-	 * @author xxx
+	 * Applies the changes of the form to the form's return date, and disposes
+	 * the form if no errors occur.
 	 */
 	private class OKListener implements ActionListener{
 
 		/**
 		 * Invoked when the "OK" button is pressed.
-		 * <p/>
-		 * Applies the changes of the form to the form's return date, and disposes the
-		 * form if no errors occur.
+		 *
+		 * Applies the changes of the form to the form's return date, and
+		 * disposes the form if no errors occur.
 		 *
 		 * @param e not used
 		 */
@@ -277,10 +261,8 @@ public class DateDialog extends JDialog{
 	/**
 	 * ActionListener intended to be used with the date buttons on the DateDialog
 	 * form grid.
-	 * <p/>
-	 * sets the date to the day selected
 	 *
-	 * @author xxx
+	 * Sets the date to the day selected.
 	 */
 	private class GridActionListener implements ActionListener{
 
@@ -291,8 +273,8 @@ public class DateDialog extends JDialog{
 
 		/**
 		 * Invoked when the one of the date buttons is selected.
-		 * <p/>
-		 * sets the date to the day selected
+		 *
+		 * Sets the date to the day selected.
 		 *
 		 * @param e not used
 		 */
@@ -301,7 +283,7 @@ public class DateDialog extends JDialog{
 		}
 
 		/**
-		 * creates a new listener at the index specified
+		 * Creates a new listener at the index specified.
 		 *
 		 * @param index		The index to specify for the new listener.
 		 */
@@ -311,26 +293,6 @@ public class DateDialog extends JDialog{
 	}
 
 	/**
-	 * the currently selected date
-	 */
-	private Date date;
-
-	/**
-	 * what gets returned to the user, null if the form was canceled out of
-	 */
-	private Date returnDate;
-
-	/**
-	 * display for the current month and year
-	 */
-	private JLabel label;
-
-	/**
-	 * array of day elements in the grid
-	 */
-	private JToggleButton[] buttons;
-
-	/**
 	 * @return the date selected by user, null if the form was canceled out of
 	 */
 	Date getReturnDate(){
@@ -338,8 +300,8 @@ public class DateDialog extends JDialog{
 	}
 
 	/**
-	 * adds the specified amount to the specified field in the current date, and
-	 * updates the form accordingly
+	 * Adds the specified amount to the specified field in the current date,
+	 * and updates the form accordingly.
 	 *
 	 * @param field  the calendar field.
 	 * @param amount the amount of date or time to be added to the field.
@@ -375,8 +337,8 @@ public class DateDialog extends JDialog{
 	}
 
 	/**
-	 * sets the current date according to the specified index into the grid month,
-	 * and updates the form accordingly
+	 * Sets the current date according to the specified index into the grid month,
+	 * and updates the form accordingly.
 	 *
 	 * @param index number of days since the beginning of the grid month
 	 */
@@ -398,7 +360,7 @@ public class DateDialog extends JDialog{
 	}
 
 	/**
-	 * applies the changes of the user edit, and disposes the form, returning
+	 * Applies the changes of the user edit, and disposes the form, returning
 	 * control back to the parent form.
 	 */
 	private void returnSuccessful(){
@@ -407,8 +369,6 @@ public class DateDialog extends JDialog{
 	}
 
 	/**
-	 * Returns a new panel for selecting a date from a grid
-	 *
 	 * @return a new panel for selecting a date from a grid
 	 */
 	private JPanel getNewGridPanel(){
@@ -447,8 +407,6 @@ public class DateDialog extends JDialog{
 	}
 
 	/**
-	 * Returns a new panel for editing the current month and year
-	 *
 	 * @return a new panel for editing the current month and year
 	 */
 	private JPanel getNewNorthPanel(){
@@ -468,8 +426,6 @@ public class DateDialog extends JDialog{
 	}
 
 	/**
-	 * Returns a new panel for incrementing the current month and year
-	 *
 	 * @return a new panel for incrementing the current month and year
 	 */
 	private JPanel getNewNextPanel(){
@@ -495,8 +451,6 @@ public class DateDialog extends JDialog{
 	}
 
 	/**
-	 * Returns a new panel for decrementing the current month and year
-	 *
 	 * @return a new panel for decrementing the current month and year
 	 */
 	private JPanel getNewPrevPanel(){
@@ -522,8 +476,6 @@ public class DateDialog extends JDialog{
 	}
 
 	/**
-	 * Returns a new panel for editing the time and confirming the selection
-	 *
 	 * @return a new panel for editing the time and confirming the selection
 	 */
 	private JPanel getNewSouthPanel(){
@@ -544,8 +496,6 @@ public class DateDialog extends JDialog{
 	}
 
 	/**
-	 * Returns a new panel for editing the time
-	 *
 	 * @return a new panel for editing the time
 	 */
 	private JPanel getNewTimePanel(){
@@ -564,7 +514,8 @@ public class DateDialog extends JDialog{
 			ints[i] = "" + i;
 		}
 		JComboBox hours = new JComboBox(ints);
-		((BasicComboBoxRenderer) hours.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+		((BasicComboBoxRenderer) hours.getRenderer()).setHorizontalAlignment(
+				SwingConstants.CENTER);
 		hours.setSelectedIndex(cal.get(Calendar.HOUR) % 12);
 		hours.addActionListener(new HourListener());
 
@@ -574,7 +525,8 @@ public class DateDialog extends JDialog{
 			ints[i] = (i < 10 ? "0" : "") + i;
 		}
 		JComboBox minutes = new JComboBox(ints);
-		((BasicComboBoxRenderer) minutes.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+		((BasicComboBoxRenderer) minutes.getRenderer()).setHorizontalAlignment(
+				SwingConstants.CENTER);
 		minutes.setSelectedIndex(cal.get(Calendar.MINUTE));
 		minutes.addActionListener(new MinuteListener());
 
@@ -586,7 +538,7 @@ public class DateDialog extends JDialog{
 				}
 		);
 		((BasicComboBoxRenderer) amPm.getRenderer()).
-															setHorizontalAlignment(SwingConstants.CENTER);
+				setHorizontalAlignment(SwingConstants.CENTER);
 		amPm.setSelectedIndex(cal.get(Calendar.AM_PM) == Calendar.AM ? 0 : 1);
 		amPm.addActionListener(new AmPmListener());
 
@@ -605,7 +557,7 @@ public class DateDialog extends JDialog{
 	/**
 	 * Initializes this DateDialog object, acts as a common constructor /
 	 * initializer for the actual constructors that would otherwise perform
-	 * redundant code
+	 * redundant code.
 	 *
 	 * @param startDate date to initially focus on
 	 */
@@ -614,8 +566,7 @@ public class DateDialog extends JDialog{
 		// default to the current date
 		if(startDate == null){
 			startDate = new Date();
-		}
-		date = startDate;
+		} date = startDate;
 
 		// set aesthetics
 		setLayout(new BorderLayout());
@@ -636,7 +587,7 @@ public class DateDialog extends JDialog{
 	}
 
 	/**
-	 * creates a new DateDialog initialized to a start date
+	 * Creates a new DateDialog initialized to a start date.
 	 *
 	 * @param frame     from which the dialog is displayed
 	 * @param startDate date to initially focus on
@@ -647,7 +598,7 @@ public class DateDialog extends JDialog{
 	}
 
 	/**
-	 * creates a new DateDialog initialized to a start date
+	 * Creates a new DateDialog initialized to a start date.
 	 *
 	 * @param frame     from which the dialog is displayed
 	 * @param startDate date to initially focus on
