@@ -26,9 +26,11 @@ public class ExportPanel extends JDialog {
 		fileType = new JComboBox(); // put in parameters
 		fileType.setSelectedIndex(0);
 		//fileType.addActionListener();
-		public void actionPerformed(ActionEvent e) {
-			JComboBox cb = (JComboBox)e.getSource();
-			String type = (String)cb.getSelectedItem();
-		}
+		return null;
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		JComboBox cb = (JComboBox)e.getSource();
+		String type = (String)cb.getSelectedItem();
 	}
 }
