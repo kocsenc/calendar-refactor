@@ -3,28 +3,28 @@ package com.std.controller.listener;
 import com.std.controller.CalendarController;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * This is the listener listening to the about menu item. Selecting this item
  * will pop up addition application information.
  *
- * @author xxx
+ * @author kxc4519
  */
-public class AboutCommand implements Command {
+public class AboutActionListener implements ActionListener {
 
+    CalendarController cc;
 
     /**
-     * creates a new AboutCommand
+     * creates a new AboutActionListener
      */
-    public AboutCommand() {
-
+    public AboutActionListener(CalendarController c) {
+        cc = c;
     }
 
     @Override
-    public void execute(CalendarController cc) {
-        System.out.println("Command is actually executed in command");
-        System.out.println(cc.getView().toString());
+    public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(cc.getView(), "DCal.  Copyright 2008, Super Team D, RIT", "About", JOptionPane.INFORMATION_MESSAGE);
     }
-
 }

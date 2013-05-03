@@ -272,7 +272,7 @@ public class CalendarView extends JFrame {
 
 
         // listens for when the menu item "About" is selected
-        //calMenu.getAboutMenuItem().addActionListener(new Act);
+        calMenu.getAboutMenuItem().addActionListener(new AboutActionListener(cc));
 
     }
 

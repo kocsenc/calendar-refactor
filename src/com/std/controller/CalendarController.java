@@ -39,9 +39,6 @@ public class CalendarController implements Observer {
         // add this CalendarController as an observer to the
         // model, so the view can be updated when the model changes
         theModel.addObserver(this);
-
-        // instantiate the listeners
-        //instantiateListeners();
     }
 
     /**
