@@ -16,7 +16,7 @@ public class ExportPanel {
 		new FileNameExtensionFilter("Comma-Separated Values (*.csv)", ".csv");
 	private final FileNameExtensionFilter XML =
 		new FileNameExtensionFilter("Extensible Markup Language (*.xml)", ".xml");
-	private final FileNameExtensionFilter DCAL =
+	private final FileNameExtensionFilter CAL =
 		new FileNameExtensionFilter("Calendar (*.cal)", ".cal");
 
 	public static void main(String [] args) {
@@ -27,7 +27,7 @@ public class ExportPanel {
 		JFileChooser fileChooser = new JFileChooser("C:\\");
 		fileChooser.addChoosableFileFilter(CSV);
 		fileChooser.addChoosableFileFilter(XML);
-		fileChooser.addChoosableFileFilter(DCAL);
+		fileChooser.addChoosableFileFilter(CAL);
 		fileChooser.showSaveDialog(null);
 	}
 }
