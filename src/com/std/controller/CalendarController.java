@@ -42,7 +42,7 @@ public class CalendarController implements Observer {
         theModel.addObserver(this);
 
         // instantiate the listeners
-        instantiateListeners();
+        //instantiateListeners();
     }
 
     /**
@@ -62,95 +62,7 @@ public class CalendarController implements Observer {
                 theModel.getFile());
     }
 
-    /**
-     * This method instantiates all the necessary listeners, giving them
-     * reference to this CalendarController, and then adds them to CalendarView.
-     */
-    private void instantiateListeners() {
 
-        // listens for when the view tries to be disposed
-        DefaultWindowListener defW = new DefaultWindowListener(this);
-        theView.addWindowListener(defW);
-
-
-        // listens for when an appointment is selected
-        AppointmentSelectionMouseListener apptSelL =
-                new AppointmentSelectionMouseListener(this);
-        theView.addAppointmentSelectionListener(apptSelL);
-
-        // listens for when a date is selected
-        DateSelectionActionListener dateSelL =
-                new DateSelectionActionListener(this);
-        theView.addDateSelectionListener(dateSelL);
-
-
-        // listens for when the next button is pressed
-        NextButtonActionListener nextL = new NextButtonActionListener(this);
-        theView.addNextButtonActionListener(nextL);
-
-        // listens for when the previous button is pressed
-        PrevButtonActionListener prevL = new PrevButtonActionListener(this);
-        theView.addPrevButtonActionListener(prevL);
-
-
-        // listens for when the menu item "New Calendar" is selected
-        NewCalendarActionListener newCalL = new NewCalendarActionListener(this);
-        theView.addNewCalendarActionListener(newCalL);
-
-        // listens for when the menu item "Open Calendar" is selected
-        OpenCalendarActionListener openCalL =
-                new OpenCalendarActionListener(this);
-        theView.addOpenCalendarActionListener(openCalL);
-
-        // listens for when the menu item "Save Calendar" is selected
-        SaveCalendarActionListener saveCalL =
-                new SaveCalendarActionListener(this);
-        theView.addSaveCalendarActionListener(saveCalL);
-
-        // listens for when the menu item "Save As Calendar" is selected
-        SaveAsCalendarActionListener saveAsCalL =
-                new SaveAsCalendarActionListener(this);
-        theView.addSaveAsCalendarActionListener(saveAsCalL);
-
-        // listens for when the menu item "Exit" is selected
-        ExitApplicationActionListener exitAppL =
-                new ExitApplicationActionListener(this);
-        theView.addExitApplicationActionListener(exitAppL);
-
-        // listens for when the menu item "New Appointment" is selected
-        NewAppointmentActionListener newApptL =
-                new NewAppointmentActionListener(this);
-        theView.addNewAppointmentActionListener(newApptL);
-
-        // listens for when the menu item "Edit Appointment" is selected
-        EditAppointmentActionListener editApptL =
-                new EditAppointmentActionListener(this);
-        theView.addEditAppointmentActionListener(editApptL);
-
-        // listens for when menu item "Edit Recurring Appointment" is selected
-        EditRecurringAppointmentActionListener editRecApptL =
-                new EditRecurringAppointmentActionListener(this);
-        theView.addEditAllAppointmentActionListener(editRecApptL);
-
-        // listens for when the menu item "Remove Appointment" is selected
-        RemoveAppointmentActionListener remApptL =
-                new RemoveAppointmentActionListener(this);
-        theView.addRemoveAppointmentActionListener(remApptL);
-
-        // listens for when the menu item "Remove All Occurrences" is selected
-        RemoveAllAppointmentActionListener remAllApptL =
-                new RemoveAllAppointmentActionListener(this);
-        theView.addRemoveAllAppointmentActionListener(remAllApptL);
-
-        // listens for when the menu item "Preferences" is selected
-        PreferencesActionListener prefL =
-                new PreferencesActionListener(this);
-        theView.addPreferencesActionListener(prefL);
-
-        // listens for when the menu item "About" is selected
-
-
-    }
 
     /**
      * @return returns the highest level of representation for the UI

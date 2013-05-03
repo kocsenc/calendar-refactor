@@ -23,6 +23,7 @@ public class AboutCommand implements Command {
     @Override
     public void execute(CalendarController cc) {
         System.out.println("Command is actually executed in command");
+        System.out.println(cc.getView().toString());
         JOptionPane.showMessageDialog(cc.getView(), "DCal.  Copyright 2008, Super Team D, RIT", "About", JOptionPane.INFORMATION_MESSAGE);
     }
 

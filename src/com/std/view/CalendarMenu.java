@@ -96,9 +96,8 @@ public class CalendarMenu extends JMenuBar {
 
         about = new JMenuItem("About");
         helpMenu.add(about);
-        this.addListeners();
-    }
 
+    }
 
 
     /**
@@ -152,16 +151,4 @@ public class CalendarMenu extends JMenuBar {
 
         return about;
     }
-
-    private void addListeners(){
-        about.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new AboutCommand().execute(cc);
-            }
-        });
-
-    }
-
-
 }
