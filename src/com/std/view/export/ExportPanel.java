@@ -9,6 +9,8 @@ package com.std.view.export;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExportPanel extends JDialog {
 	public static enum EXPORT_TYPE {
@@ -21,9 +23,13 @@ public class ExportPanel extends JDialog {
 	private JLabel nameLabel; // label for the fileName text area
 	private JTextArea fileName; // text area for the file name
 	private JComboBox fileType; // drop down menu for file type
+	private List<String> options;
 
 	private JComboBox createOptions() {
-		fileType = new JComboBox(); // put in parameters
+		options = new ArrayList<String>();
+		for(EXPORT_TYPE type : EXPORT_TYPE.values())
+			options.add(type.name());
+		fileType = new JComboBox(options.toArray()); // put in parameters
 		fileType.setSelectedIndex(0);
 		//fileType.addActionListener();
 		return null;
