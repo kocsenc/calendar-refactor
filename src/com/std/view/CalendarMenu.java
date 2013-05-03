@@ -1,6 +1,7 @@
 package com.std.view;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 /**
@@ -21,6 +22,7 @@ public class CalendarMenu extends JMenuBar {
     private final JMenuItem openCalendar;
     private final JMenuItem saveCalendar;
     private final JMenuItem saveAsCalendar;
+	private final JMenuItem exportCalendar;
     private final JMenuItem exitApplication;
     private final JMenuItem newAppointment;
     private final JMenuItem editAppointment;
@@ -29,8 +31,9 @@ public class CalendarMenu extends JMenuBar {
     private final JMenuItem removeAllAppointment;
     private final JMenuItem preferences;
     private final JMenuItem about;
+	private Button exportCalendarMenuItem;
 
-    public JMenuItem getNewCalendarMenuItem() {
+	public JMenuItem getNewCalendarMenuItem() {
         return newCalendar;
     }
 
@@ -45,6 +48,10 @@ public class CalendarMenu extends JMenuBar {
     public JMenuItem getSaveAsCalendarMenuItem() {
         return saveAsCalendar;
     }
+
+	public JMenuItem getExportCalendarMenuItem() {
+		return exportCalendar;
+	}
 
     public JMenuItem getExitApplicationMenuItem() {
         return exitApplication;
@@ -106,6 +113,10 @@ public class CalendarMenu extends JMenuBar {
 
         saveAsCalendar = new JMenuItem("Save As...");
         fileMenu.add(saveAsCalendar);
+
+		fileMenu.addSeparator();
+		exportCalendar = new JMenuItem("Export");
+		fileMenu.add(exportCalendar);
 
         fileMenu.addSeparator();
 
