@@ -56,7 +56,6 @@ public class CalendarController implements Observer {
                 theModel.getCurrentAppointment(),
                 theModel.getFile());
         System.out.println("Yo, CalendarController Updated");
-        theView.setCalendarController(this);
     }
 
 
