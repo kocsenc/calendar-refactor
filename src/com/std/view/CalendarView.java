@@ -17,8 +17,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -34,30 +32,24 @@ import java.util.Set;
 
 public class CalendarView extends JFrame {
 
+    private CalendarMenu calMenu;
+    private JLabel displayDate;
+    private JButton prevButton, nextButton;
+    private CalendarController cc;
+    private JTabbedPane tabs;
+    private MonthlyPanel monthlyView;
+    private WeeklyPanel weeklyView;
+    private DailyPanel dailyView;
+    private AppointmentPanel appointmentView;
+
+    private final static SimpleDateFormat FORMAT =
+            new SimpleDateFormat("MMMM, yyyy");
 
     public static enum TABBED_STATE {
         MONTHLY,
         WEEKLY,
         DAILY
     }
-
-    private CalendarMenu calMenu;
-    private JLabel displayDate;
-    private JButton prevButton, nextButton;
-    private CalendarController cc;
-
-    /**
-     * These are the different tabs
-     */
-    private JTabbedPane tabs;
-    private MonthlyPanel monthlyView;
-    private WeeklyPanel weeklyView;
-    private DailyPanel dailyView;
-
-    private AppointmentPanel appointmentView;
-
-    private final static SimpleDateFormat FORMAT =
-            new SimpleDateFormat("MMMM, yyyy");
 
     /**
      * This is the constructor, it sets up the different views and buttons and
@@ -70,6 +62,7 @@ public class CalendarView extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        instantiateListeners();
     }
 
     /**
@@ -158,47 +151,6 @@ public class CalendarView extends JFrame {
         return ret;
     }
 
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param mouse is the mouse listener to be added to the appointment blocks
-     */
-    public void addAppointmentSelectionListener(MouseListener mouse) {
-
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the previus button
-     */
-    public void addPrevButtonActionListener(ActionListener listener) {
-
-    }
-
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the save as button
-     */
-    public void addSaveAsCalendarActionListener(ActionListener listener) {
-
-    }
-
-    public void addExportCalendarActionListener(ActionListener listener) {
-        calMenu.getExportCalendarMenuItem().addActionListener(listener);
-    }
-
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the about button
-     */
-    public void addAboutActionListener(ActionListener listener) {
-        calMenu.getAboutMenuItem().addActionListener(listener);
-    }
 
     /**
      * This method updates the different views when an event is called from the
