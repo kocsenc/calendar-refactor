@@ -24,10 +24,9 @@ import java.util.Date;
 import java.util.Set;
 
 /**
- * This is the main entry point for the view, it updates the views when it is
- * called by the controller
+ * This is the main view Frame for the Calendar App
  *
- * @author xxx
+ * @author Kocsen
  */
 
 public class CalendarView extends JFrame {
