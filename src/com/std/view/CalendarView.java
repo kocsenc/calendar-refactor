@@ -1,6 +1,6 @@
 package com.std.view;
 
-import com.std.controller.CalendarController;
+import com.std.controller.listener.SaveAsCalendarActionListener;
 import com.std.model.appointment.AppointmentUtility;
 import com.std.model.appointment.RefAppointment;
 import com.std.util.range.DayRange;
@@ -31,7 +31,9 @@ import java.util.Set;
  */
 
 public class CalendarView extends JFrame {
-    public static enum TABBED_STATE {
+
+
+	public static enum TABBED_STATE {
         MONTHLY,
         WEEKLY,
         DAILY
@@ -41,8 +43,6 @@ public class CalendarView extends JFrame {
     private JLabel displayDate;
     private JButton prevButton;
     private JButton nextButton;
-    private CalendarController cc;
-
 
     /**
      * These are the different tabs
@@ -62,7 +62,7 @@ public class CalendarView extends JFrame {
      * starts the JFrame
      */
     public CalendarView() {
-        calMenu = new CalendarMenu(cc);
+        calMenu = new CalendarMenu();
         try {
             initComponents();
         } catch (IOException e) {
@@ -234,6 +234,10 @@ public class CalendarView extends JFrame {
         calMenu.getSaveAsCalendarMenuItem().addActionListener(listener);
     }
 
+	public void addExportCalendarActionListener(ActionListener listener) {
+		calMenu.getExportCalendarMenuItem().addActionListener(listener);
+	}
+
     /**
      * This passes a mouse listener down to the different views
      *
@@ -311,7 +315,6 @@ public class CalendarView extends JFrame {
      * @param listener is the mouse listener to be added to the about button
      */
     public void addAboutActionListener(ActionListener listener) {
-        System.out.println("this is adding the action listener in calendar view");
         calMenu.getAboutMenuItem().addActionListener(listener);
     }
 
@@ -355,10 +358,6 @@ public class CalendarView extends JFrame {
                 currentFile.getName()) + " - DCal");
 
         this.validate();
-    }
-
-    public void setCalendarController(CalendarController c) {
-        this.cc = c;
     }
 
 

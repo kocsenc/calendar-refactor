@@ -1,11 +1,7 @@
 package com.std.view;
 
-import com.std.controller.CalendarController;
-import com.std.controller.listener.AboutCommand;
-
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 /**
@@ -22,17 +18,81 @@ public class CalendarMenu extends JMenuBar {
      * These will be the items displayed in the menu
      */
 
-    private final JMenuItem newCalendar, openCalendar, saveCalendar, saveAsCalendar, exitApplication,
-            newAppointment, editAppointment, editAllAppointment, removeAppointment, removeAllAppointment,
-            preferences, about;
-    private CalendarController cc;
+    private final JMenuItem newCalendar;
+    private final JMenuItem openCalendar;
+    private final JMenuItem saveCalendar;
+    private final JMenuItem saveAsCalendar;
+	private final JMenuItem exportCalendar;
+    private final JMenuItem exitApplication;
+    private final JMenuItem newAppointment;
+    private final JMenuItem editAppointment;
+    private final JMenuItem editAllAppointment;
+    private final JMenuItem removeAppointment;
+    private final JMenuItem removeAllAppointment;
+    private final JMenuItem preferences;
+    private final JMenuItem about;
+	private Button exportCalendarMenuItem;
+
+	public JMenuItem getNewCalendarMenuItem() {
+        return newCalendar;
+    }
+
+    public JMenuItem getOpenCalendarMenuItem() {
+        return openCalendar;
+    }
+
+    public JMenuItem getSaveCalendarMenuItem() {
+        return saveCalendar;
+    }
+
+    public JMenuItem getSaveAsCalendarMenuItem() {
+        return saveAsCalendar;
+    }
+
+	public JMenuItem getExportCalendarMenuItem() {
+		return exportCalendar;
+	}
+
+    public JMenuItem getExitApplicationMenuItem() {
+        return exitApplication;
+    }
+
+    public JMenuItem getNewAppointmentMenuItem() {
+        return newAppointment;
+    }
+
+    public JMenuItem getEditAppointmentMenuItem() {
+        return editAppointment;
+    }
+
+    public JMenuItem getEditAllAppointmentMenuItem() {
+        return editAllAppointment;
+    }
+
+    public JMenuItem getRemoveAppointmentMenuItem() {
+        return removeAppointment;
+    }
+
+    public JMenuItem getRemoveAllAppointmentMenuItem() {
+        return removeAllAppointment;
+    }
+
+    public JMenuItem getPreferencesMenuItem() {
+        return preferences;
+    }
+
+    public JMenuItem getAboutMenuItem() {
+        return about;
+    }
 
     /**
      * This is the constructor for the menu, it sets up how it is going to look and
      * initializes all of the menu items
      */
-    public CalendarMenu(CalendarController c) {
-        cc = c;
+
+    public CalendarMenu() {
+        super();
+
         JMenu fileMenu = new JMenu("File");
         fileMenu.setMnemonic(KeyEvent.VK_F);
         add(fileMenu);
@@ -53,6 +113,10 @@ public class CalendarMenu extends JMenuBar {
 
         saveAsCalendar = new JMenuItem("Save As...");
         fileMenu.add(saveAsCalendar);
+
+		fileMenu.addSeparator();
+		exportCalendar = new JMenuItem("Export");
+		fileMenu.add(exportCalendar);
 
         fileMenu.addSeparator();
 
@@ -96,72 +160,5 @@ public class CalendarMenu extends JMenuBar {
 
         about = new JMenuItem("About");
         helpMenu.add(about);
-        this.addListeners();
     }
-
-
-
-    /**
-     * Getters and setters for all of the menu items to add an action listeners;
-     */
-    public JMenuItem getNewCalendarMenuItem() {
-        return newCalendar;
-    }
-
-    public JMenuItem getOpenCalendarMenuItem() {
-        return openCalendar;
-    }
-
-    public JMenuItem getSaveCalendarMenuItem() {
-        return saveCalendar;
-    }
-
-    public JMenuItem getSaveAsCalendarMenuItem() {
-        return saveAsCalendar;
-    }
-
-    public JMenuItem getExitApplicationMenuItem() {
-        return exitApplication;
-    }
-
-    public JMenuItem getNewAppointmentMenuItem() {
-        return newAppointment;
-    }
-
-    public JMenuItem getEditAppointmentMenuItem() {
-        return editAppointment;
-    }
-
-    public JMenuItem getEditAllAppointmentMenuItem() {
-        return editAllAppointment;
-    }
-
-    public JMenuItem getRemoveAppointmentMenuItem() {
-        return removeAppointment;
-    }
-
-    public JMenuItem getRemoveAllAppointmentMenuItem() {
-        return removeAllAppointment;
-    }
-
-    public JMenuItem getPreferencesMenuItem() {
-        return preferences;
-    }
-
-    public JMenuItem getAboutMenuItem() {
-
-        return about;
-    }
-
-    private void addListeners(){
-        about.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new AboutCommand().execute(cc);
-            }
-        });
-
-    }
-
-
 }
