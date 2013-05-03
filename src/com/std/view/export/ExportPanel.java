@@ -37,6 +37,11 @@ public class ExportPanel extends JDialog {
 
 	public void actionPerformed(ActionEvent e) {
 		JComboBox cb = (JComboBox)e.getSource();
-		String type = (String)cb.getSelectedItem();
+		String typeSelected = (String)cb.getSelectedItem();
+		for(EXPORT_TYPE exportType : EXPORT_TYPE.values()){
+			if(exportType.name().equals(typeSelected)){
+				// TODO: create context for export
+			}
+		}
 	}
 }
