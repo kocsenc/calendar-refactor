@@ -1,5 +1,6 @@
 package com.std.view;
 
+import com.std.controller.CalendarController;
 import com.std.model.appointment.AppointmentUtility;
 import com.std.model.appointment.RefAppointment;
 import com.std.util.range.DayRange;
@@ -40,6 +41,8 @@ public class CalendarView extends JFrame {
     private JLabel displayDate;
     private JButton prevButton;
     private JButton nextButton;
+    private CalendarController cc;
+
 
     /**
      * These are the different tabs
@@ -59,7 +62,7 @@ public class CalendarView extends JFrame {
      * starts the JFrame
      */
     public CalendarView() {
-        calMenu = new CalendarMenu();
+        calMenu = new CalendarMenu(cc);
         try {
             initComponents();
         } catch (IOException e) {
@@ -308,6 +311,7 @@ public class CalendarView extends JFrame {
      * @param listener is the mouse listener to be added to the about button
      */
     public void addAboutActionListener(ActionListener listener) {
+        System.out.println("this is adding the action listener in calendar view");
         calMenu.getAboutMenuItem().addActionListener(listener);
     }
 
@@ -351,6 +355,10 @@ public class CalendarView extends JFrame {
                 currentFile.getName()) + " - DCal");
 
         this.validate();
+    }
+
+    public void setCalendarController(CalendarController c) {
+        this.cc = c;
     }
 
 

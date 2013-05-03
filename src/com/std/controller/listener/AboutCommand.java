@@ -10,18 +10,19 @@ import javax.swing.*;
  *
  * @author xxx
  */
-public class AboutActionListener implements Command {
+public class AboutCommand implements Command {
 
 
     /**
-     * creates a new AboutActionListener
+     * creates a new AboutCommand
      */
-    public AboutActionListener() {
+    public AboutCommand() {
 
     }
 
     @Override
     public void execute(CalendarController cc) {
+        System.out.println("Command is actually executed in command");
         JOptionPane.showMessageDialog(cc.getView(), "DCal.  Copyright 2008, Super Team D, RIT", "About", JOptionPane.INFORMATION_MESSAGE);
     }
 
