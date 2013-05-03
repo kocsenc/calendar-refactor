@@ -3,8 +3,6 @@ package com.std.controller.listener;
 import com.std.controller.CalendarController;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This is the listener listening to the about menu item. Selecting this item
@@ -14,19 +12,12 @@ import java.awt.event.ActionListener;
  */
 public class AboutActionListener implements Command {
 
-    /**
-     * a reference to the controller so that this listener can access both the
-     * model and the view.
-     */
-    private final CalendarController controller;
 
     /**
      * creates a new AboutActionListener
-     *
-     * @param cc is the reference to the controller
      */
-    public AboutActionListener(CalendarController cc) {
-        controller = cc;
+    public AboutActionListener() {
+
     }
 
     @Override

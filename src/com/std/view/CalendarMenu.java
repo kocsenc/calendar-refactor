@@ -84,8 +84,6 @@ public class CalendarMenu extends JMenuBar {
      */
 
     public CalendarMenu() {
-        super();
-
         JMenu fileMenu = new JMenu("File");
         fileMenu.setMnemonic(KeyEvent.VK_F);
         add(fileMenu);
