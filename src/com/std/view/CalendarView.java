@@ -62,7 +62,7 @@ public class CalendarView extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        instantiateListeners();
+
     }
 
     /**
@@ -130,6 +130,7 @@ public class CalendarView extends JFrame {
         this.setIconImage(ImageIO.read(new File("img/icon.png")));
 
         pack();
+
     }
 
     /**
@@ -199,7 +200,7 @@ public class CalendarView extends JFrame {
 
     /**
      * This method instantiates all the necessary listeners, giving them
-     * reference to this CalendarController, and then adds them to CalendarView.
+     * reference to CalendarController, and then adds them to CalendarView.
      */
     private void instantiateListeners() {
 
@@ -283,7 +284,13 @@ public class CalendarView extends JFrame {
      * @param c - The calendar Controller
      */
     public void setCalendarController(CalendarController c) {
-        this.cc = c;
+        System.out.println("Setting new controller!");
+        if (c == null) {
+            System.out.println("Oh oh, the controller set is null");
+        } else {
+            this.cc = c;
+            instantiateListeners();
+        }
     }
 
 

@@ -38,8 +38,7 @@ public class Driver {
                 CalendarView view = null;
                 view = new CalendarView();
                 view.setExtendedState(view.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-                CalendarController c = new CalendarController(model, view);
-                view.setCalendarController(c);
+                new CalendarController(model, view);
                 view.setVisible(true);
 
             }

@@ -35,10 +35,10 @@ public class CalendarController implements Observer {
     public CalendarController(CalendarModel model, CalendarView view) {
         theModel = model;
         theView = view;
-
         // add this CalendarController as an observer to the
         // model, so the view can be updated when the model changes
         theModel.addObserver(this);
+        theView.setCalendarController(this);
     }
 
     /**
@@ -50,12 +50,13 @@ public class CalendarController implements Observer {
      * @param param is the parameter sent by the notifyObservers methods
      */
     public void update(Observable o, Object param) {
-
         theView.update(
                 theModel.getAppointmentSet(),
                 theModel.getCurrentDate(),
                 theModel.getCurrentAppointment(),
                 theModel.getFile());
+        System.out.println("Yo, CalendarController Updated");
+        theView.setCalendarController(this);
     }
 
 
