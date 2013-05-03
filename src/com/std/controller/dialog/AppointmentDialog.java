@@ -42,8 +42,10 @@ public class AppointmentDialog extends JDialog{
 	private RefAppointment appt; // appointment to change
 	private JTextField titleField; // title field component
 	private JTextField locationField; // location field component
-	private DatePanel startDatePanel; // start date field component
-	private DatePanel endDatePanel; // end date field component
+	private JComboBox<String> startTime; // start date field component
+	private JComboBox<String> endTime; // end date field component
+    private DatePanel datePanel; //the start date
+    private DatePanel endDatePanel; //adding in an end date panel
 	private JTextArea description; // description field component
 	private RecurrencePattern pattern; // recurrence pattern currently selected
 	private JTextArea patternDesc; // pattern description display
@@ -147,8 +149,8 @@ public class AppointmentDialog extends JDialog{
 		 */
 		public void actionPerformed(ActionEvent e){
 			if(pattern == null){
-				pattern = new NDaysPattern(new DateRange(
-						startDatePanel.getDate(), endDatePanel.getDate()), 0);
+				pattern = new NDaysPattern(new DateRange(    //endDatePanel should be brought up later...
+						datePanel.getDate(), endDatePanel.getDate()), 0);
 			}
 
 			RecurrencePattern tempPattern =
@@ -182,7 +184,7 @@ public class AppointmentDialog extends JDialog{
 		public void actionPerformed(ActionEvent e){
 			if(pattern == null){
 				pattern = new DayOfWeekPattern(new DateRange(
-						startDatePanel.getDate(),
+						datePanel.getDate(),  //same problem as above
 						endDatePanel.getDate()), new boolean[7]);
 			}
 
@@ -230,7 +232,7 @@ public class AppointmentDialog extends JDialog{
 			// with our field data
 			tempAppointment.setTitle(titleField.getText());
 			tempAppointment.setLocation(locationField.getText());
-			tempAppointment.setStartDate(startDatePanel.getDate());
+			tempAppointment.setStartDate(datePanel.getDate());
 			tempAppointment.setEndDate(endDatePanel.getDate());
 			tempAppointment.setDescription(description.getText());
 			tempAppointment.setPattern(pattern);
@@ -371,15 +373,17 @@ public class AppointmentDialog extends JDialog{
 		JLabel duration = new JLabel(); // duration
 
 		// start date
-		startDatePanel = new DatePanel(appt.getStartDate(), enableAppt, this);
+        String[] times = {"00:00", "01:00", "02:00"};
+        startTime = new JComboBox<String>(times);
+        endTime = new JComboBox<String>(times);
+		datePanel = new DatePanel(appt.getStartDate(), enableAppt, this);
+        endDatePanel = new DatePanel(appt.getEndDate(), enableAppt, this);
 
-		// end date
-		endDatePanel = new DatePanel(appt.getEndDate(), true, this);
 
 		// listeners
-		startDatePanel.addActionListener(new DurationUpdateListener(duration, startDatePanel, endDatePanel));
-		endDatePanel.addActionListener(new DurationUpdateListener(duration, startDatePanel, endDatePanel));
-		DurationUpdateListener.updateDuration(duration, startDatePanel, endDatePanel);
+		datePanel.addActionListener(new DurationUpdateListener(duration, datePanel, endDatePanel));
+		endDatePanel.addActionListener(new DurationUpdateListener(duration, datePanel, endDatePanel));
+		DurationUpdateListener.updateDuration(duration, datePanel, endDatePanel);
 
 		// panel to return
 		JPanel ret = new JPanel();
@@ -391,8 +395,9 @@ public class AppointmentDialog extends JDialog{
 				new Component[][]{
 						{new JLabel("title"), titleField},
 						{new JLabel("location"), locationField},
-						{new JLabel("start date"), startDatePanel},
-						{new JLabel("end date"), endDatePanel},
+                        {new JLabel("start time"), startTime},
+                        {new JLabel("end time"), endTime},
+						{new JLabel("date"), datePanel},
 						{new JLabel("duration"), duration}
 				});
 		ret.setLayout(northLayout);

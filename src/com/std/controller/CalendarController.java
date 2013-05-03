@@ -1,12 +1,10 @@
 package com.std.controller;
 
-import com.std.controller.listener.*;
 import com.std.model.CalendarModel;
 import com.std.view.CalendarView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
@@ -17,6 +15,7 @@ import java.util.Observer;
  * change what is needed in the view, also when there is an ActionEvent this
  * class passes the information to the model
  */
+
 public class CalendarController implements Observer {
 
     // performs logical operations of calendar (add/remove/modify appointments)
@@ -61,7 +60,6 @@ public class CalendarController implements Observer {
                 theModel.getCurrentAppointment(),
                 theModel.getFile());
     }
-
 
 
     /**

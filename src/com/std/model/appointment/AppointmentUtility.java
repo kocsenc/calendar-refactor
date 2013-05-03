@@ -18,6 +18,7 @@ public class AppointmentUtility{
 
 	public static final String NO_RECUR = "does not recur";
 
+
 	/**
 	 * Returns a sorted set of the appointments in set that are at least partially
 	 * contained by range

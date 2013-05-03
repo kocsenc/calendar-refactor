@@ -1,11 +1,7 @@
 package com.std.view;
 
-import com.std.controller.CalendarController;
-import com.std.controller.listener.AboutCommand;
-
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 /**
@@ -22,17 +18,28 @@ public class CalendarMenu extends JMenuBar {
      * These will be the items displayed in the menu
      */
 
-    private final JMenuItem newCalendar, openCalendar, saveCalendar, saveAsCalendar, exitApplication,
-            newAppointment, editAppointment, editAllAppointment, removeAppointment, removeAllAppointment,
-            preferences, about;
-    private CalendarController cc;
+    private final JMenuItem newCalendar;
+    private final JMenuItem openCalendar;
+    private final JMenuItem saveCalendar;
+    private final JMenuItem saveAsCalendar;
+    private final JMenuItem exportCalendar;
+    private final JMenuItem exitApplication;
+    private final JMenuItem newAppointment;
+    private final JMenuItem editAppointment;
+    private final JMenuItem editAllAppointment;
+    private final JMenuItem removeAppointment;
+    private final JMenuItem removeAllAppointment;
+    private final JMenuItem preferences;
+    private final JMenuItem about;
+
+    private Button exportCalendarMenuItem;
+
 
     /**
      * This is the constructor for the menu, it sets up how it is going to look and
      * initializes all of the menu items
      */
-    public CalendarMenu(CalendarController c) {
-        cc = c;
+    public CalendarMenu() {
         JMenu fileMenu = new JMenu("File");
         fileMenu.setMnemonic(KeyEvent.VK_F);
         add(fileMenu);
@@ -53,6 +60,10 @@ public class CalendarMenu extends JMenuBar {
 
         saveAsCalendar = new JMenuItem("Save As...");
         fileMenu.add(saveAsCalendar);
+
+        fileMenu.addSeparator();
+        exportCalendar = new JMenuItem("Export");
+        fileMenu.add(exportCalendar);
 
         fileMenu.addSeparator();
 
@@ -96,6 +107,7 @@ public class CalendarMenu extends JMenuBar {
 
         about = new JMenuItem("About");
         helpMenu.add(about);
+
 
     }
 
@@ -148,7 +160,12 @@ public class CalendarMenu extends JMenuBar {
     }
 
     public JMenuItem getAboutMenuItem() {
-
         return about;
     }
+
+    public JMenuItem getExportCalendarMenuItem() {
+        return exportCalendar;
+    }
+
+
 }
