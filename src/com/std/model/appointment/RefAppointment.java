@@ -151,7 +151,7 @@ public class RefAppointment extends java.util.Observable
 		this.notifyObservers();
 	}
 
-	// THE FOLLOWING METHODS USE DATA FROM parent:	
+	// THE FOLLOWING METHODS USE DATA FROM parent:
 
 	/**
 	 * @return the duration of the appointment template object in milliseconds.
