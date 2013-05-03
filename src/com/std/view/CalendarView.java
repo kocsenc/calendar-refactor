@@ -317,7 +317,7 @@ public class CalendarView extends JFrame {
      * range, it also passes the selected appointment and the selected date to the
      * views
      *
-     * @param refSet              the total set of refrence appointments
+     * @param refSet              the total set of reference appointments
      * @param selectedDate        the currently selected Date
      * @param selectedAppointment the currently selected Appointment
      * @param currentFile         the current file
