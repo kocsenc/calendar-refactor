@@ -1,6 +1,7 @@
 package com.std.controller.listener;
 
 import com.std.controller.CalendarController;
+import com.std.controller.commands.NewCalendarCommand;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,12 +37,7 @@ public class NewCalendarActionListener implements ActionListener {
      *          pressed.
      */
     public void actionPerformed(ActionEvent e) {
-
-        try {
-            controller.getModel().load(null);
-        } catch (Exception ex) {
-            controller.handleException(ex);
-        }
+        new NewCalendarCommand().execute(controller);
     }
 
 }

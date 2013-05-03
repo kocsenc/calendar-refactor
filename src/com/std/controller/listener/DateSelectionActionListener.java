@@ -1,6 +1,7 @@
 package com.std.controller.listener;
 
 import com.std.controller.CalendarController;
+import com.std.controller.commands.DateSelectionCommand;
 import com.std.view.block.DayBlock;
 
 import java.awt.event.ActionEvent;
@@ -38,10 +39,7 @@ public class DateSelectionActionListener implements ActionListener {
      *          clicked.
      */
     public void actionPerformed(ActionEvent e) {
-        //get the day block that this listener was listening too
-        DayBlock db = (DayBlock) e.getSource();
-        Date newSelectedDate = db.getDate();
-        controller.getModel().setCurrentDate(newSelectedDate);
+       new DateSelectionCommand(e).execute(controller);
     }
 
 }
