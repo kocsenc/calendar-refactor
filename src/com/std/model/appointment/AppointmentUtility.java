@@ -14,7 +14,7 @@ import java.util.*;
 public class AppointmentUtility{
 
 	private static final SimpleDateFormat FORMAT =
-			new SimpleDateFormat("EEE, d MMM yyyy 'at' h:mm aa");
+			new SimpleDateFormat("EEE, d MMM yyyy");
 
 	public static final String NO_RECUR = "does not recur";
 
