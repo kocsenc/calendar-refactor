@@ -1,6 +1,7 @@
 package com.std.view;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 /**
@@ -109,7 +110,6 @@ public class CalendarMenu extends JMenuBar {
         fileMenu.add(saveAsCalendar);
 
 		fileMenu.addSeparator();
-
 		exportCalendar = new JMenuItem("Export");
 		fileMenu.add(exportCalendar);
 

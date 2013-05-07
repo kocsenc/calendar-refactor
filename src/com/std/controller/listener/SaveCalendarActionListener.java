@@ -11,8 +11,6 @@ import java.awt.event.ActionListener;
  * instantiated in the CalendarController and sent to the View so that it can be
  * added to the "save" button.
  *
- * @author xxx
- * @author xxx
  */
 public class SaveCalendarActionListener implements ActionListener{
 
