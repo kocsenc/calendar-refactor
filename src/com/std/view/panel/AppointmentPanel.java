@@ -19,8 +19,10 @@ import java.text.SimpleDateFormat;
  */
 
 public class AppointmentPanel extends JToggleButton{
-	private static final SimpleDateFormat FORMAT =
-			new SimpleDateFormat("EEE, d MMM yyyy 'at' h:mm aa");
+	private static final SimpleDateFormat DATEFORMAT =
+            new SimpleDateFormat("EEE, d MMM yyyy");
+    private static final SimpleDateFormat TIMEFORMAT =
+            new SimpleDateFormat("h:mm aa");
 
 	/**
 	 * These are all of the data fields that can be viewed by the user
@@ -28,9 +30,9 @@ public class AppointmentPanel extends JToggleButton{
 
 	private final JTextArea titleField;
 	private final JTextArea locationField;
-	private final JTextArea startDateField;
-	private final JTextArea endDateField;
-	private final JTextArea durationField;
+	private final JTextArea startTimeField;
+	private final JTextArea endTimeField;
+    private final JTextArea dateField;
 	private final JTextArea recurrenceField;
 	private final JTextArea descriptionField;
 
@@ -65,9 +67,9 @@ public class AppointmentPanel extends JToggleButton{
 		if(appt == null){
 			titleField.setText("");
 			locationField.setText("");
-			startDateField.setText("");
-			endDateField.setText("");
-			durationField.setText("");
+			startTimeField.setText("");
+			endTimeField.setText("");
+            dateField.setText("");
 			recurrenceField.setText("");
 			descriptionField.setText("");
 
@@ -79,9 +81,9 @@ public class AppointmentPanel extends JToggleButton{
 		else{
 			titleField.setText(appt.getTitle());
 			locationField.setText(appt.getLocation());
-			startDateField.setText(FORMAT.format(appt.getStartDate()));
-			endDateField.setText(FORMAT.format(appt.getEndDate()));
-			durationField.setText(AppointmentUtility.getDurationDescription(appt.getDuration()));
+			dateField.setText(DATEFORMAT.format(appt.getStartDate()));
+            startTimeField.setText(TIMEFORMAT.format(appt.getEndDate()));
+			endTimeField.setText(TIMEFORMAT.format(appt.getEndDate()));
 			recurrenceField.setText(AppointmentUtility.getPatternDescription(appt.getPattern()));
 			descriptionField.setText(appt.getDescription());
 
@@ -120,9 +122,9 @@ public class AppointmentPanel extends JToggleButton{
 
 		titleField = createTextArea();
 		locationField = createTextArea();
-		startDateField = createTextArea();
-		endDateField = createTextArea();
-		durationField = createTextArea();
+		startTimeField = createTextArea();
+		endTimeField = createTextArea();
+		dateField = createTextArea();
 		recurrenceField = createTextArea();
 		descriptionField = createTextArea();
 		descriptionField.setBorder(null);
@@ -143,9 +145,9 @@ public class AppointmentPanel extends JToggleButton{
 				new Component[][]{
 						{new JLabel("title"), titleField},
 						{new JLabel("location"), locationField},
-						{new JLabel("start date"), startDateField},
-						{new JLabel("end date"), endDateField},
-						{new JLabel("duration"), durationField},
+						{new JLabel("start time"), startTimeField},
+						{new JLabel("end time"), endTimeField},
+						{new JLabel("date"), dateField},
 						{new JLabel("recurrence"), recurrenceField},
 						{new JLabel("description"), new JLabel()}
 				});

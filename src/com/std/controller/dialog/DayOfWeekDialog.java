@@ -186,8 +186,8 @@ public class DayOfWeekDialog extends JDialog{
 		north.setLayout(northLayout);
 		GroupLayoutUtility.addToGroups(northLayout, new Component[][]{
 				{new JLabel("start date"), startDate},
-				{new JLabel("end date"), endDate},
-				{new JLabel("duration"), duration}
+				{new JLabel("end date"), endDate}
+			//	{new JLabel("duration"), duration}
 		});
 
 		// add the panels
