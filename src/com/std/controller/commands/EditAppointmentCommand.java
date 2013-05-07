@@ -32,7 +32,7 @@ public class EditAppointmentCommand implements Command {
                         new RefAppointment(ref.getStartDate(), apptTmpl);
 
                 if (AppointmentDialog.changeAppointment(cc.getView(), appt)) {
-                    cc.getModel().getAppointmentSet().remove(ref);
+                    cc.getModel().removeAppointment(ref);
                     CalendarModelUtility.add(cc.getModel(), appt);
                 }
             } else {

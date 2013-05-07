@@ -165,8 +165,10 @@ public class CalendarModelUtility{
 	 */
 
 	public static void add(CalendarModel model, RefAppointment appt){
-		model.getAppointmentTemplateSet().add(appt.getTemplate());
-		model.getAppointmentSet().add(appt);
+		//model.getAppointmentTemplateSet().add(appt.getTemplate());
+        model.addAppointmentTemplate(appt.getTemplate());
+		//model.getAppointmentSet().add(appt);
+        model.addAppointment(appt);
 	}
 
 	/**
@@ -178,15 +180,17 @@ public class CalendarModelUtility{
 
 	public static void addUsingPattern(
 			CalendarModel model, RefAppointment appt){
-		model.getAppointmentTemplateSet().add(appt.getTemplate());
+		//model.getAppointmentTemplateSet().add(appt.getTemplate());
+        model.addAppointmentTemplate(appt.getTemplate());
 
 		model.removeReferences(appt.getTemplate());
 		if(appt.getPattern() != null){
-			model.getAppointmentSet().addAll(AppointmentUtility.
-																	   generatePatternAppointments(appt.getTemplate()));
+			//model.getAppointmentSet().addAll(AppointmentUtility.generatePatternAppointments(appt.getTemplate()));
+            model.addAllAppointments(AppointmentUtility.generatePatternAppointments(appt.getTemplate()));
 		}
 		else{
-			model.getAppointmentSet().add(appt);
+			//model.getAppointmentSet().add(appt);
+            model.addAppointment(appt);
 		}
 
 
