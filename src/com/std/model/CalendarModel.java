@@ -43,17 +43,16 @@ import java.util.*;
  * saved - URI possibly changed model has been loaded - URI possibly changed
  */
 public class CalendarModel extends Observable{
-	private final CalendarModel that; // pointer to CalendarModel
 	private Date curDate; // selected date; should never be null
 	private RefAppointment curAppt; // selected appt; can be null-none selected
 	private File curFile; // current file URI; can be null - unsaved file
-	private final ObservableSet<AppointmentTemplate> apptTmplSet;
+	private final HashSet<AppointmentTemplate> apptTmplSet;
 
 	/**
 	 * Set of RefAppointments.  should contain no RefAppointment whose template
 	 * is not in apptTmplSet
 	 */
-	private final ObservableSet<RefAppointment> apptSet;
+	private final HashSet<RefAppointment> apptSet;
 
 	private boolean diffFile;
 	//true iff the file denoted by curURI is different than the data on record
@@ -68,174 +67,14 @@ public class CalendarModel extends Observable{
 	 */
 	public CalendarModel(){
 		super();
-		that = this;
 		curDate = new Date();
 		curAppt = null;
 		curFile = null;
-		apptTmplSet = new ObservableSet<AppointmentTemplate>();
-		apptSet = new ApptObservableSet();
+        apptTmplSet = new HashSet<AppointmentTemplate>();
+        apptSet = new HashSet<RefAppointment>();
 		diffFile = false;
 		defaultApptTmpl = getNewDefaults();
-
-		apptTmplSet.addObserver(new ApptTmplSetObserver());
-		apptTmplSet.addObserver(new SetObserver());
-		apptSet.addObserver(new SetObserver());
 		defaultApptTmpl.addObserver(new ElementObserver());
-	}
-
-	/**
-	 * ApptObservableSet is an extension of ObservableSet<RefAppointment> that
-	 * overrides add and addAll to make sure that any RefAppointments added
-	 * have a template that is in the template set.
-	 */
-	private class ApptObservableSet extends ObservableSet<RefAppointment>{
-
-		/**
-		 * Adds the specified element to this set if it is not already present
-		 * (optional operation).  More formally, adds the specified element e
-		 * to this set if the set contains no element e2 such that (e==null;
-		 * e2==null; e.equals(e2)) If this set already contains the element,
-		 * the call leaves the set unchanged and returns false.  In combination
-		 * with the restriction on constructors, this ensures that sets never
-		 * contain duplicate elements.
-		 * <p/>
-		 * The stipulation above does not imply that sets must accept all
-		 * elements; sets may refuse to add any particular element, including
-		 * null, and throw an exception, as described in the specification for
-		 * {@link Collection#add Collection.add}. Individual set implementations
-		 * should clearly document any restrictions on the elements that they
-		 * may contain.
-		 *
-		 * @return true if this set did not already contain specified element
-		 *
-		 * @throws UnsupportedOperationException if the add operation is not
-		 * supported by this set
-		 * @throws ClassCastException if the class of the specified element
-		 * prevents it from being added to this set
-		 * @throws NullPointerException if the specified element is null and
-		 * this set does not permit null elements
-		 * @throws IllegalArgumentException if some property of the specified
-		 * element prevents it from being added to this set
-		 */
-		public boolean add(RefAppointment appt){
-			if(!apptTmplSet.contains(appt.getTemplate())){
-				throw new IllegalArgumentException(
-						"template does not exist or has not been added");
-			}
-			return super.add(appt);
-		}
-
-		/**
-		 * Adds all of the elements in the specified collection to this set if
-		 * they're not already present (optional operation).  If the specified
-		 * collection is also a set, the addAll operation effectively modifies
-		 * this set so that its value is the union of the two sets. The behavior
-		 * of this operation is undefined if the specified collection is
-		 * modified while the operation is in progress.
-		 *
-		 * @param c collection containing elements to be added to this set
-		 *
-		 * @return true if this set changed as a result of the call
-		 *
-		 * @throws UnsupportedOperationException if the addAll operation is not
-		 *                                       supported by this set
-		 * @throws ClassCastException if the class of an element of the
-		 *                            specified collection prevents it from
-		 *                            being added to this set
-		 * @throws NullPointerException if the specified collection contains
-		 *                              one or more null elements and this
-		 *                              set does not permit null elements, or
-		 *                              if the specified collection is null
-		 * @throws IllegalArgumentException if some property of an element of
-		 *                                  the specified collection prevents it
-		 *                                  from being added to this set
-		 */
-		public boolean addAll(Collection<? extends RefAppointment> c){
-			if(c == null){
-				throw new NullPointerException("c");
-			}
-			for(RefAppointment appt : c){
-				if(!apptTmplSet.contains(appt.getTemplate())){
-					throw new IllegalArgumentException(
-						"template does not exist or has not been added");
-				}
-			}
-			return super.addAll(c);
-		}
-
-		/**
-		 * Removes the specified element from this set if it is present
-		 * (optional operation).  More formally, removes an element e such that
-		 * (o==null; e==null; o.equals(e)) if this set contains such an element.
-		 * Returns <tt>true</tt> if this set contained the element
-		 * (or equivalently, if this set changed as a result of the call).
-		 * (This set will not contain the element once the call returns.)
-		 *
-		 * @param o object to be removed from this set, if present
-		 *
-		 * @return true if this set contained the specified element
-		 *
-		 * @throws ClassCastException            if the type of the specified
-		 *                                       element is incompatible with
-		 *                                       this set (optional)
-		 * @throws NullPointerException          if the specified element is
-		 *                                       null and this set does not
-		 *                                       permit null elements (optional)
-		 * @throws UnsupportedOperationException if the remove operation is not
-		 *                                       supported by this set
-		 */
-		public boolean remove(Object o){
-			if(o == curAppt){
-				internalSetCurrentAppointment(null);
-			}
-			return super.remove(o);
-		}
-	}
-
-	/**
-	 * ApptTmplSetObserver is an Observer that observes apptTmplSet for any
-	 * removal updates, and removes any reference appointments to that template
-	 * from apptSet.
-	 */
-	private class ApptTmplSetObserver implements Observer{
-
-		/**
-		 * This method is called whenever the observed object is changed. An
-		 * application calls an Observable object's notifyObservers method to
-		 * have all the object's observers notified of the change.
-		 *
-		 * @param o   the observable object.
-		 * @param arg an argument passed to <code>notifyObservers</code> method.
-		 */
-		public void update(Observable o, Object arg){
-			ObservableSet<?> set = (ObservableSet<?>) o;
-			AppointmentTemplate apptTmpl = (AppointmentTemplate) arg;
-			if(!set.contains(apptTmpl)){
-				removeReferences(apptTmpl);
-			}
-		}
-	}
-
-	/**
-	 * SetObserver is an Observer that observes apptTmplSet and apptSet for any
-	 * updates, marks the model as changed, and forwards those updates to the
-	 * model's listeners.
-	 */
-	private class SetObserver implements Observer{
-
-		/**
-		 * This method is called whenever the observed object is changed. An
-		 * application calls an Observable> object's notifyObservers method to
-		 * have all the object's observers notified of the change.
-		 *
-		 * @param o   the observable object.
-		 * @param arg an argument passed to <code>notifyObservers</code> method.
-		 */
-		public void update(Observable o, Object arg){
-			diffFile = true;
-			that.setChanged();
-			that.notifyObservers(arg);
-		}
 	}
 
 	/**
@@ -261,8 +100,8 @@ public class CalendarModel extends Observable{
 		 */
 		public void update(Observable o, Object arg){
 			diffFile = true;
-			that.setChanged();
-			that.notifyObservers(o);
+			setChanged();
+			notifyObservers(o);
 		}
 	}
 
@@ -281,6 +120,8 @@ public class CalendarModel extends Observable{
 			}
 		}
 	}
+
+
 
 	/**
 	 * @return the currently selected date
@@ -451,16 +292,86 @@ public class CalendarModel extends Observable{
 	}
 
 	/**
-	 * @return the set of Appointment templates
-	 */
-	public Set<AppointmentTemplate> getAppointmentTemplateSet(){
-		return apptTmplSet;
-	}
-
-	/**
 	 * @return the set of Appointment references
 	 */
 	public Set<RefAppointment> getAppointmentSet(){
 		return apptSet;
 	}
+
+    /**
+     * Removes a RefAppointment from the appointment set.
+     * @param a The RefAppointment to remove.
+     * @return True if the removal was successful.
+     */
+    public boolean removeAppointment(RefAppointment a){
+        if(a == curAppt){
+            internalSetCurrentAppointment(null);
+        }
+        boolean result = apptSet.remove(a);
+        if (result){
+            diffFile = true;
+            setChanged();
+            notifyObservers();
+        }
+        return result;
+    }
+
+    /**
+     * Adds a RefAppointment to the appointment set.
+     * @param a The RefAppointment to add.
+     * @return True if addition was successful.
+     */
+    public boolean addAppointment(RefAppointment a){
+        if(!apptTmplSet.contains(a.getTemplate())){
+            throw new IllegalArgumentException(
+                    "template does not exist or has not been added");
+        }
+        boolean result = apptSet.add(a);
+        if (result){
+            diffFile = true;
+            setChanged();
+            notifyObservers();
+        }
+        return result;
+    }
+
+    /**
+     * Adds a collection to the appointment set.
+     * @param as The collection of RefAppointments to add.
+     */
+    public void addAllAppointments(Collection<RefAppointment> as){
+        for (RefAppointment a : as){
+            if(!apptTmplSet.contains(a.getTemplate())){
+                throw new IllegalArgumentException(
+                        "template does not exist or has not been added");
+            }
+            apptSet.add(a);
+        }
+        setChanged();
+        notifyObservers();
+    }
+
+    /**
+     * Removes an AppointmentTemplate from the appointment template set.
+     * It then removes all RefAppointments associated with this template.
+     * @param a The template to remove.
+     */
+    public void removeAppointmentTemplate(AppointmentTemplate a){
+        apptTmplSet.remove(a);
+        removeReferences(a);
+        diffFile = true;
+        setChanged();
+        notifyObservers();
+    }
+
+    /**
+     * Adds a template to the appointment template set.
+     * @param a The template to add.
+     */
+    public void addAppointmentTemplate(AppointmentTemplate a){
+        apptTmplSet.add(a);
+        diffFile = true;
+        setChanged();
+        notifyObservers();
+    }
 }
