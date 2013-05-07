@@ -1,6 +1,7 @@
 package com.std.controller.listener;
 
 import com.std.controller.CalendarController;
+import com.std.controller.commands.ExportCommand;
 import com.std.view.ExportPanel;
 
 import java.awt.event.ActionEvent;
@@ -13,12 +14,13 @@ import java.awt.event.ActionListener;
 
 public class ExportCalendarActionListener implements ActionListener {
 
-    public ExportCalendarActionListener(CalendarController calendarController) {
-        //To change body of created methods use File | Settings | File Templates.
-    }
+	private final CalendarController calendarController;
 
-    @Override
+	public ExportCalendarActionListener(CalendarController calendarController) {
+		this.calendarController = calendarController;
+	}
+
     public void actionPerformed(ActionEvent e) {
-        new ExportPanel();
+        new ExportCommand().execute(calendarController);
     }
 }

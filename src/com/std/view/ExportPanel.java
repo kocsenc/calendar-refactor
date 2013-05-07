@@ -19,10 +19,6 @@ public class ExportPanel {
 	private final FileNameExtensionFilter CAL =
 		new FileNameExtensionFilter("Calendar (*.cal)", ".cal");
 
-	public static void main(String [] args) {
-		new ExportPanel();
-	}
-
 	public ExportPanel() {
 		JFileChooser fileChooser = new JFileChooser("C:\\");
 		fileChooser.addChoosableFileFilter(CSV);
