@@ -16,7 +16,6 @@ public interface DayBlock{
 	 *
 	 * @return returns the date
 	 */
-
 	public Date getDate();
 
 }

@@ -398,7 +398,6 @@ public class AppointmentDialog extends JDialog{
                         {new JLabel("start time"), startTime},
                         {new JLabel("end time"), endTime},
 						{new JLabel("date"), datePanel},
-						{new JLabel("duration"), duration}
 				});
 		ret.setLayout(northLayout);
 

@@ -536,7 +536,7 @@ public class DateDialog extends JDialog{
 		// return panel
 		JPanel ret = new JPanel();
 		ret.setLayout(new BorderLayout());
-		ret.add(getNewTimePanel(), BorderLayout.NORTH);
+		//ret.add(getNewTimePanel(), BorderLayout.NORTH);
 		ret.add(ok, BorderLayout.SOUTH);
 
 		return ret;
