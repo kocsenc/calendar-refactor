@@ -1,6 +1,8 @@
 package com.std.view;
 
-import com.std.controller.listener.SaveAsCalendarActionListener;
+
+import com.std.controller.CalendarController;
+import com.std.controller.listener.*;
 import com.std.model.appointment.AppointmentUtility;
 import com.std.model.appointment.RefAppointment;
 import com.std.util.range.DayRange;
@@ -15,8 +17,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -24,38 +24,31 @@ import java.util.Date;
 import java.util.Set;
 
 /**
- * This is the main entry point for the view, it updates the views when it is
- * called by the controller
+ * This is the main view Frame for the Calendar App
  *
- * @author xxx
+ * @author Kocsen
  */
 
 public class CalendarView extends JFrame {
 
-
-	public static enum TABBED_STATE {
-        MONTHLY,
-        WEEKLY,
-        DAILY
-    }
-
     private CalendarMenu calMenu;
     private JLabel displayDate;
-    private JButton prevButton;
-    private JButton nextButton;
-
-    /**
-     * These are the different tabs
-     */
+    private JButton prevButton, nextButton;
+    private CalendarController cc;
     private JTabbedPane tabs;
     private MonthlyPanel monthlyView;
     private WeeklyPanel weeklyView;
     private DailyPanel dailyView;
-
     private AppointmentPanel appointmentView;
 
     private final static SimpleDateFormat FORMAT =
             new SimpleDateFormat("MMMM, yyyy");
+
+    public static enum TABBED_STATE {
+        MONTHLY,
+        WEEKLY,
+        DAILY
+    }
 
     /**
      * This is the constructor, it sets up the different views and buttons and
@@ -68,6 +61,7 @@ public class CalendarView extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     /**
@@ -135,6 +129,7 @@ public class CalendarView extends JFrame {
         this.setIconImage(ImageIO.read(new File("img/icon.png")));
 
         pack();
+
     }
 
     /**
@@ -156,167 +151,6 @@ public class CalendarView extends JFrame {
         return ret;
     }
 
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param mouse is the mouse listener to be added to the appointment blocks
-     */
-    public void addAppointmentSelectionListener(MouseListener mouse) {
-        weeklyView.addAppointmentListeners(mouse);
-        monthlyView.addAppointmentListener(mouse);
-        dailyView.addAppointmentListener(mouse);
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the day blocks
-     */
-    public void addDateSelectionListener(ActionListener listener) {
-        weeklyView.addDaySelectionActionListener(listener);
-        monthlyView.addDayListener(listener);
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the next button
-     */
-    public void addNextButtonActionListener(ActionListener listener) {
-        nextButton.addActionListener(listener);
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the previus button
-     */
-    public void addPrevButtonActionListener(ActionListener listener) {
-        prevButton.addActionListener(listener);
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the new appointment
-     *                 blocks
-     */
-    public void addNewCalendarActionListener(ActionListener listener) {
-        calMenu.getNewCalendarMenuItem().addActionListener(listener);
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the open calendar
-     *                 button
-     */
-    public void addOpenCalendarActionListener(ActionListener listener) {
-        calMenu.getOpenCalendarMenuItem().addActionListener(listener);
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the save calendar
-     *                 button
-     */
-    public void addSaveCalendarActionListener(ActionListener listener) {
-        calMenu.getSaveCalendarMenuItem().addActionListener(listener);
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the save as button
-     */
-    public void addSaveAsCalendarActionListener(ActionListener listener) {
-        calMenu.getSaveAsCalendarMenuItem().addActionListener(listener);
-    }
-
-	public void addExportCalendarActionListener(ActionListener listener) {
-		calMenu.getExportCalendarMenuItem().addActionListener(listener);
-	}
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the exit button
-     */
-    public void addExitApplicationActionListener(ActionListener listener) {
-        calMenu.getExitApplicationMenuItem().addActionListener(listener);
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the new appointment
-     *                 button
-     */
-    public void addNewAppointmentActionListener(ActionListener listener) {
-        calMenu.getNewAppointmentMenuItem().addActionListener(listener);
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the edit appointment
-     *                 button
-     */
-    public void addEditAppointmentActionListener(ActionListener listener) {
-        calMenu.getEditAppointmentMenuItem().addActionListener(listener);
-        appointmentView.addEditSingleListener(listener);
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the edit all
-     *                 appointment button
-     */
-    public void addEditAllAppointmentActionListener(ActionListener listener) {
-        calMenu.getEditAllAppointmentMenuItem().addActionListener(listener);
-        appointmentView.addEditRecurringListener(listener);
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the remove button
-     */
-    public void addRemoveAppointmentActionListener(ActionListener listener) {
-        calMenu.getRemoveAppointmentMenuItem().addActionListener(listener);
-        appointmentView.addRemoveSingleListener(listener);
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the Remove all
-     *                 appointment button
-     */
-    public void addRemoveAllAppointmentActionListener(ActionListener listener) {
-        calMenu.getRemoveAllAppointmentMenuItem().addActionListener(listener);
-        appointmentView.addRemoveRecurringListener(listener);
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the preerences button
-     */
-    public void addPreferencesActionListener(ActionListener listener) {
-        calMenu.getPreferencesMenuItem().addActionListener(listener);
-    }
-
-    /**
-     * This passes a mouse listener down to the different views
-     *
-     * @param listener is the mouse listener to be added to the about button
-     */
-    public void addAboutActionListener(ActionListener listener) {
-        calMenu.getAboutMenuItem().addActionListener(listener);
-    }
 
     /**
      * This method updates the different views when an event is called from the
@@ -358,6 +192,104 @@ public class CalendarView extends JFrame {
                 currentFile.getName()) + " - DCal");
 
         this.validate();
+    }
+
+
+    // ************** Setting the listeners  ************** //
+
+    /**
+     * This method instantiates all the necessary listeners, giving them
+     * reference to CalendarController, and then adds them to CalendarView.
+     */
+    private void instantiateListeners() {
+
+        // listens for when the view tries to be disposed
+        DefaultWindowListener defW = new DefaultWindowListener(cc);
+        this.addWindowListener(defW);
+
+
+        // listens for when an appointment is selected
+        AppointmentSelectionMouseListener apptSelL =
+                new AppointmentSelectionMouseListener(cc);
+        weeklyView.addAppointmentListeners(apptSelL);
+        monthlyView.addAppointmentListener(apptSelL);
+        dailyView.addAppointmentListener(apptSelL);
+
+        // listens for when a date is selected
+        DateSelectionActionListener dateSelL =
+                new DateSelectionActionListener(cc);
+        weeklyView.addDaySelectionActionListener(dateSelL);
+        monthlyView.addDayListener(dateSelL);
+
+
+        // listens for when the next button is pressed
+        nextButton.addActionListener(new NextButtonActionListener(cc));
+
+        // listens for when the previous button is pressed
+        prevButton.addActionListener(new PrevButtonActionListener(cc));
+
+        // listens for when the menu item "New Calendar" is selected
+        calMenu.getNewCalendarMenuItem().addActionListener(new NewCalendarActionListener(cc));
+
+        // listens for when the menu item "Open Calendar" is selected
+        calMenu.getOpenCalendarMenuItem().addActionListener(new OpenCalendarActionListener(cc));
+
+        // listens for when the menu item "Save Calendar" is selected
+        calMenu.getSaveCalendarMenuItem().addActionListener(new SaveCalendarActionListener(cc));
+
+        // listens for when the menu item "Save As Calendar" is selected
+        calMenu.getSaveAsCalendarMenuItem().addActionListener(new SaveAsCalendarActionListener(cc));
+
+        // listens for when the menu item "Exit" is selected
+        calMenu.getExitApplicationMenuItem().addActionListener(new ExitApplicationActionListener(cc));
+
+        // listens for when the menu item "New Appointment" is selected
+        calMenu.getNewAppointmentMenuItem().addActionListener(new NewAppointmentActionListener(cc));
+
+        // listens for when the menu item "Edit Appointment" is selected
+        appointmentView.addEditSingleListener(new EditAppointmentActionListener(cc));
+
+        // listens for when menu item "Edit Recurring Appointment" is selected
+        EditRecurringAppointmentActionListener editRecApptL =
+                new EditRecurringAppointmentActionListener(cc);
+        calMenu.getEditAllAppointmentMenuItem().addActionListener(editRecApptL);
+        appointmentView.addEditRecurringListener(editRecApptL);
+
+        // listens for when the menu item "Remove Appointment" is selected
+        RemoveAppointmentActionListener remApptL =
+                new RemoveAppointmentActionListener(cc);
+        calMenu.getRemoveAppointmentMenuItem().addActionListener(remApptL);
+        appointmentView.addRemoveSingleListener(remApptL);
+
+        // listens for when the menu item "Remove All Occurrences" is selected
+        RemoveAllAppointmentActionListener remAllApptL =
+                new RemoveAllAppointmentActionListener(cc);
+        calMenu.getRemoveAllAppointmentMenuItem().addActionListener(remAllApptL);
+        appointmentView.addRemoveRecurringListener(remAllApptL);
+
+        // listens for when the menu item "Preferences" is selected
+        calMenu.getPreferencesMenuItem().addActionListener(new PreferencesActionListener(cc));
+
+
+        // listens for when the menu item "About" is selected
+        calMenu.getAboutMenuItem().addActionListener(new AboutActionListener(cc));
+
+    }
+
+
+    /**
+     * Used on startup to gve the view knowledge of the controller.
+     *
+     * @param c - The calendar Controller
+     */
+    public void setCalendarController(CalendarController c) {
+        System.out.println("Setting new controller!");
+        if (c == null) {
+            System.out.println("Oh oh, the controller set is null");
+        } else {
+            this.cc = c;
+            instantiateListeners();
+        }
     }
 
 
