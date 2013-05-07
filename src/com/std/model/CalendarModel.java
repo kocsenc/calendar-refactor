@@ -2,7 +2,6 @@ package com.std.model;
 
 import com.std.model.appointment.AppointmentTemplate;
 import com.std.model.appointment.RefAppointment;
-import com.std.util.ObservableSet;
 
 import java.io.*;
 import java.util.*;

@@ -18,6 +18,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -42,8 +43,12 @@ public class AppointmentDialog extends JDialog{
 	private RefAppointment appt; // appointment to change
 	private JTextField titleField; // title field component
 	private JTextField locationField; // location field component
-	private JComboBox startTime; // start date field component
-	private JComboBox endTime; // end date field component
+	private JComboBox startHour;
+    private JComboBox startMinute;
+    private JComboBox startAMPM;
+	private JComboBox endHour;
+    private JComboBox endMinute;
+    private JComboBox endAMPM;
     private DatePanel datePanel; //the start date
     private DatePanel endDatePanel; //adding in an end date panel
 	private JTextArea description; // description field component
@@ -373,9 +378,17 @@ public class AppointmentDialog extends JDialog{
 		JLabel duration = new JLabel(); // duration
 
 		// start date
-        String[] times = {"00:00", "01:00", "02:00"};
-        startTime = new JComboBox(times);
-        endTime = new JComboBox(times);
+        String[] hours = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+        String minutesString = "";
+        for (int i=0;i<60;i++){ minutesString += i+" ";};
+        String[] minutes = minutesString.split(" ");
+        String[] ampm = {"AM", "PM"};
+        startHour = new JComboBox(hours);
+        startMinute = new JComboBox(minutes);
+        startAMPM = new JComboBox(ampm);
+        endHour = new JComboBox(hours);
+        endMinute = new JComboBox(minutes);
+        endAMPM = new JComboBox(ampm);
 		datePanel = new DatePanel(appt.getStartDate(), enableAppt, this);
         endDatePanel = new DatePanel(appt.getEndDate(), enableAppt, this);
 
@@ -390,13 +403,21 @@ public class AppointmentDialog extends JDialog{
 		GroupLayout northLayout = new GroupLayout(ret);
 		northLayout.setAutoCreateContainerGaps(true);
 		northLayout.setAutoCreateGaps(true);
+        JPanel start = new JPanel(new GridLayout(1, 3));
+        start.add(startHour);
+        start.add(startMinute);
+        start.add(startAMPM);
+        JPanel end = new JPanel(new GridLayout(1, 3));
+        end.add(endHour);
+        end.add(endMinute);
+        end.add(endAMPM);
 		GroupLayoutUtility.addToGroups(
 				northLayout,
 				new Component[][]{
 						{new JLabel("title"), titleField},
 						{new JLabel("location"), locationField},
-                        {new JLabel("start time"), startTime},
-                        {new JLabel("end time"), endTime},
+                        {new JLabel("start time"), start},
+                        {new JLabel("end time"), end},
 						{new JLabel("date"), datePanel},
 				});
 		ret.setLayout(northLayout);
