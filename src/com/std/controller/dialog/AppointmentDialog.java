@@ -42,8 +42,8 @@ public class AppointmentDialog extends JDialog{
 	private RefAppointment appt; // appointment to change
 	private JTextField titleField; // title field component
 	private JTextField locationField; // location field component
-	private JComboBox<String> startTime; // start date field component
-	private JComboBox<String> endTime; // end date field component
+	private JComboBox startTime; // start date field component
+	private JComboBox endTime; // end date field component
     private DatePanel datePanel; //the start date
     private DatePanel endDatePanel; //adding in an end date panel
 	private JTextArea description; // description field component
@@ -374,8 +374,8 @@ public class AppointmentDialog extends JDialog{
 
 		// start date
         String[] times = {"00:00", "01:00", "02:00"};
-        startTime = new JComboBox<String>(times);
-        endTime = new JComboBox<String>(times);
+        startTime = new JComboBox(times);
+        endTime = new JComboBox(times);
 		datePanel = new DatePanel(appt.getStartDate(), enableAppt, this);
         endDatePanel = new DatePanel(appt.getEndDate(), enableAppt, this);
 
