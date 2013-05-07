@@ -10,6 +10,6 @@ public class ExportCommand implements Command{
 
 
 	public void execute(CalendarController cc){
-		new ExportPanel();
+		new ExportPanel(cc.getView());
 	}
 }
