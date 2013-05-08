@@ -1,4 +1,4 @@
-package com.std.view.ZachsCrappyTogglDay;
+package com.std.view.toggle;
 
 import javax.swing.*;
 import java.awt.*;
