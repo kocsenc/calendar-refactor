@@ -18,11 +18,8 @@ import java.util.Observer;
 
 public class CalendarController implements Observer {
 
-    // performs logical operations of calendar (add/remove/modify appointments)
     private final CalendarModel theModel;
-    // highest level of representation for the UI
     private final CalendarView theView;
-
 
     /**
      * The constructor of the Controller takes a model and a view and adds
