@@ -141,13 +141,13 @@ public class CalendarView extends JFrame {
     public TABBED_STATE getTabbedState() {
         TABBED_STATE ret = null;
         Component c = tabs.getSelectedComponent();
-        if (c == monthlyView) {
+        if (c == monthlyView)
             ret = TABBED_STATE.MONTHLY;
-        } else if (c == weeklyView) {
+        else if (c == weeklyView)
             ret = TABBED_STATE.WEEKLY;
-        } else if (c == dailyView) {
+        else if (c == dailyView)
             ret = TABBED_STATE.DAILY;
-        }
+
         return ret;
     }
 
