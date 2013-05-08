@@ -85,8 +85,8 @@ public class CalendarMenu extends JMenuBar {
 	}
 
     /**
-     * This is the constructor for the menu, it sets up how it is going to look and
-     * initializes all of the menu items
+     * This is the constructor for the menu, it sets up how it is going to look
+	 * and initializes all of the menu items
      */
 
     public CalendarMenu() {

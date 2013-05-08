@@ -229,28 +229,36 @@ public class CalendarView extends JFrame {
         prevButton.addActionListener(new PrevButtonActionListener(cc));
 
         // listens for when the menu item "New Calendar" is selected
-        calMenu.getNewCalendarMenuItem().addActionListener(new NewCalendarActionListener(cc));
+        calMenu.getNewCalendarMenuItem().addActionListener(
+				new NewCalendarActionListener(cc));
 
         // listens for when the menu item "Open Calendar" is selected
-        calMenu.getOpenCalendarMenuItem().addActionListener(new OpenCalendarActionListener(cc));
+        calMenu.getOpenCalendarMenuItem().addActionListener(
+				new OpenCalendarActionListener(cc));
 
         // listens for when the menu item "Save Calendar" is selected
-        calMenu.getSaveCalendarMenuItem().addActionListener(new SaveCalendarActionListener(cc));
+        calMenu.getSaveCalendarMenuItem().addActionListener(
+				new SaveCalendarActionListener(cc));
 
         // listens for when the menu item "Save As Calendar" is selected
-        calMenu.getSaveAsCalendarMenuItem().addActionListener(new SaveAsCalendarActionListener(cc));
+        calMenu.getSaveAsCalendarMenuItem().addActionListener(
+				new SaveAsCalendarActionListener(cc));
 
         // listens for when the menu item "Exit" is selected
-        calMenu.getExitApplicationMenuItem().addActionListener(new ExitApplicationActionListener(cc));
+        calMenu.getExitApplicationMenuItem().addActionListener(
+				new ExitApplicationActionListener(cc));
 
         // listens for when the menu item "New Appointment" is selected
-        calMenu.getNewAppointmentMenuItem().addActionListener(new NewAppointmentActionListener(cc));
+        calMenu.getNewAppointmentMenuItem().addActionListener(
+				new NewAppointmentActionListener(cc));
 
         // listens for when the menu item "Edit Appointment" is selected
-        appointmentView.addEditSingleListener(new EditAppointmentActionListener(cc));
+        appointmentView.addEditSingleListener(
+				new EditAppointmentActionListener(cc));
 
 		// listens for when the menu item "Edit Appointment" is selected
-		calMenu.getExportCalendar().addActionListener(new ExportCalendarActionListener(cc));
+		calMenu.getExportCalendar().addActionListener(
+				new ExportCalendarActionListener(cc));
 
         // listens for when menu item "Edit Recurring Appointment" is selected
         EditRecurringAppointmentActionListener editRecApptL =
@@ -267,15 +275,18 @@ public class CalendarView extends JFrame {
         // listens for when the menu item "Remove All Occurrences" is selected
         RemoveAllAppointmentActionListener remAllApptL =
                 new RemoveAllAppointmentActionListener(cc);
-        calMenu.getRemoveAllAppointmentMenuItem().addActionListener(remAllApptL);
+        calMenu.getRemoveAllAppointmentMenuItem().
+				addActionListener(remAllApptL);
         appointmentView.addRemoveRecurringListener(remAllApptL);
 
         // listens for when the menu item "Preferences" is selected
-        calMenu.getPreferencesMenuItem().addActionListener(new PreferencesActionListener(cc));
+        calMenu.getPreferencesMenuItem().addActionListener(
+				new PreferencesActionListener(cc));
 
 
         // listens for when the menu item "About" is selected
-        calMenu.getAboutMenuItem().addActionListener(new AboutActionListener(cc));
+        calMenu.getAboutMenuItem().addActionListener(
+				new AboutActionListener(cc));
 
     }
 
