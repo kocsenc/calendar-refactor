@@ -17,7 +17,6 @@ public class NewCalendarCommand implements Command {
     public NewCalendarCommand() {
     }
 
-    @Override
     public void execute(CalendarController cc) {
         try {
             cc.getModel().load(null);

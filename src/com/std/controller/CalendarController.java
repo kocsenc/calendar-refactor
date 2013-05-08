@@ -1,6 +1,7 @@
 package com.std.controller;
 
 import com.std.model.CalendarModel;
+import com.std.model.export.ExportStrategyFactory;
 import com.std.view.CalendarView;
 
 import javax.swing.*;
@@ -158,7 +159,7 @@ public class CalendarController implements Observer {
             if (theModel.getFile() == null) {
                 ret = saveAs();
             } else {
-                theModel.save(theModel.getFile());
+                theModel.save(theModel.getFile(), ExportStrategyFactory.DCAL);
                 ret = true;
             }
         } catch (Exception ex) {
@@ -176,7 +177,7 @@ public class CalendarController implements Observer {
         if (ret) {
             String path = dialog.getDirectory() + dialog.getFile();
             try {
-                theModel.save(new File(path));
+                theModel.save(new File(path), ExportStrategyFactory.DCAL);
             } catch (Exception ex) {
                 handleException(ex);
             }

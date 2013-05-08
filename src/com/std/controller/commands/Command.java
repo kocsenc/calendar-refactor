@@ -15,5 +15,5 @@ public interface Command {
     /**
      *
      */
-    void execute(CalendarController cc);
+    public void execute(CalendarController cc);
 }

@@ -20,7 +20,6 @@ public class EditAppointmentCommand implements Command {
     public EditAppointmentCommand() {
     }
 
-    @Override
     public void execute(CalendarController cc) {
         RefAppointment ref = cc.getModel().getCurrentAppointment();
         if (ref != null) {

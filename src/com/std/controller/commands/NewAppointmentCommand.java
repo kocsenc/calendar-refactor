@@ -17,7 +17,6 @@ public class NewAppointmentCommand implements Command {
     public NewAppointmentCommand() {
     }
 
-    @Override
     public void execute(CalendarController cc) {
         RefAppointment ref =
                 CalendarModelUtility.getNewAppointment(cc.getModel());

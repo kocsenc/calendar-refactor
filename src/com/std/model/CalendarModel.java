@@ -2,6 +2,9 @@ package com.std.model;
 
 import com.std.model.appointment.AppointmentTemplate;
 import com.std.model.appointment.RefAppointment;
+import com.std.model.export.ExportStrategy;
+import com.std.model.export.ExportStrategyFactory;
+import com.sun.jmx.remote.internal.ArrayQueue;
 
 import java.io.*;
 import java.util.*;
@@ -57,6 +60,8 @@ public class CalendarModel extends Observable{
 	//true iff the file denoted by curURI is different than the data on record
 
 	private final AppointmentTemplate defaultApptTmpl;
+
+	private final ExportStrategyFactory exportStrategyFactory;
 	//the default parameters for new appointment templates
 
 	/**
@@ -74,6 +79,7 @@ public class CalendarModel extends Observable{
 		diffFile = false;
 		defaultApptTmpl = getNewDefaults();
 		defaultApptTmpl.addObserver(new ElementObserver());
+		exportStrategyFactory = new ExportStrategyFactory();
 	}
 
 	/**
@@ -234,20 +240,27 @@ public class CalendarModel extends Observable{
 	 *                              header
 	 * @throws NullPointerException if the passed URI is null
 	 */
-	public void save(File file) throws IOException{
+	public void save(File file, String id) throws IOException{
 		if(file == null)
 			throw new NullPointerException("file");
+		if(id == null)
+			throw new NullPointerException("id");
 
-		ObjectOutputStream out =
-				new ObjectOutputStream(new FileOutputStream(file));
-		out.writeObject(defaultApptTmpl);
-		out.writeInt(apptTmplSet.size());
+		// Build a complete list of all objects that need to be saved.
+		LinkedList<Serializable> objectsToWrite = new LinkedList<Serializable>();
+		objectsToWrite.add(defaultApptTmpl);
+		objectsToWrite.add(apptTmplSet.size());
 		for(AppointmentTemplate apptTmpl : apptTmplSet)
-			out.writeObject(apptTmpl);
-
-		out.writeInt(apptSet.size());
+			objectsToWrite.add(apptTmpl);
+		objectsToWrite.add(apptSet.size());
 		for(RefAppointment appt : apptSet)
-			out.writeObject(appt);
+			objectsToWrite.add(appt);
+
+		// Actually export the objects
+		ExportStrategy exportStrategy = exportStrategyFactory.getExportStrategy(
+				id);
+		if(exportStrategy != null)
+			exportStrategy.export(objectsToWrite, file);
 
 		curFile = file;
 		diffFile = false;

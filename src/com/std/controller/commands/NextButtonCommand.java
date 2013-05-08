@@ -15,7 +15,6 @@ public class NextButtonCommand implements Command {
     public NextButtonCommand() {
     }
 
-    @Override
     public void execute(CalendarController cc) {
         switch (cc.getView().getTabbedState()) {
             case MONTHLY:

@@ -21,7 +21,6 @@ public class DateSelectionCommand implements Command {
     }
 
 
-    @Override
     public void execute(CalendarController cc) {
         //get the day block that this listener was listening too
         DayBlock db = (DayBlock) e.getSource();
