@@ -80,6 +80,10 @@ public class CalendarMenu extends JMenuBar {
         return about;
     }
 
+	public JMenuItem getExportCalendar(){
+		return exportCalendar;
+	}
+
     /**
      * This is the constructor for the menu, it sets up how it is going to look and
      * initializes all of the menu items

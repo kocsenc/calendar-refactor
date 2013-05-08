@@ -249,6 +249,9 @@ public class CalendarView extends JFrame {
         // listens for when the menu item "Edit Appointment" is selected
         appointmentView.addEditSingleListener(new EditAppointmentActionListener(cc));
 
+		// listens for when the menu item "Edit Appointment" is selected
+		calMenu.getExportCalendar().addActionListener(new ExportCalendarActionListener(cc));
+
         // listens for when menu item "Edit Recurring Appointment" is selected
         EditRecurringAppointmentActionListener editRecApptL =
                 new EditRecurringAppointmentActionListener(cc);
