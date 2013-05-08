@@ -1,4 +1,4 @@
-package com.std.view.ZachsCrappyTogglDay;
+package com.std.view.toggle;
 
 import com.std.model.CalendarModelUtility;
 import com.std.model.appointment.RefAppointment;
@@ -6,7 +6,6 @@ import com.std.model.appointment.RefAppointment;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
-import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;

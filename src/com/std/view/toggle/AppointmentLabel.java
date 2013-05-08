@@ -1,4 +1,4 @@
-package com.std.view.ZachsCrappyTogglDay;
+package com.std.view.toggle;
 
 import com.std.model.appointment.RefAppointment;
 

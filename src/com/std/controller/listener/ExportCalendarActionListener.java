@@ -8,8 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * @author: Jenny Zhen; jenz.rit@gmail.com date: 05 03, 2013 language: Java
- * project: calendar-refactor3
+ * @author: Jenny Zhen; jenz.rit@gmail.com
+ * date: 05 03, 2013
+ * language: Java
+ * project: calendar-refactor
  */
 
 public class ExportCalendarActionListener implements ActionListener {
